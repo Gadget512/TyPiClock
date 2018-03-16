@@ -177,17 +177,28 @@ class DateTime():
 			location - list of coordinates (x, y, w, h)
 		"""
 		
+		# Create text frame
+		self.textFrame = QtGui.QFrame(page)
+		self.textFrame.setObjectName(properties['name']+"frame")
+		self.textFrameRect = QtCore.QRect(properties['location'][0], properties['location'][1], properties['location'][2], properties['location'][3])
+		
+		self.textFrame.setGeometry(self.textFrameRect)
+		if properties['background']:
+			self.textFrame.setStyleSheet("#"+properties['name']+"frame { background-color: transparent; border-image: url("+properties['background']+") 0 0 0 0 stretch stretch;}")
+		else:
+			self.textFrame.setStyleSheet("#"+properties['name']+"frame { background-color: transparent;}")
+		
 		now = datetime.datetime.now()
 		
 		self.textLabel = QtGui.QLabel(page)
 		self.textLabel.setObjectName(properties['name'])
-		self.textLabel.setStyleSheet("#"+properties['name']+" font-family:"+properties['font']+"; color: "+
-			properties['color'] + "; background-color: transparent; fontsize: "+
+		self.textLabel.setStyleSheet("#"+properties['name']+"{ font-family:"+properties['font']+"; color: "+
+			properties['color'] + "; background-color: transparent; font-size: "+
 			properties['fontsize']+"px; "+
 			properties['fontattr']+"}")
 			
-		self.textLabel.setAlignment(Qt.AlignHCenter | Qt.AlignTop)
-		self.textLabel.setGeometry(0,0, 1920, 100) # TODO *********************
+		#self.textLabel.setAlignment(Qt.AlignHCenter | Qt.AlignTop)
+		self.textLabel.setGeometry(properties['location'][0], properties['location'][1], properties['location'][2], properties['location'][3]) # TODO *********************
 		
 		text = properties['format'].format(now)
 		self.textLabel.setText(text)

@@ -29,13 +29,14 @@
 			"datetimes": [
 				{
 					"name": "DigitalClock",
-					"format": "{0:%I:%M\n%S %p}",
+					"background": null,
+					"format": "{0:%I:%M}",
 					"font": "sans-serif",
-					"fontsize": 200,
+					"fontsize": "200",
 					"fontattr": "font-weight: bold;",
 					"color": "#50CBEB",
 					"effect": " ",
-					"location": []
+					"location": [0, 0, 500, 300]
 				}
 			],
 			
@@ -57,6 +58,10 @@
 					"second": null,
 					"coords": [2, 2, 256, 256]
 				}
+			],
+			
+			"datetimes": [
+			
 			]
 		},
 		{
@@ -72,6 +77,10 @@
 					"second": "images/sechand.png",
 					"coords": [420, 0, 1080, 1080]
 				}
+			],
+			
+			"datetimes": [
+			
 			]
 		}
 	]
