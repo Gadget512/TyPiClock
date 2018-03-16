@@ -84,7 +84,7 @@ class Window(QtGui.QWidget):
 		for page in self.config['pages']:
 			for clock in page['clocks']:
 				clockImages = [clock['face'], clock['hour'], clock['minute'], clock['second']]
-				self.clocks.append(AnalogClock(self.pages[page['num']], clock['name'], clockImages, clock['coords']))
+				self.clocks.append(AnalogClock(self.pages[page['num']], clock['name'], clockImages, clock['coords'], clock['interval']))
 				
 		# DateTimes
 		

@@ -66,7 +66,7 @@ class AnalogClock():
 			hoursize.width(),
 			hoursize.height()) # display the image
 	
-	def __init__(self, page, clockName, images, coords):
+	def __init__(self, page, clockName, images, coords, interval):
 	
 		self.secondhand = None
 		self.clockface = images[0]
@@ -108,7 +108,7 @@ class AnalogClock():
 		# Start clock
 		self.ctimer = QtCore.QTimer() # QTimer calls the specified function every specified number of milliseconds (parallel?)
 		self.ctimer.timeout.connect(self.tick)
-		self.ctimer.start(1000)
+		self.ctimer.start(interval*1000)
 	
 	
 class DigitalClock():
@@ -161,8 +161,10 @@ class DigitalClock():
 
 class DateTime():
 	
-	def tick():
-		return 0
+	def tick(self):
+		now = datetime.datetime.now()
+		text = self.textFormat.format(now)
+		self.textLabel.setText(text)
 	
 	def __init__(self, page, properties): 
 		"""
@@ -179,19 +181,21 @@ class DateTime():
 			location - list of coordinates (x, y, w, h)
 		"""
 		
+		self.textFormat = properties['format']
+		
 		# Create text frame
 		self.textFrame = QFrame(page)
 		self.textFrame.setObjectName(properties['name']+"frame")
 		self.textFrameRect = QtCore.QRect(properties['location'][0], properties['location'][1], properties['location'][2], properties['location'][3])
 		
+		# Display text frame (with background if specified)
 		self.textFrame.setGeometry(self.textFrameRect)
 		if properties['background']:
 			self.textFrame.setStyleSheet("#"+properties['name']+"frame { background-color: transparent; border-image: url("+properties['background']+") 0 0 0 0 stretch stretch;}")
 		else:
 			self.textFrame.setStyleSheet("#"+properties['name']+"frame { background-color: transparent;}")
 		
-		now = datetime.datetime.now()
-		
+		# Create text stylesheet based on given properties
 		self.textLabel = QLabel(page)
 		self.textLabel.setObjectName(properties['name'])
 		self.textLabel.setStyleSheet("#"+properties['name']+"{ font-family:"+properties['font']+"; color: "+
@@ -202,6 +206,7 @@ class DateTime():
 		#self.textLabel.setAlignment(Qt.AlignHCenter | Qt.AlignTop)
 		self.textLabel.setGeometry(properties['location'][0], properties['location'][1], properties['location'][2], properties['location'][3])
 		
+		# Set the text effect, if specified
 		for effect in properties['effects']:
 			if effect['type'] == "glow":
 				textEffect = QtGui.QGraphicsDropShadowEffect()
@@ -217,8 +222,15 @@ class DateTime():
 				textEffect.setColor(QColor(effect['typeattr']['color']))
 				self.textLabel.setGraphicsEffect(textEffect)
 		
-		text = properties['format'].format(now)
+		# Display text
+		now = datetime.datetime.now()
+		text = self.textFormat.format(now)
 		self.textLabel.setText(text)
+		
+		# Start timer
+		self.timer = QtCore.QTimer() # QTimer calls the specified function every specified number of milliseconds (parallel?)
+		self.timer.timeout.connect(self.tick)
+		self.timer.start(properties['interval']*1000)
 		
 		
 		"""

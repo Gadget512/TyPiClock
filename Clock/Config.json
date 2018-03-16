@@ -18,6 +18,7 @@
 			"clocks": [
 				{
 					"name": "MainClock",
+					"interval": 1,
 					"face": "images/typi/TyPi-ClockFace2.png",
 					"hour": "images/hourhand.png",
 					"minute": "images/minhand.png",
@@ -29,10 +30,11 @@
 			"datetimes": [
 				{
 					"name": "DigitalClock",
+					"interval": 10,
 					"background": null,
 					"format": "{0:%I:%M}",
 					"font": "sans-serif",
-					"fontsize": "200",
+					"fontsize": "140",
 					"fontattr": "",
 					"color": "#50CBEB",
 					"effects": [
@@ -109,6 +111,7 @@
 			"clocks": [
 				{
 					"name": "Clock2",
+					"interval": 5,
 					"face": "images/typi/TyPi_clockface.png",
 					"hour": "images/hourhand-white.png",
 					"minute": "images/minhand-white.png",
@@ -128,6 +131,7 @@
 			"clocks": [
 				{
 					"name": "Clock3",
+					"interval": 1,
 					"face": "images/typi/TyPi_clockface.png",
 					"hour": "images/hourhand-white.png",
 					"minute": "images/minhand-white.png",
