@@ -1,6 +1,7 @@
 import datetime
 from PyQt4 import QtGui, QtCore
 from PyQt4.QtCore import Qt
+from PyQt4.QtGui import QColor, QFrame, QLabel, QMatrix, QPixmap
 
 class AnalogClock():
 	"""
@@ -23,7 +24,7 @@ class AnalogClock():
 		if self.secondhand:
 			secsize = self.secpixmap.size()
 			secpixmap2 = self.secpixmap.transformed(
-				QtGui.QMatrix().scale(
+				QMatrix().scale(
 					float(self.clockFrameRect.width()) / secsize.height(),
 					float(self.clockFrameRect.height()) / secsize.height()).rotate(secangle),
 				Qt.SmoothTransformation) # rotate the image
@@ -38,7 +39,7 @@ class AnalogClock():
 		# Display minute hand
 		minsize = self.minpixmap.size()
 		minpixmap2 = self.minpixmap.transformed(
-			QtGui.QMatrix().scale(
+			QMatrix().scale(
 				float(self.clockFrameRect.width()) / minsize.height(),
 				float(self.clockFrameRect.height()) / minsize.height()).rotate(minangle),
 			Qt.SmoothTransformation) # rotate the image
@@ -53,7 +54,7 @@ class AnalogClock():
 		# Display hour hand
 		hoursize = self.hourpixmap.size()
 		hourpixmap2 = self.hourpixmap.transformed(
-			QtGui.QMatrix().scale(
+			QMatrix().scale(
 				float(self.clockFrameRect.width()) / hoursize.height(),
 				float(self.clockFrameRect.height()) / hoursize.height()).rotate(hourangle),
 			Qt.SmoothTransformation) # rotate the image
@@ -74,7 +75,7 @@ class AnalogClock():
 		self.secondhand = images[3] # May be None (null)
 		
 		# Create new frame on page for clock
-		self.clockFrame = QtGui.QFrame(page)
+		self.clockFrame = QFrame(page)
 		self.clockFrame.setObjectName(clockName)
 		# specify (x, y, w, h) where x,y is the top-left corner, w is the width, h is the height
 		self.clockFrameRect = QtCore.QRect(coords[0],  coords[1],  coords[2], coords[3])
@@ -87,22 +88,22 @@ class AnalogClock():
 		self.second = None
 		self.secpixmap = None
 		if self.secondhand:
-			self.second = QtGui.QLabel(page) # create label on page
+			self.second = QLabel(page) # create label on page
 			self.second.setObjectName(clockName+"second") # name label
 			self.second.setStyleSheet("#"+clockName+"second { background-color: transparent; }")
-			self.secpixmap = QtGui.QPixmap(self.secondhand) # create pixmap with image
+			self.secpixmap = QPixmap(self.secondhand) # create pixmap with image
 			
 		# Set up minute hand
-		self.minute = QtGui.QLabel(page) # create label on page
+		self.minute = QLabel(page) # create label on page
 		self.minute.setObjectName(clockName+"minute") # name label
 		self.minute.setStyleSheet("#"+clockName+"minute { background-color: transparent; }")
-		self.minpixmap = QtGui.QPixmap(self.minutehand) # create pixmap with image
+		self.minpixmap = QPixmap(self.minutehand) # create pixmap with image
 		
 		# Set up hour hand
-		self.hour = QtGui.QLabel(page) # create label on page
+		self.hour = QLabel(page) # create label on page
 		self.hour.setObjectName(clockName+"hour") # name label
 		self.hour.setStyleSheet("#"+clockName+"hour { background-color: transparent; }")
-		self.hourpixmap = QtGui.QPixmap(self.hourhand) # create pixmap with image
+		self.hourpixmap = QPixmap(self.hourhand) # create pixmap with image
 		
 		# Start clock
 		self.ctimer = QtCore.QTimer() # QTimer calls the specified function every specified number of milliseconds (parallel?)
@@ -116,7 +117,7 @@ class DigitalClock():
 		
 		now = datetime.datetime.now()
 		
-		clockface = QtGui.QLabel(frame1)
+		clockface = QLabel(frame1)
 		clockface.setObjectName("clockface")
 		clockrect = QtCore.QRect(
 			width / 2 - height * .4,
@@ -179,7 +180,7 @@ class DateTime():
 		"""
 		
 		# Create text frame
-		self.textFrame = QtGui.QFrame(page)
+		self.textFrame = QFrame(page)
 		self.textFrame.setObjectName(properties['name']+"frame")
 		self.textFrameRect = QtCore.QRect(properties['location'][0], properties['location'][1], properties['location'][2], properties['location'][3])
 		
@@ -191,7 +192,7 @@ class DateTime():
 		
 		now = datetime.datetime.now()
 		
-		self.textLabel = QtGui.QLabel(page)
+		self.textLabel = QLabel(page)
 		self.textLabel.setObjectName(properties['name'])
 		self.textLabel.setStyleSheet("#"+properties['name']+"{ font-family:"+properties['font']+"; color: "+
 			properties['color'] + "; background-color: transparent; font-size: "+
@@ -199,7 +200,22 @@ class DateTime():
 			properties['fontattr']+"}")
 			
 		#self.textLabel.setAlignment(Qt.AlignHCenter | Qt.AlignTop)
-		self.textLabel.setGeometry(properties['location'][0], properties['location'][1], properties['location'][2], properties['location'][3]) # TODO *********************
+		self.textLabel.setGeometry(properties['location'][0], properties['location'][1], properties['location'][2], properties['location'][3])
+		
+		for effect in properties['effects']:
+			if effect['type'] == "glow":
+				textEffect = QtGui.QGraphicsDropShadowEffect()
+				textEffect.setOffset(0)
+				textEffect.setBlurRadius(effect['typeattr']['radius'])
+				textEffect.setColor(QColor(effect['typeattr']['color']))
+				self.textLabel.setGraphicsEffect(textEffect)
+				
+			elif effect['type'] == "shadow":
+				textEffect = QtGui.QGraphicsDropShadowEffect()
+				textEffect.setOffset(effect['typeattr']['offset'])
+				textEffect.setBlurRadius(effect['typeattr']['blur'])
+				textEffect.setColor(QColor(effect['typeattr']['color']))
+				self.textLabel.setGraphicsEffect(textEffect)
 		
 		text = properties['format'].format(now)
 		self.textLabel.setText(text)

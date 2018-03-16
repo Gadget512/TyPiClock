@@ -33,13 +33,22 @@
 					"format": "{0:%I:%M}",
 					"font": "sans-serif",
 					"fontsize": "200",
-					"fontattr": "font-weight: bold;",
+					"fontattr": "",
 					"color": "#50CBEB",
 					"effects": [
 						{
 							"type": "glow",
 							"typeattr": {
-								"radius": 50
+								"radius": 50,
+								"color": "#34869B"
+							}
+						},
+						{
+							"type": "shadow",
+							"typeattr": {
+								"offset": 6,
+								"blur": 20,
+								"color": "#000000"
 							}
 						}
 					],
