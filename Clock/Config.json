@@ -35,7 +35,55 @@
 					"fontsize": "200",
 					"fontattr": "font-weight: bold;",
 					"color": "#50CBEB",
-					"effect": " ",
+					"effects": [
+						{
+							"type": "glow",
+							"typeattr": {
+								"radius": 50
+							}
+						}
+					],
+					"location": [0, 0, 500, 300]
+				}
+			],
+			
+			"texts": [
+				{
+					"name": "Greeting",
+					"type": "random",
+					"interval": 30,
+					"text": [
+						"Have a good day!",
+						"Go get it!",
+						"You look nice!"
+					],
+					"background": null,
+					"format": null,
+					"font": "sans-serif",
+					"fontsize": "200",
+					"fontattr": "font-weight: bold;",
+					"color": "#50CBEB",
+					"effects": [
+						
+					],
+					"location": [0, 0, 500, 300]
+				},
+				{
+					"name": "Name",
+					"type": "static",
+					"interval": null,
+					"text": [
+						"Tyler Brinks"
+					],
+					"background": null,
+					"format": null,
+					"font": "sans-serif",
+					"fontsize": "200",
+					"fontattr": "font-weight: bold;",
+					"color": "#50CBEB",
+					"effects": [
+						
+					],
 					"location": [0, 0, 500, 300]
 				}
 			],

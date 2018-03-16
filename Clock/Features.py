@@ -141,6 +141,7 @@ class DigitalClock():
 			"}")
 		clockface.setAlignment(Qt.AlignCenter)
 		clockface.setGeometry(clockrect)
+		
 		glow = QtGui.QGraphicsDropShadowEffect()
 		glow.setOffset(0)
 		glow.setBlurRadius(50)
@@ -269,6 +270,9 @@ class DateTime():
 class Text():
 	
 	def __init__(self):
+		return 0
+		
+	def setText():
 		return 0
 
 
