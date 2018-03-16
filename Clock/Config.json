@@ -1,0 +1,65 @@
+{
+	"config": {
+		"location": {
+			"lat": 39.5867206,
+			"lng": -104.9047336
+		},
+		"weather": {
+			"uri": "",
+			"stream": ""
+		}
+	},
+	
+	"pages": [
+		{
+			"num": 0,
+			"background": "images/DenverSkyline_1080.jpg",
+			
+			"clocks": [
+				{
+					"name": "MainClock",
+					"face": "images/typi/TyPi-ClockFace2.png",
+					"hour": "images/hourhand.png",
+					"minute": "images/minhand.png",
+					"second": "images/sechand.png",
+					"coords": [528, 20, 864, 864]
+				}
+			],
+			
+			"calendars": [
+			
+			]
+		},
+			
+		{
+			"num": 1,
+			"background": "images/clockbackground-kelly.png",
+			
+			"clocks": [
+				{
+					"name": "Clock2",
+					"face": "images/typi/TyPi_clockface.png",
+					"hour": "images/hourhand-white.png",
+					"minute": "images/minhand-white.png",
+					"second": null,
+					"coords": [2, 2, 256, 256]
+				}
+			]
+		},
+		{
+			"num": 2,
+			"background": "images/clockbackground-kevin.png",
+			
+			"clocks": [
+				{
+					"name": "Clock3",
+					"face": "images/typi/TyPi_clockface.png",
+					"hour": "images/hourhand-white.png",
+					"minute": "images/minhand-white.png",
+					"second": "images/sechand.png",
+					"coords": [420, 0, 1080, 1080]
+				}
+			]
+		}
+	]
+}

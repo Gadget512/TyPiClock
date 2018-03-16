@@ -1,0 +1,4 @@
+%a:	Weekday, abbreviated (Sun)
+%A:	Weekday, full (Sunday)
+%W:	Weekday, decimal number (0 for Sunday)
+%d:	Day of the month
