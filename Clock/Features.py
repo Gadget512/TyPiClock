@@ -189,8 +189,11 @@ class DateTime():
 		self.textLabel.setAlignment(Qt.AlignHCenter | Qt.AlignTop)
 		self.textLabel.setGeometry(0,0, 1920, 100) # TODO *********************
 		
+		text = properties['format'].format(now)
+		self.textLabel.setText(text)
 		
 		
+		"""
 		# ---------------------------------------------------------------------
 		# I think this goes here
 		datex = QtGui.QLabel(frame1)
@@ -215,8 +218,8 @@ class DateTime():
 			"}")
 		datex2.setAlignment(Qt.AlignHCenter | Qt.AlignTop)
 		datex2.setGeometry(800 * xscale, 780 * yscale, 640 * xscale, 100)
-		datey2 = QtGui.QLabel(frame2)
 		
+		datey2 = QtGui.QLabel(frame2)
 		datey2.setObjectName("datey2")
 		datey2.setStyleSheet("#datey2 { font-family:sans-serif; color: " +
 			Config.textcolor +
@@ -249,6 +252,7 @@ class DateTime():
 			ds = "{0:%A %B} {0.day}<sup>{1}</sup> {0.year}".format(now, sup)
 			datex.setText(ds)
 			datex2.setText(ds)
+		"""
 
 
 class Text():

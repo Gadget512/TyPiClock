@@ -26,6 +26,19 @@
 				}
 			],
 			
+			"datetimes": [
+				{
+					"name": "DigitalClock",
+					"format": "{0:%I:%M\n%S %p}",
+					"font": "sans-serif",
+					"fontsize": 200,
+					"fontattr": "font-weight: bold;",
+					"color": "#50CBEB",
+					"effect": " ",
+					"location": []
+				}
+			],
+			
 			"calendars": [
 			
 			]

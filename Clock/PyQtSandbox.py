@@ -13,7 +13,7 @@ import argparse
 from PyQt4 import QtGui, QtCore #, QtNetwork
 from PyQt4.QtCore import Qt
 
-from Features import AnalogClock
+from Features import AnalogClock, DateTime
 
 """
 from PyQt4.QtGui import QPixmap, QMovie, QBrush, QColor, QPainter
@@ -79,14 +79,23 @@ class Window(QtGui.QWidget):
 		# Display page0
 		self.pages[0].setVisible(True)
 		
-		# Clocks
+		# Analog Clocks
 		self.clocks = []
 		for page in self.config['pages']:
 			for clock in page['clocks']:
 				clockImages = [clock['face'], clock['hour'], clock['minute'], clock['second']]
-				thisClock = AnalogClock(self.pages[page["num"]], clock["name"], clockImages, clock['coords'])
-				self.clocks.append(thisClock)
+				self.clocks.append(AnalogClock(self.pages[page['num']], clock['name'], clockImages, clock['coords']))
 				
+		# DateTimes
+		
+		self.datetimes = []
+		for page in self.config['pages']:
+			for dt in page['datetimes']:
+				#properties = [dt['name'], dt['format'], dt['font'], dt['fontsize'], dt['fontattr'], dt['color'], dt['effect'], dt['location']]
+				#self.datetimes.append(DateTime(self.pages[page['num']], properties))
+				self.datetimes.append(DateTime(self.pages[page['num']], dt))
+		
+		
 		# Calendars
 		
 		# Display window, in full screen
