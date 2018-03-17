@@ -109,54 +109,6 @@ class AnalogClock():
 		self.ctimer = QtCore.QTimer() # QTimer calls the specified function every specified number of milliseconds (parallel?)
 		self.ctimer.timeout.connect(self.tick)
 		self.ctimer.start(interval*1000)
-	
-	
-class DigitalClock():
-	
-	def __init__(self): # TODO NO IDEA WHAT THIS DOES
-		
-		now = datetime.datetime.now()
-		
-		clockface = QLabel(frame1)
-		clockface.setObjectName("clockface")
-		clockrect = QtCore.QRect(
-			width / 2 - height * .4,
-			height * .45 - height * .4,
-			height * .8,
-			height * .8)
-			
-		clockface.setGeometry(clockrect)
-		#dcolor = QColor(Config.digitalcolor).darker(0).name()
-		#lcolor = QColor(Config.digitalcolor).lighter(120).name()
-		dcolor = QColor("#50CBEB").darker(0).name()
-		lcolor = QColor("#50CBEB").lighter(120).name()
-		
-		clockface.setStyleSheet(
-			"#clockface { background-color: transparent; font-family:sans-serif;" +
-			" font-weight: light; color: " +
-			lcolor +
-			"; background-color: transparent; font-size: " +
-			str(int(Config.digitalsize * xscale)) +
-			"px; " +
-			Config.fontattr +
-			"}")
-		clockface.setAlignment(Qt.AlignCenter)
-		clockface.setGeometry(clockrect)
-		
-		glow = QtGui.QGraphicsDropShadowEffect()
-		glow.setOffset(0)
-		glow.setBlurRadius(50)
-		glow.setColor(QColor(dcolor))
-		clockface.setGraphicsEffect(glow)
-		
-		#timestr = Config.digitalformat.format(now)
-		timestr = "{0:%I:%M\n%S %p}".format(now)
-		if Config.digitalformat.find("%I") > -1:
-			if timestr[0] == '0':
-				timestr = timestr[1:99]
-		if lasttimestr != timestr:
-			clockface.setText(timestr.lower())
-		lasttimestr = timestr
 
 
 class DateTime():
@@ -231,73 +183,11 @@ class DateTime():
 		self.timer = QtCore.QTimer() # QTimer calls the specified function every specified number of milliseconds (parallel?)
 		self.timer.timeout.connect(self.tick)
 		self.timer.start(properties['interval']*1000)
-		
-		
-		"""
-		# ---------------------------------------------------------------------
-		# I think this goes here
-		datex = QtGui.QLabel(frame1)
-		datex.setObjectName("datex")
-		datex.setStyleSheet("#datex { font-family:sans-serif; color: " +
-			Config.textcolor +
-			"; background-color: transparent; font-size: " +
-			str(int(50 * xscale)) +
-			"px; " +
-			Config.fontattr +
-			"}")
-		datex.setAlignment(Qt.AlignHCenter | Qt.AlignTop)
-		datex.setGeometry(0, 0, width, 100)
-
-		datex2 = QtGui.QLabel(frame2)
-		datex2.setObjectName("datex2")
-		datex2.setStyleSheet("#datex2 { font-family:sans-serif; color: " +
-			Config.textcolor +
-			"; background-color: transparent; font-size: " +
-			str(int(50 * xscale)) + "px; " +
-			Config.fontattr +
-			"}")
-		datex2.setAlignment(Qt.AlignHCenter | Qt.AlignTop)
-		datex2.setGeometry(800 * xscale, 780 * yscale, 640 * xscale, 100)
-		
-		datey2 = QtGui.QLabel(frame2)
-		datey2.setObjectName("datey2")
-		datey2.setStyleSheet("#datey2 { font-family:sans-serif; color: " +
-			Config.textcolor +
-			"; background-color: transparent; font-size: " +
-			str(int(50 * xscale)) +
-			"px; " +
-			Config.fontattr +
-			"}")
-		datey2.setAlignment(Qt.AlignHCenter | Qt.AlignTop)
-		datey2.setGeometry(800 * xscale, 840 * yscale, 640 * xscale, 100)
-		# ---------------------------------------------------------------------------
-		
-		dy = "{0:%I:%M %p}".format(now)
-		if dy != pdy:
-			pdy = dy
-			datey2.setText(dy)
-
-		if now.day != lastday:
-			lastday = now.day
-			# date
-			sup = 'th'
-			if (now.day == 1 or now.day == 21 or now.day == 31):
-				sup = 'st'
-			if (now.day == 2 or now.day == 22):
-				sup = 'nd'
-			if (now.day == 3 or now.day == 23):
-				sup = 'rd'
-			if Config.DateLocale != "":
-				sup = ""
-			ds = "{0:%A %B} {0.day}<sup>{1}</sup> {0.year}".format(now, sup)
-			datex.setText(ds)
-			datex2.setText(ds)
-		"""
 
 
 class Text():
 	
-	def __init__(self):
+	def __init__(self, page, properties):
 		return 0
 		
 	def setText():

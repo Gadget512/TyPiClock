@@ -37,6 +37,7 @@
 					"fontsize": "140",
 					"fontattr": "",
 					"color": "#50CBEB",
+					"alignment": ["top", "center"],
 					"effects": [
 						{
 							"type": "glow",
@@ -55,6 +56,27 @@
 						}
 					],
 					"location": [0, 0, 500, 300]
+				},
+				{
+					"name": "DayoftheWeek",
+					"interval": 3600,
+					"background": null,
+					"format": "{0:%A}",
+					"font": "sans-serif",
+					"fontsize": "80",
+					"fontattr": "",
+					"color": "#000000",
+					"alignment": ["top", "center"],
+					"effects": [
+						{
+							"type": "glow",
+							"typeattr": {
+								"radius": 20,
+								"color": "#34869B"
+							}
+						}
+					],
+					"location": [0, 300, 500, 300]
 				}
 			],
 			
@@ -74,6 +96,7 @@
 					"fontsize": "200",
 					"fontattr": "font-weight: bold;",
 					"color": "#50CBEB",
+					"alignment": ["top", "center"],
 					"effects": [
 						
 					],
@@ -92,6 +115,7 @@
 					"fontsize": "200",
 					"fontattr": "font-weight: bold;",
 					"color": "#50CBEB",
+					"alignment": ["top", "center"],
 					"effects": [
 						
 					],
@@ -141,7 +165,27 @@
 			],
 			
 			"datetimes": [
-			
+				{
+					"name": "DigitalClock",
+					"interval": 1,
+					"background": null,
+					"format": "{0:%I:%M:%S}",
+					"font": "sans-serif",
+					"fontsize": "100",
+					"fontattr": "",
+					"color": "#000000",
+					"alignment": ["top", "center"],
+					"effects": [
+						{
+							"type": "glow",
+							"typeattr": {
+								"radius": 50,
+								"color": "#34869B"
+							}
+						}
+					],
+					"location": [0, 0, 500, 300]
+				}
 			]
 		}
 	]
