@@ -5,7 +5,8 @@
 			"lng": -104.9047336
 		},
 		"weather": {
-			"uri": "",
+			"uri": "http://api.wunderground.com/api/",
+			"api": "32ee89a66950a457",
 			"stream": ""
 		}
 	},

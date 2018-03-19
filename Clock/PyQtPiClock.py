@@ -756,6 +756,39 @@ class Calendar():
 			print('Storing credentials to ' + credential_path)
 		return credentials
 		
+
+class Weather():
+	
+	def __init__(self):
+		
+		app = QtGui.QApplication(sys.argv)
+		
+		uriprefix = "http://api.wunderground.com/api/"
+		uriapi = "32ee89a66950a457"
+		language = "EN"
+		lat = "39.5867206"
+		long = "-104.9047336"
+		
+		self.weatherURI = uriprefix + uriapi + "/conditions/astronomy/hourly10day/forecast10day/lang:" + language +"/q/" + lat+","+long+".json"
+		self.weatherURI += "?r=" + str(random.random())
+		print self.weatherURI
+		
+		self.r = QUrl(self.weatherURI)
+		self.r2 = QNetworkRequest(self.r)
+		
+		manager = QtNetwork.QNetworkAccessManager()
+		self.reply = manager.get(self.r2)
+		#self.reply.finished.connect(wxfinished) # ???????????????
+		
+		wxstr = str(self.reply.readAll())
+		#wxdata = json.loads(wxstr)
+		#f = wxdata['current_observation']
+		
+		dataFile = open("weatherData.txt", 'w')
+		dataFile.write(wxstr)
+		dataFile.close()
+		
+
 # -------------------------------------------------------------------------------------------------------------------------------------------------------
 
 def realquit():
@@ -1346,4 +1379,5 @@ def testCalendar():
 
 if __name__ == "__main__":
 	#main()
-	testCalendar()
+	#testCalendar()
+	weather = Weather()
