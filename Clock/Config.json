@@ -80,6 +80,16 @@
 				}
 			],
 			
+			"slideshows": [
+				{
+					"name": "TopRightBox",
+					"directory": "images/slideshow01/",
+					"random": false,
+					"interval": 2,
+					"location": [1440, 0, 480, 320]
+				}
+			],
+			
 			"texts": [
 				{
 					"name": "Greeting",
@@ -146,6 +156,10 @@
 			
 			"datetimes": [
 			
+			],
+			
+			"slideshows": [
+			
 			]
 		},
 		{
@@ -185,6 +199,32 @@
 						}
 					],
 					"location": [0, 0, 500, 300]
+				}
+			],
+			
+			"slideshows": [
+			
+			]
+		},
+		{
+			"num": 3,
+			"background": "images/clockbackground-kevin.png",
+			
+			"clocks": [
+				
+			],
+			
+			"datetimes": [
+				
+			],
+			
+			"slideshows": [
+				{
+					"name": "FullScreen",
+					"directory": "images/slideshow01/",
+					"random": false,
+					"interval": 2,
+					"location": [0, 0, 1920, 1080]
 				}
 			]
 		}

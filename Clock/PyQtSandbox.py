@@ -13,7 +13,7 @@ import argparse
 from PyQt4 import QtGui, QtCore #, QtNetwork
 from PyQt4.QtCore import Qt
 
-from Features import AnalogClock, DateTime
+from Features import AnalogClock, DateTime, Slideshow
 
 """
 from PyQt4.QtGui import QPixmap, QMovie, QBrush, QColor, QPainter
@@ -95,6 +95,11 @@ class Window(QtGui.QWidget):
 				#self.datetimes.append(DateTime(self.pages[page['num']], properties))
 				self.datetimes.append(DateTime(self.pages[page['num']], dt))
 		
+		# SlideshSlideshowows
+		self.slideshows = []
+		for page in self.config['pages']:
+			for ss in page['slideshows']:
+				self.slideshows.append(Slideshow(self.pages[page['num']], ss))
 		
 		# Calendars
 		

@@ -1,4 +1,4 @@
-import datetime
+import datetime, random, os
 from PyQt4 import QtGui, QtCore
 from PyQt4.QtCore import Qt
 from PyQt4.QtGui import QColor, QFrame, QLabel, QMatrix, QPixmap
@@ -192,6 +192,42 @@ class Text():
 		
 	def setText():
 		return 0
+		
+class Slideshow():
+	
+	def switchPicture(self):
+		if self.isRandom:
+			return 0
+		else:
+			self.picFrame.setStyleSheet("#"+self.name+"frame { background-color: transparent; border-image: url("+self.pictures[self.index]+") 0 0 0 0 stretch stretch;}")
+			if self.index+1 == len(self.pictures):
+				self.index = 0
+			else:
+				self.index = self.index+1
+			
+	
+	def __init__(self, page, properties):
+		
+		self.name = properties['name']
+		self.isRandom = properties['random']
+		self.pictures = []
+		for file in os.listdir(properties['directory']):
+			self.pictures.append(properties['directory']+file)
+		self.index = 0
+		
+		# Create picture frame
+		self.picFrame = QFrame(page)
+		self.picFrame.setObjectName(self.name+"frame")
+		self.picFrameRect = QtCore.QRect(properties['location'][0], properties['location'][1], properties['location'][2], properties['location'][3])
+		
+		# Display picture frame
+		self.picFrame.setGeometry(self.picFrameRect)
+		self.picFrame.setStyleSheet("#"+self.name+"frame { background-color: transparent; border-image: url("+self.pictures[0]+") 0 0 0 0 stretch stretch;}")
+		
+		# Start timer
+		self.timer = QtCore.QTimer()
+		self.timer.timeout.connect(self.switchPicture)
+		self.timer.start(properties['interval']*1000)
 
 
 class Calendar():
