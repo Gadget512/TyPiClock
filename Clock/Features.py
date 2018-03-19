@@ -207,12 +207,15 @@ class Slideshow():
 	
 	def __init__(self, page, properties):
 		
+		# Initialize member variables
 		self.name = properties['name']
 		self.isRandom = properties['random']
 		self.pictures = []
+		self.index = 0
+		
+		# Get picture filenames
 		for file in os.listdir(properties['directory']):
 			self.pictures.append(properties['directory']+file)
-		self.index = 0
 		
 		# Create picture frame
 		self.picFrame = QFrame(page)

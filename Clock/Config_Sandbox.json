@@ -1,0 +1,252 @@
+{
+	"config": {
+		"location": {
+			"lat": 39.5867206,
+			"lng": -104.9047336
+		},
+		"weather": {
+			"uri": "",
+			"stream": ""
+		}
+	},
+	
+	"pages": [
+		{
+			"num": 0,
+			"background": "images/DenverSkyline_1080.jpg",
+			
+			"clocks": [
+				{
+					"name": "MainClock",
+					"interval": 1,
+					"face": "images/typi/TyPi-ClockFace2.png",
+					"hour": "images/hourhand.png",
+					"minute": "images/minhand.png",
+					"second": "images/sechand.png",
+					"location": [528, 20, 864, 864]
+				}
+			],
+			
+			"datetimes": [
+				{
+					"name": "DigitalClock",
+					"interval": 10,
+					"background": null,
+					"format": "{0:%I:%M}",
+					"font": "sans-serif",
+					"fontsize": "140",
+					"fontattr": "",
+					"color": "#50CBEB",
+					"alignment": ["top", "center"],
+					"effects": [
+						{
+							"type": "glow",
+							"typeattr": {
+								"radius": 50,
+								"color": "#34869B"
+							}
+						},
+						{
+							"type": "shadow",
+							"typeattr": {
+								"offset": 6,
+								"blur": 20,
+								"color": "#000000"
+							}
+						}
+					],
+					"location": [0, 0, 500, 300]
+				},
+				{
+					"name": "DayoftheWeek",
+					"interval": 3600,
+					"background": null,
+					"format": "{0:%A}",
+					"font": "sans-serif",
+					"fontsize": "80",
+					"fontattr": "",
+					"color": "#000000",
+					"alignment": ["top", "center"],
+					"effects": [
+						{
+							"type": "glow",
+							"typeattr": {
+								"radius": 20,
+								"color": "#34869B"
+							}
+						}
+					],
+					"location": [0, 300, 500, 300]
+				}
+			],
+			
+			"slideshows": [
+				{
+					"name": "TopRightBox",
+					"directory": "images/slideshow01/",
+					"random": true,
+					"interval": 2,
+					"location": [1440, 0, 480, 320]
+				}
+			],
+			
+			"texts": [
+				{
+					"name": "Greeting",
+					"type": "random",
+					"interval": 30,
+					"text": [
+						"Have a good day!",
+						"Go get it!",
+						"You look nice!"
+					],
+					"background": null,
+					"format": null,
+					"font": "sans-serif",
+					"fontsize": "200",
+					"fontattr": "font-weight: bold;",
+					"color": "#50CBEB",
+					"alignment": ["top", "center"],
+					"effects": [
+						
+					],
+					"location": [0, 0, 500, 300]
+				},
+				{
+					"name": "Name",
+					"type": "static",
+					"interval": null,
+					"text": [
+						"Tyler Brinks"
+					],
+					"background": null,
+					"format": null,
+					"font": "sans-serif",
+					"fontsize": "200",
+					"fontattr": "font-weight: bold;",
+					"color": "#50CBEB",
+					"alignment": ["top", "center"],
+					"effects": [
+						
+					],
+					"location": [0, 0, 500, 300]
+				}
+			],
+			
+			"calendars": [
+			
+			]
+		},
+			
+		{
+			"num": 1,
+			"background": "images/clockbackground-kelly.png",
+			
+			"clocks": [
+				{
+					"name": "Clock2",
+					"interval": 5,
+					"face": "images/typi/TyPi_clockface.png",
+					"hour": "images/hourhand-white.png",
+					"minute": "images/minhand-white.png",
+					"second": null,
+					"location": [2, 2, 256, 256]
+				}
+			],
+			
+			"datetimes": [
+			
+			],
+			
+			"slideshows": [
+			
+			]
+		},
+		{
+			"num": 2,
+			"background": "images/clockbackground-kevin.png",
+			
+			"clocks": [
+				{
+					"name": "Clock3",
+					"interval": 1,
+					"face": "images/typi/TyPi_clockface.png",
+					"hour": "images/hourhand-white.png",
+					"minute": "images/minhand-white.png",
+					"second": "images/sechand.png",
+					"location": [420, 0, 1080, 1080]
+				}
+			],
+			
+			"datetimes": [
+				{
+					"name": "DigitalClock",
+					"interval": 1,
+					"background": null,
+					"format": "{0:%I:%M:%S}",
+					"font": "sans-serif",
+					"fontsize": "100",
+					"fontattr": "",
+					"color": "#000000",
+					"alignment": ["top", "center"],
+					"effects": [
+						{
+							"type": "glow",
+							"typeattr": {
+								"radius": 50,
+								"color": "#34869B"
+							}
+						}
+					],
+					"location": [0, 0, 500, 300]
+				}
+			],
+			
+			"slideshows": [
+			
+			]
+		},
+		{
+			"num": 3,
+			"background": "images/clockbackground-kevin.png",
+			
+			"clocks": [
+				
+			],
+			
+			"datetimes": [
+				{
+					"name": "DigitalClock",
+					"interval": 1,
+					"background": null,
+					"format": "{0:%I:%M:%S}",
+					"font": "sans-serif",
+					"fontsize": "100",
+					"fontattr": "",
+					"color": "#000000",
+					"alignment": ["top", "center"],
+					"effects": [
+						{
+							"type": "glow",
+							"typeattr": {
+								"radius": 50,
+								"color": "#34869B"
+							}
+						}
+					],
+					"location": [0, 0, 500, 300]
+				}
+			],
+			
+			"slideshows": [
+				{
+					"name": "FullScreen",
+					"directory": "images/slideshow01/",
+					"random": false,
+					"interval": 2,
+					"location": [0, 0, 1920, 1080]
+				}
+			]
+		}
+	]
+}
