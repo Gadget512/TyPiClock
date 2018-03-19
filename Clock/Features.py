@@ -3,12 +3,12 @@ import datetime, httplib2, random, os
 from PyQt4 import QtGui, QtCore
 from PyQt4.QtCore import Qt
 from PyQt4.QtGui import QColor, QFrame, QLabel, QMatrix, QPixmap
-
+"""
 from apiclient import discovery
 from oauth2client import client
 from oauth2client import tools
 from oauth2client.file import Storage
-
+"""
 class AnalogClock():
 	"""
 	Creates an analog clock on the specified 'page', with the specified attributes
@@ -246,14 +246,17 @@ class Calendar():
 	def __init__(self, page, properties):
 		
 		# Get credentials
+		# TODO
+		"""
 		self.credentials = self.getCredentials()
-		
 		http = self.credentials.authorize(httplib2.Http())
 		self.service = discovery.build('calendar', 'v3', http=http)
+		"""
 		
 		# Initialize member variables
 		self.type = properties['type']
 		self.fontformat = properties['format']
+		self.datetimes = []
 		
 		# Create calendar frame
 		self.calFrame = QFrame(page)
@@ -266,6 +269,10 @@ class Calendar():
 			self.calFrame.setStyleSheet("#"+properties['name']+"frame { background-color: transparent; border-image: url("+properties['background']+") 0 0 0 0 stretch stretch;}")
 		else:
 			self.calFrame.setStyleSheet("#"+properties['name']+"frame { background-color: transparent;}")
+			
+		# Datetimes
+		for dt in properties['datetimes']:
+			self.datetimes.append(DateTime(page, dt))
 		
 		# Create calendar stylesheet based on given properties
 		self.calLabel = QLabel(page)

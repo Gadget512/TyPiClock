@@ -7,7 +7,7 @@ import time
 import locale
 import re
 
-from PyQt4 import QtGui, QtCore #, QtNetwork
+from PyQt4 import QtGui, QtCore
 from PyQt4.QtCore import Qt
 
 from Features import AnalogClock, Calendar, DateTime, Slideshow
@@ -16,6 +16,7 @@ from Features import AnalogClock, Calendar, DateTime, Slideshow
 """
 from PyQt4.QtGui import QPixmap, QMovie, QBrush, QColor, QPainter
 from PyQt4.QtCore import QUrl
+from PyQt4 import QtNetwork
 
 from PyQt4.QtNetwork import QNetworkReply
 from PyQt4.QtNetwork import QNetworkRequest

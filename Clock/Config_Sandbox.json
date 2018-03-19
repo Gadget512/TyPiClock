@@ -83,6 +83,7 @@
 					"name": "MainToday",
 					"background": "images/background_shade.png",
 					"type": "today",
+					"interval": 3600,
 					"calendarIds": [
 						"tstrqefn0hqmncbmqp30mfqcek@group.calendar.google.com",
 						"primary"
@@ -96,17 +97,16 @@
 						"effects": [
 						
 						],
-						"location": [0, 200, 300, 300]
+						"location": [0, 200, 400, 300]
 					},
-					"interval": 3600,
-					"location": [0, 0, 300, 500],
 					"datetimes": [
 						{
 							"name": "MainTodayDT",
+							"interval": 900,
 							"background": null,
 							"format": "{0:%A\n%B %d}",
 							"font": "sans-serif",
-							"fontsize": "100",
+							"fontsize": "30",
 							"fontattr": "",
 							"color": "#000000",
 							"alignment": ["top", "center"],
@@ -119,10 +119,10 @@
 									}
 								}
 							],
-							"location": [0, 0, 300, 200]
+							"location": [0, 100, 400, 100]
 						}
 					],
-					"location": [0, 0, 300, 500]
+					"location": [0, 0, 400, 500]
 				}
 			]
 		},
