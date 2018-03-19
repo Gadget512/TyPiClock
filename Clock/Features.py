@@ -1,7 +1,13 @@
-import datetime, random, os
+import datetime, httplib2, random, os
+
 from PyQt4 import QtGui, QtCore
 from PyQt4.QtCore import Qt
 from PyQt4.QtGui import QColor, QFrame, QLabel, QMatrix, QPixmap
+
+from apiclient import discovery
+from oauth2client import client
+from oauth2client import tools
+from oauth2client.file import Storage
 
 class AnalogClock():
 	"""
@@ -184,7 +190,7 @@ class DateTime():
 		self.timer.start(properties['interval']*1000)
 
 
-class Text():
+class Text(): # TODO
 	
 	def __init__(self, page, properties):
 		return 0
@@ -234,12 +240,53 @@ class Slideshow():
 
 class Calendar():
 	
-	def __init__(self):
+	def tick(self):
+		return 0
+	
+	def __init__(self, page, properties):
 		
+		# Get credentials
 		self.credentials = self.getCredentials()
 		
 		http = self.credentials.authorize(httplib2.Http())
 		self.service = discovery.build('calendar', 'v3', http=http)
+		
+		# Initialize member variables
+		self.type = properties['type']
+		self.fontformat = properties['format']
+		
+		# Create calendar frame
+		self.calFrame = QFrame(page)
+		self.calFrame.setObjectName(properties['name']+"frame")
+		self.calFrameRect = QtCore.QRect(properties['location'][0], properties['location'][1], properties['location'][2], properties['location'][3])
+		
+		# Display calendar frame (with background if specified)
+		self.calFrame.setGeometry(self.calFrameRect)
+		if properties['background']:
+			self.calFrame.setStyleSheet("#"+properties['name']+"frame { background-color: transparent; border-image: url("+properties['background']+") 0 0 0 0 stretch stretch;}")
+		else:
+			self.calFrame.setStyleSheet("#"+properties['name']+"frame { background-color: transparent;}")
+		
+		# Create calendar stylesheet based on given properties
+		self.calLabel = QLabel(page)
+		self.calLabel.setObjectName(properties['name'])
+		self.calLabel.setStyleSheet("#"+properties['name']+"{ font-family:"+self.fontformat['font']+"; color: "+
+			self.fontformat['color'] + "; background-color: transparent; font-size: "+
+			self.fontformat['fontsize']+"px; "+
+			self.fontformat['fontattr']+"}")
+			
+		# TODO effect
+			
+		# TODO alignment::: self.textLabel.setAlignment(Qt.AlignHCenter | Qt.AlignTop)
+		self.calLabel.setGeometry(self.fontformat['location'][0], self.fontformat['location'][1], self.fontformat['location'][2], self.fontformat['location'][3])
+		
+		# TODO
+		self.calLabel.setText("TEST1")
+		
+		# Start timer
+		self.timer = QtCore.QTimer()
+		self.timer.timeout.connect(self.tick)
+		self.timer.start(properties['interval']*1000)
 			
 	def getEvents(self, day=None, month=None, year=None):
 		""" Gets all of the events based on keyword arg datetime object passed

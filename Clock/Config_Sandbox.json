@@ -28,66 +28,11 @@
 			],
 			
 			"datetimes": [
-				{
-					"name": "DigitalClock",
-					"interval": 10,
-					"background": null,
-					"format": "{0:%I:%M}",
-					"font": "sans-serif",
-					"fontsize": "140",
-					"fontattr": "",
-					"color": "#50CBEB",
-					"alignment": ["top", "center"],
-					"effects": [
-						{
-							"type": "glow",
-							"typeattr": {
-								"radius": 50,
-								"color": "#34869B"
-							}
-						},
-						{
-							"type": "shadow",
-							"typeattr": {
-								"offset": 6,
-								"blur": 20,
-								"color": "#000000"
-							}
-						}
-					],
-					"location": [0, 0, 500, 300]
-				},
-				{
-					"name": "DayoftheWeek",
-					"interval": 3600,
-					"background": null,
-					"format": "{0:%A}",
-					"font": "sans-serif",
-					"fontsize": "80",
-					"fontattr": "",
-					"color": "#000000",
-					"alignment": ["top", "center"],
-					"effects": [
-						{
-							"type": "glow",
-							"typeattr": {
-								"radius": 20,
-								"color": "#34869B"
-							}
-						}
-					],
-					"location": [0, 300, 500, 300]
-				}
+				
 			],
 			
 			"slideshows": [
-				{
-					"name": "TopRightBox",
-					"directory": "images/slideshow01/",
-					"random": true,
-					"interval": 2,
-					"location": [1440, 0, 480, 320]
-				}
+				
 			],
 			
 			"texts": [
@@ -134,7 +79,51 @@
 			],
 			
 			"calendars": [
-			
+				{
+					"name": "MainToday",
+					"background": "images/background_shade.png",
+					"type": "today",
+					"calendarIds": [
+						"tstrqefn0hqmncbmqp30mfqcek@group.calendar.google.com",
+						"primary"
+					],
+					"format": {
+						"font": "sans-serif",
+						"fontsize": "30",
+						"fontattr": "",
+						"color": "#000000",
+						"alignment": ["left"],
+						"effects": [
+						
+						],
+						"location": [0, 200, 300, 300]
+					},
+					"interval": 3600,
+					"location": [0, 0, 300, 500],
+					"datetimes": [
+						{
+							"name": "MainTodayDT",
+							"background": null,
+							"format": "{0:%A\n%B %d}",
+							"font": "sans-serif",
+							"fontsize": "100",
+							"fontattr": "",
+							"color": "#000000",
+							"alignment": ["top", "center"],
+							"effects": [
+								{
+									"type": "glow",
+									"typeattr": {
+										"radius": 50,
+										"color": "#34869B"
+									}
+								}
+							],
+							"location": [0, 0, 300, 200]
+						}
+					],
+					"location": [0, 0, 300, 500]
+				}
 			]
 		},
 			
@@ -159,6 +148,10 @@
 			],
 			
 			"slideshows": [
+			
+			],
+			
+			"calendars": [
 			
 			]
 		},
@@ -204,6 +197,10 @@
 			
 			"slideshows": [
 			
+			],
+			
+			"calendars": [
+			
 			]
 		},
 		{
@@ -246,6 +243,10 @@
 					"interval": 2,
 					"location": [0, 0, 1920, 1080]
 				}
+			],
+			
+			"calendars": [
+			
 			]
 		}
 	]

@@ -10,7 +10,7 @@ import re
 from PyQt4 import QtGui, QtCore #, QtNetwork
 from PyQt4.QtCore import Qt
 
-from Features import AnalogClock, DateTime, Slideshow
+from Features import AnalogClock, Calendar, DateTime, Slideshow
 
 # TODO what is needed here:?
 """
@@ -64,6 +64,7 @@ class Window(QtGui.QWidget):
 		self.setStyleSheet("QWidget { background-color: blue;}")
 		
 		self.slideshows = []
+		self.calendars = []
 		self.clocks = []
 		self.datetimes = []
 		
@@ -71,19 +72,22 @@ class Window(QtGui.QWidget):
 		for page in self.config['pages']:
 			self.createPage(page['num'], page['background'])
 		
-		# Slideshows
+			# Slideshows
 			for ss in page['slideshows']:
 				self.slideshows.append(Slideshow(self.pages[page['num']], ss))
+				
+			# Calendars
+			for cal in page['calendars']:
+				self.calendars.append(Calendar(self.pages[page['num']], cal))
 		
-		# Analog Clocks
+			# Analog Clocks
 			for clock in page['clocks']:
 				self.clocks.append(AnalogClock(self.pages[page['num']], clock))
 				
-		# DateTimes
+			# DateTimes
 			for dt in page['datetimes']:
 				self.datetimes.append(DateTime(self.pages[page['num']], dt))
 		
-		# Calendars
 		
 		# Display page0
 		self.pages[0].setVisible(True)
