@@ -66,49 +66,48 @@ class AnalogClock():
 			hoursize.width(),
 			hoursize.height()) # display the image
 	
-	def __init__(self, page, clockName, images, coords, interval):
-	
-		self.secondhand = None
-		self.clockface = images[0]
-		self.hourhand = images[1]
-		self.minutehand = images[2]
-		self.secondhand = images[3] # May be None (null)
+	def __init__(self, page, properties):
+		
+		self.clockface = properties['face']
+		self.hourhand = properties['hour']
+		self.minutehand = properties['minute']
+		self.secondhand = properties['second'] # May be None (null)
 		
 		# Create new frame on page for clock
 		self.clockFrame = QFrame(page)
-		self.clockFrame.setObjectName(clockName)
+		self.clockFrame.setObjectName(properties['name'])
 		# specify (x, y, w, h) where x,y is the top-left corner, w is the width, h is the height
-		self.clockFrameRect = QtCore.QRect(coords[0],  coords[1],  coords[2], coords[3])
+		self.clockFrameRect = QtCore.QRect(properties['location'][0],  properties['location'][1],  properties['location'][2], properties['location'][3])
 		
 		# Display clock background
 		self.clockFrame.setGeometry(self.clockFrameRect)
-		self.clockFrame.setStyleSheet("#"+clockName+" { background-color: transparent; border-image: url("+self.clockface+") 0 0 0 0 stretch stretch;}")
+		self.clockFrame.setStyleSheet("#"+properties['name']+" { background-color: transparent; border-image: url("+self.clockface+") 0 0 0 0 stretch stretch;}")
 		
 		# Set up second hand
 		self.second = None
 		self.secpixmap = None
 		if self.secondhand:
 			self.second = QLabel(page) # create label on page
-			self.second.setObjectName(clockName+"second") # name label
-			self.second.setStyleSheet("#"+clockName+"second { background-color: transparent; }")
+			self.second.setObjectName(properties['name']+"second") # name label
+			self.second.setStyleSheet("#"+properties['name']+"second { background-color: transparent; }")
 			self.secpixmap = QPixmap(self.secondhand) # create pixmap with image
 			
 		# Set up minute hand
 		self.minute = QLabel(page) # create label on page
-		self.minute.setObjectName(clockName+"minute") # name label
-		self.minute.setStyleSheet("#"+clockName+"minute { background-color: transparent; }")
+		self.minute.setObjectName(properties['name']+"minute") # name label
+		self.minute.setStyleSheet("#"+properties['name']+"minute { background-color: transparent; }")
 		self.minpixmap = QPixmap(self.minutehand) # create pixmap with image
 		
 		# Set up hour hand
 		self.hour = QLabel(page) # create label on page
-		self.hour.setObjectName(clockName+"hour") # name label
-		self.hour.setStyleSheet("#"+clockName+"hour { background-color: transparent; }")
+		self.hour.setObjectName(properties['name']+"hour") # name label
+		self.hour.setStyleSheet("#"+properties['name']+"hour { background-color: transparent; }")
 		self.hourpixmap = QPixmap(self.hourhand) # create pixmap with image
 		
 		# Start clock
 		self.ctimer = QtCore.QTimer() # QTimer calls the specified function every specified number of milliseconds (parallel?)
 		self.ctimer.timeout.connect(self.tick)
-		self.ctimer.start(interval*1000)
+		self.ctimer.start(properties['interval']*1000)
 
 
 class DateTime():

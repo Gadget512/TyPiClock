@@ -49,11 +49,6 @@ def parseArgs():
 	
 	return configFile
 	
-def parseJson(configFile):
-	
-	
-	return None
-	
 		
 class Window(QtGui.QWidget):
 	
@@ -72,35 +67,42 @@ class Window(QtGui.QWidget):
 		self.setWindowTitle(os.path.basename(__file__))
 		self.setStyleSheet("QWidget { background-color: blue;}")
 		
+		self.slideshows = []
+		self.clocks = []
+		self.datetimes = []
+		
 		# Set up pages
 		for page in self.config['pages']:
 			self.createPage(page['num'], page['background'])
 		
-		# Display page0
-		self.pages[0].setVisible(True)
+		
 		
 		# Slideshows
-		self.slideshows = []
-		for page in self.config['pages']:
+		
+		#for page in self.config['pages']:
 			for ss in page['slideshows']:
 				self.slideshows.append(Slideshow(self.pages[page['num']], ss))
 		
 		# Analog Clocks
-		self.clocks = []
-		for page in self.config['pages']:
+		
+		#for page in self.config['pages']:
 			for clock in page['clocks']:
-				clockImages = [clock['face'], clock['hour'], clock['minute'], clock['second']]
-				self.clocks.append(AnalogClock(self.pages[page['num']], clock['name'], clockImages, clock['coords'], clock['interval']))
+				#clockImages = [clock['face'], clock['hour'], clock['minute'], clock['second']]
+				#self.clocks.append(AnalogClock(self.pages[page['num']], clock['name'], clockImages, clock['coords'], clock['interval']))
+				self.clocks.append(AnalogClock(self.pages[page['num']], clock))
 				
 		# DateTimes
-		self.datetimes = []
-		for page in self.config['pages']:
+		
+		#for page in self.config['pages']:
 			for dt in page['datetimes']:
 				#properties = [dt['name'], dt['format'], dt['font'], dt['fontsize'], dt['fontattr'], dt['color'], dt['effect'], dt['location']]
 				#self.datetimes.append(DateTime(self.pages[page['num']], properties))
 				self.datetimes.append(DateTime(self.pages[page['num']], dt))
 		
 		# Calendars
+		
+		# Display page0
+		self.pages[0].setVisible(True)
 		
 		# Display window, in full screen
 		self.show()
@@ -154,9 +156,9 @@ class Window(QtGui.QWidget):
 		page.setGeometry(0, 0, self.width, self.height)
 		page.setStyleSheet("#page"+str(index)+" { background-color: black; border-image: url("+background+") 0 0 0 0 stretch stretch;}")
 		page.setVisible(False)
-		self.pages.append(page)
+		self.pages.insert(index, page)
 			
-	def switchPage(self, next=None, page=0): # nextframe in original code (basically)
+	def switchPage(self, next=None, page=0):
 		nextPage = 0
 		if next:
 			if next == "R":
@@ -167,14 +169,14 @@ class Window(QtGui.QWidget):
 		else:
 			nextPage = page
 		
-		# If page selection is outside range, go to page 1:	
+		# If page selection is outside range, go to page 0:	
 		if nextPage >= len(self.pages) :
 			nextPage = 0
 		elif nextPage < 0:
 			nextPage = len(self.pages) - 1
 		self.setPage(nextPage)
 		
-	def setPage(self, page): # fixupframe in original code (basically?)
+	def setPage(self, page):
 		
 		self.pages[self.currentPage].setVisible(False)
 		self.pages[page].setVisible(True)
@@ -194,16 +196,21 @@ def startWindow(config):
 	height = res.height()
 	width = res.width()
 	
+	# Create window
 	window = Window(height=height, width=width, config=config)
 	
+	# Exit app (ctrl-F4)
 	sys.exit(app.exec_())
 
 def main():
 	
+	# Get config file name
 	configFile = parseArgs()
 	
+	# Parse config file
 	configuration = json.load(open(configFile))
 	
+	# Start app
 	startWindow(configuration)
 	
 if __name__ == "__main__":

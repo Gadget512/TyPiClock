@@ -23,7 +23,7 @@
 					"hour": "images/hourhand.png",
 					"minute": "images/minhand.png",
 					"second": "images/sechand.png",
-					"coords": [528, 20, 864, 864]
+					"location": [528, 20, 864, 864]
 				}
 			],
 			
@@ -150,7 +150,7 @@
 					"hour": "images/hourhand-white.png",
 					"minute": "images/minhand-white.png",
 					"second": null,
-					"coords": [2, 2, 256, 256]
+					"location": [2, 2, 256, 256]
 				}
 			],
 			
@@ -174,7 +174,7 @@
 					"hour": "images/hourhand-white.png",
 					"minute": "images/minhand-white.png",
 					"second": "images/sechand.png",
-					"coords": [420, 0, 1080, 1080]
+					"location": [420, 0, 1080, 1080]
 				}
 			],
 			
