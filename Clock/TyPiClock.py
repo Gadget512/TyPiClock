@@ -1,3 +1,9 @@
+"""
+Author: Gadget512 (https://github.com/Gadget512)
+
+This project is adapted from n0bel's PiClock: https://github.com/n0bel/PiClock
+"""
+
 import argparse, datetime, json, os, sys
 
 # TODO what is needed here:?
@@ -24,6 +30,7 @@ from subprocess import Popen
 """
 
 # ------------------------------------------------------------------------------------------------------------------------------------------------------------
+# For google calendar API stuff
 """
 import httplib2
 from apiclient import discovery
@@ -69,7 +76,7 @@ class Window(QtGui.QWidget):
 		self.clocks = []
 		self.datetimes = []
 		
-		# Weather data
+		# Weather data (independent of pages, feature objects pull data as needed)
 		loc = {"lat": str(self.config['config']['location']['lat']), "lng": str(self.config['config']['location']['lng'])}
 		self.weather = Weather(self.config['config']['weather'], loc)
 		
