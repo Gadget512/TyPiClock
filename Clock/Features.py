@@ -1,4 +1,4 @@
-import datetime, httplib2, random, os
+import datetime, httplib2, json, random, os
 
 from PyQt4 import QtGui, QtCore
 from PyQt4.QtCore import Qt
@@ -401,3 +401,59 @@ class Calendar():
 				credentials = tools.run(flow, store)
 			print('Storing credentials to ' + credential_path)
 		return credentials
+		
+		
+class Weather():
+	
+	def update(self):
+		self.weatherReply = self.http.request(self.weatherURI+ "?r=" + str(random.random()))[1]
+		
+		# TODO not needed?
+		"""
+		dataFile = open(self.weatherFile, 'w')
+		dataFile.write(self.weatherReply)
+		dataFile.close()
+		
+		# TODO does this file close?
+		self.weatherData = json.load(open(self.weatherFile))
+		"""
+		self.weatherData = json.loads(self.weatherReply)
+	
+	def __init__(self, properties, location):
+		
+		self.http = httplib2.Http()
+		self.weatherData = {}
+		self.weatherFile = "weatherData.json"
+		
+		# TODO not needed?
+		"""
+		uriprefix = "http://api.wunderground.com/api/"
+		uriapi = "32ee89a66950a457"
+		language = "EN"
+		lat = "39.5867206"
+		long = "-104.9047336"
+		"""
+		
+		self.weatherURI = properties['uri'] + properties['api'] + "/conditions/astronomy/hourly10day/forecast10day/lang:EN/q/" + location['lat']+","+location['lng']+".json"
+		#self.weatherURI += "?r=" + str(random.random())
+		
+		self.weatherReply = self.http.request(self.weatherURI+ "?r=" + str(random.random()))[1]
+		
+		# TODO not needed?
+		"""
+		dataFile = open(self.weatherFile, 'w')
+		dataFile.write(self.weatherReply)
+		dataFile.close()
+		
+		# TODO does this file close?
+		self.weatherData = json.load(open(self.weatherFile))
+		"""
+		self.weatherData = json.loads(self.weatherReply)
+		
+		# Start timer
+		self.timer = QtCore.QTimer()
+		self.timer.timeout.connect(self.update)
+		self.timer.start(properties['interval']*1000)
+		
+	def getCurrent(self):
+		return self.weatherData['current_observation']

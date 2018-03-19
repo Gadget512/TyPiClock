@@ -7,7 +7,8 @@
 		"weather": {
 			"uri": "http://api.wunderground.com/api/",
 			"api": "32ee89a66950a457",
-			"stream": ""
+			"stream": "",
+			"interval": 1800
 		}
 	},
 	
@@ -85,10 +86,12 @@
 					"background": "images/background_shade.png",
 					"type": "today",
 					"interval": 3600,
+					
 					"calendarIds": [
 						"tstrqefn0hqmncbmqp30mfqcek@group.calendar.google.com",
 						"primary"
 					],
+					
 					"format": {
 						"font": "sans-serif",
 						"fontsize": "30",
@@ -100,6 +103,7 @@
 						],
 						"location": [0, 200, 400, 300]
 					},
+					
 					"datetimes": [
 						{
 							"name": "MainTodayDT",

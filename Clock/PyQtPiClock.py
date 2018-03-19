@@ -761,7 +761,8 @@ class Weather():
 	
 	def __init__(self):
 		
-		app = QtGui.QApplication(sys.argv)
+		#app = QtGui.QApplication(sys.argv)
+		http = httplib2.Http()
 		
 		uriprefix = "http://api.wunderground.com/api/"
 		uriapi = "32ee89a66950a457"
@@ -771,21 +772,27 @@ class Weather():
 		
 		self.weatherURI = uriprefix + uriapi + "/conditions/astronomy/hourly10day/forecast10day/lang:" + language +"/q/" + lat+","+long+".json"
 		self.weatherURI += "?r=" + str(random.random())
-		print self.weatherURI
+		#print self.weatherURI
 		
-		self.r = QUrl(self.weatherURI)
-		self.r2 = QNetworkRequest(self.r)
+		# ---------------------------------------------------------------------
+		# From original PiClock
 		
-		manager = QtNetwork.QNetworkAccessManager()
-		self.reply = manager.get(self.r2)
+		#self.r = QUrl(self.weatherURI)
+		#self.r2 = QNetworkRequest(self.r)
+		
+		#manager = QtNetwork.QNetworkAccessManager()
+		#self.reply = manager.get(self.r2)
 		#self.reply.finished.connect(wxfinished) # ???????????????
 		
-		wxstr = str(self.reply.readAll())
+		#wxstr = str(self.reply.readAll())
 		#wxdata = json.loads(wxstr)
 		#f = wxdata['current_observation']
+		# ---------------------------------------------------------------------
+		
+		self.reply = http.request(self.weatherURI)[1]
 		
 		dataFile = open("weatherData.txt", 'w')
-		dataFile.write(wxstr)
+		dataFile.write(self.reply)
 		dataFile.close()
 		
 

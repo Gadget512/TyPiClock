@@ -10,7 +10,7 @@ import re
 from PyQt4 import QtGui, QtCore
 from PyQt4.QtCore import Qt
 
-from Features import AnalogClock, Calendar, DateTime, Slideshow
+from Features import AnalogClock, Calendar, DateTime, Slideshow, Weather
 
 # TODO what is needed here:?
 """
@@ -68,6 +68,13 @@ class Window(QtGui.QWidget):
 		self.calendars = []
 		self.clocks = []
 		self.datetimes = []
+		
+		# Weather data
+		loc = {"lat": str(self.config['config']['location']['lat']), "lng": str(self.config['config']['location']['lng'])}
+		self.weather = Weather(self.config['config']['weather'], loc)
+		
+		# TODO
+		print self.weather.getCurrent()
 		
 		# Set up pages
 		for page in self.config['pages']:
