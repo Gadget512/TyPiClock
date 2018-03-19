@@ -79,6 +79,12 @@ class Window(QtGui.QWidget):
 		# Display page0
 		self.pages[0].setVisible(True)
 		
+		# Slideshows
+		self.slideshows = []
+		for page in self.config['pages']:
+			for ss in page['slideshows']:
+				self.slideshows.append(Slideshow(self.pages[page['num']], ss))
+		
 		# Analog Clocks
 		self.clocks = []
 		for page in self.config['pages']:
@@ -87,19 +93,12 @@ class Window(QtGui.QWidget):
 				self.clocks.append(AnalogClock(self.pages[page['num']], clock['name'], clockImages, clock['coords'], clock['interval']))
 				
 		# DateTimes
-		
 		self.datetimes = []
 		for page in self.config['pages']:
 			for dt in page['datetimes']:
 				#properties = [dt['name'], dt['format'], dt['font'], dt['fontsize'], dt['fontattr'], dt['color'], dt['effect'], dt['location']]
 				#self.datetimes.append(DateTime(self.pages[page['num']], properties))
 				self.datetimes.append(DateTime(self.pages[page['num']], dt))
-		
-		# SlideshSlideshowows
-		self.slideshows = []
-		for page in self.config['pages']:
-			for ss in page['slideshows']:
-				self.slideshows.append(Slideshow(self.pages[page['num']], ss))
 		
 		# Calendars
 		

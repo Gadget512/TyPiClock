@@ -84,7 +84,7 @@
 				{
 					"name": "TopRightBox",
 					"directory": "images/slideshow01/",
-					"random": false,
+					"random": true,
 					"interval": 2,
 					"location": [1440, 0, 480, 320]
 				}
@@ -215,7 +215,27 @@
 			],
 			
 			"datetimes": [
-				
+				{
+					"name": "DigitalClock",
+					"interval": 1,
+					"background": null,
+					"format": "{0:%I:%M:%S}",
+					"font": "sans-serif",
+					"fontsize": "100",
+					"fontattr": "",
+					"color": "#000000",
+					"alignment": ["top", "center"],
+					"effects": [
+						{
+							"type": "glow",
+							"typeattr": {
+								"radius": 50,
+								"color": "#34869B"
+							}
+						}
+					],
+					"location": [0, 0, 500, 300]
+				}
 			],
 			
 			"slideshows": [

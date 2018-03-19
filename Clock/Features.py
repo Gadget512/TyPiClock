@@ -197,7 +197,7 @@ class Slideshow():
 	
 	def switchPicture(self):
 		if self.isRandom:
-			return 0
+			self.picFrame.setStyleSheet("#"+self.name+"frame { background-color: transparent; border-image: url("+self.pictures[random.randint(0,len(self.pictures)-1)]+") 0 0 0 0 stretch stretch;}")
 		else:
 			self.picFrame.setStyleSheet("#"+self.name+"frame { background-color: transparent; border-image: url("+self.pictures[self.index]+") 0 0 0 0 stretch stretch;}")
 			if self.index+1 == len(self.pictures):
