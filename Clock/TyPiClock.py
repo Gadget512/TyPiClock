@@ -6,6 +6,11 @@ This project is adapted from n0bel's PiClock: https://github.com/n0bel/PiClock
 
 import argparse, datetime, json, os, sys
 
+from PyQt4 import QtGui, QtCore
+from PyQt4.QtCore import Qt
+
+from Features import AnalogClock, Calendar, DateTime, Slideshow, Weather
+
 # TODO what is needed here:?
 import platform
 import signal
@@ -13,12 +18,6 @@ import time
 import locale
 import re
 
-from PyQt4 import QtGui, QtCore
-from PyQt4.QtCore import Qt
-
-from Features import AnalogClock, Calendar, DateTime, Slideshow, Weather
-
-# TODO what is needed here:?
 """
 from PyQt4.QtGui import QPixmap, QMovie, QBrush, QColor, QPainter
 from PyQt4.QtCore import QUrl
@@ -69,7 +68,7 @@ class Window(QtGui.QWidget):
 	
 	def initUI(self):
 		self.setWindowTitle(os.path.basename(__file__))
-		self.setStyleSheet("QWidget { background-color: blue;}")
+		self.setStyleSheet("QWidget { background-color: blue;}")a
 		
 		self.slideshows = []
 		self.calendars = []
@@ -77,11 +76,11 @@ class Window(QtGui.QWidget):
 		self.datetimes = []
 		
 		# Weather data (independent of pages, feature objects pull data as needed)
-		loc = {"lat": str(self.config['config']['location']['lat']), "lng": str(self.config['config']['location']['lng'])}
-		self.weather = Weather(self.config['config']['weather'], loc)
+		#loc = {"lat": str(self.config['config']['location']['lat']), "lng": str(self.config['config']['location']['lng'])}
+		#self.weather = Weather(self.config['config']['weather'], loc)
 		
 		# TODO
-		print self.weather.getCurrent()
+		#print self.weather.getCurrent()
 		
 		# Set up pages
 		for page in self.config['pages']:

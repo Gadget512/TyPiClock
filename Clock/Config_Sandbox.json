@@ -104,6 +104,10 @@
 						"location": [0, 200, 400, 300]
 					},
 					
+					"weathers": [
+					
+					],
+					
 					"datetimes": [
 						{
 							"name": "MainTodayDT",
@@ -125,6 +129,27 @@
 								}
 							],
 							"location": [0, 100, 400, 100]
+						},
+						{
+							"name": "MainTodayClock",
+							"interval": 1,
+							"background": null,
+							"format": "{0:%I:%M:%S}",
+							"font": "sans-serif",
+							"fontsize": "30",
+							"fontattr": "",
+							"color": "#000000",
+							"alignment": ["top", "center"],
+							"effects": [
+								{
+									"type": "glow",
+									"typeattr": {
+										"radius": 50,
+										"color": "#34869B"
+									}
+								}
+							],
+							"location": [0, 10, 400, 100]
 						}
 					],
 					"location": [0, 0, 400, 500]

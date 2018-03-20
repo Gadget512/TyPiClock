@@ -965,7 +965,7 @@ def main():
 	height = rec.height()
 	width = rec.width()
 
-	signal.signal(signal.SIGINT, myquit)
+	signal.signal(signal.SIGINT, myquit) # TODO ****************** WHAT DOES THIS DO????????
 
 	w = myMain()
 	w.setWindowTitle(os.path.basename(__file__))
