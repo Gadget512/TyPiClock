@@ -48,7 +48,7 @@
 				"snow": "snow.png",
 				"sunny": "clear.png",
 				"tstorms": "tstorms.png"
-			}
+			},
 			"smallicons": "images/typi/weather/small/",
 			"interval": 1800
 		}
@@ -147,7 +147,36 @@
 					},
 					
 					"weathers": [
-						
+						"name": "weatherToday",
+						"background": "null",
+						"format": {
+							"icon": {
+								"size": "large",
+								"location": [0, 0, 128, 128]
+							}
+							"texts": [
+								{
+									"type": "temp",
+									"format": "{0:%s°F}",
+									"font": "sans-serif",
+									"fontsize": "40",
+									"fontattr": "",
+									"color": "#000000",
+									"alignment": ["top", "center"],
+									"effects": [
+										{
+											"type": "glow",
+											"typeattr": {
+												"radius": 50,
+												"color": "#34869B"
+											}
+										}
+									],
+									"location: [130, 0, 270, 128]
+								}
+							]
+						}
+						"location": [0, 0, 400, 128]
 					],
 					
 					"datetimes": [
@@ -157,7 +186,7 @@
 							"background": null,
 							"format": "{0:%A\n%B %d}",
 							"font": "sans-serif",
-							"fontsize": "30",
+							"fontsize": "60",
 							"fontattr": "",
 							"color": "#000000",
 							"alignment": ["top", "center"],
@@ -170,28 +199,7 @@
 									}
 								}
 							],
-							"location": [0, 100, 400, 100]
-						},
-						{
-							"name": "MainTodayClock",
-							"interval": 1,
-							"background": null,
-							"format": "{0:%I:%M:%S}",
-							"font": "sans-serif",
-							"fontsize": "30",
-							"fontattr": "",
-							"color": "#000000",
-							"alignment": ["top", "center"],
-							"effects": [
-								{
-									"type": "glow",
-									"typeattr": {
-										"radius": 50,
-										"color": "#34869B"
-									}
-								}
-							],
-							"location": [0, 10, 400, 100]
+							"location": [0, 128, 400, 200]
 						}
 					],
 					"location": [0, 0, 400, 500]

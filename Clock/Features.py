@@ -243,7 +243,7 @@ class Calendar():
 	def tick(self):
 		return 0
 	
-	def __init__(self, page, properties):
+	def __init__(self, page, properties, weatherData):
 		
 		# Get credentials
 		# TODO
@@ -273,6 +273,30 @@ class Calendar():
 		# Datetimes
 		for dt in properties['datetimes']:
 			self.datetimes.append(DateTime(page, dt))
+			
+		# Weather TODO
+		#for weather in properties['weathers']:
+			
+			
+			
+		wxicon = QtGui.QLabel(self.calFrame)
+		wxicon.setObjectName("wxicon")
+		wxicon.setStyleSheet("#wxicon { background-color: transparent; }")
+		wxicon.setGeometry(0, 0, 128, 128)
+		
+		wxiconpixmap = QtGui.QPixmap("images/typi/weather/large/snow.png")
+		wxicon.setPixmap(wxiconpixmap.scaled(
+			wxicon.width(),
+			wxicon.height(),
+			Qt.IgnoreAspectRatio,
+			Qt.SmoothTransformation))
+		"""
+		wxicon2.setPixmap(wxiconpixmap.scaled(
+			wxicon.width(),
+			wxicon.height(),
+			Qt.IgnoreAspectRatio,
+			Qt.SmoothTransformation))
+		"""
 		
 		# Create calendar stylesheet based on given properties
 		self.calLabel = QLabel(page)
