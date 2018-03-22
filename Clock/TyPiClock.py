@@ -74,6 +74,7 @@ class Window(QtGui.QWidget):
 		self.calendars = []
 		self.clocks = []
 		self.datetimes = []
+		self.weathers = [] # TODO
 		
 		# Weather data (independent of pages, feature objects pull data as needed)
 		#loc = {"lat": str(self.config['config']['location']['lat']), "lng": str(self.config['config']['location']['lng'])}
@@ -90,9 +91,12 @@ class Window(QtGui.QWidget):
 			for ss in page['slideshows']:
 				self.slideshows.append(Slideshow(self.pages[page['num']], ss))
 				
-			# Calendars
+			# Calendars and Weather
 			for cal in page['calendars']:
 				self.calendars.append(Calendar(self.pages[page['num']], cal))
+				# for weather in cal['weathers']:
+					# self.weathers.append(self.weather.addWeather(weather)) # TODO need to keep a list here, or let Weather handle them? (below)
+					#self.weather.addWeather(weather)
 		
 			# Analog Clocks
 			for clock in page['clocks']:

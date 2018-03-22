@@ -243,7 +243,7 @@ class Calendar():
 	def tick(self):
 		return 0
 	
-	def __init__(self, page, properties, weatherData):
+	def __init__(self, page, properties):
 		
 		# Get credentials
 		# TODO
@@ -442,8 +442,10 @@ class Weather():
 		self.weatherData = json.load(open(self.weatherFile))
 		"""
 		self.weatherData = json.loads(self.weatherReply)
+		
+		# TODO update all weathers
 	
-	def __init__(self, properties, location):
+	def __init__(self, properties, latlng):
 		
 		self.http = httplib2.Http()
 		self.weatherData = {}
@@ -458,8 +460,7 @@ class Weather():
 		long = "-104.9047336"
 		"""
 		
-		self.weatherURI = properties['uri'] + properties['api'] + "/conditions/astronomy/hourly10day/forecast10day/lang:EN/q/" + location['lat']+","+location['lng']+".json"
-		#self.weatherURI += "?r=" + str(random.random())
+		self.weatherURI = properties['uri'] + properties['api'] + "/conditions/astronomy/hourly10day/forecast10day/lang:EN/q/" + latlng['lat'] + "," + latlng['lng'] + ".json"
 		
 		self.weatherReply = self.http.request(self.weatherURI+ "?r=" + str(random.random()))[1]
 		
@@ -478,6 +479,9 @@ class Weather():
 		self.timer = QtCore.QTimer()
 		self.timer.timeout.connect(self.update)
 		self.timer.start(properties['interval']*1000)
+		
+	def addWeather(self):
+		return 0 # TODO
 		
 	def getCurrent(self):
 		return self.weatherData['current_observation']
