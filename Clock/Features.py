@@ -457,3 +457,14 @@ class Weather():
 		
 	def getCurrent(self):
 		return self.weatherData['current_observation']
+		
+	def getForecast(self):
+		return self.weatherData['forecast']
+		
+	def getSimpleForecast(self, day):
+		# TODO
+		return self.weatherData['forecast']['simpleforecast']['forecastday']
+		
+	def getHourlyForecast(self):
+		# TODO
+		return self.weatherData['forecast']['hourly_forecast']

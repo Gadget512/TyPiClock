@@ -8,6 +8,7 @@
 			"uri": "http://api.wunderground.com/api/",
 			"api": "32ee89a66950a457",
 			"stream": "",
+			"icons": "images/typi/weather/",
 			"interval": 1800
 		}
 	},
@@ -105,7 +106,7 @@
 					},
 					
 					"weathers": [
-					
+						
 					],
 					
 					"datetimes": [

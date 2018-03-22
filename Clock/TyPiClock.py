@@ -68,7 +68,7 @@ class Window(QtGui.QWidget):
 	
 	def initUI(self):
 		self.setWindowTitle(os.path.basename(__file__))
-		self.setStyleSheet("QWidget { background-color: blue;}")a
+		self.setStyleSheet("QWidget { background-color: blue;}")
 		
 		self.slideshows = []
 		self.calendars = []
