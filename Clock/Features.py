@@ -160,7 +160,25 @@ class DateTime():
 			properties['fontsize']+"px; "+
 			properties['fontattr']+"}")
 			
-		#self.textLabel.setAlignment(Qt.AlignHCenter | Qt.AlignTop)
+		if properties['alignment'] == 1:
+			self.textLabel.setAlignment(Qt.AlignLeft | Qt.AlignTop)
+		elif properties['alignment'] == 2:
+			self.textLabel.setAlignment(Qt.AlignHCenter | Qt.AlignTop)
+		elif properties['alignment'] == 3:
+			self.textLabel.setAlignment(Qt.AlignRight | Qt.AlignTop)
+		elif properties['alignment'] == 4:
+			self.textLabel.setAlignment(Qt.AlignLeft | Qt.AlignVCenter)
+		elif properties['alignment'] == 5:
+			self.textLabel.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
+		elif properties['alignment'] == 6:
+			self.textLabel.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
+		elif properties['alignment'] == 7:
+			self.textLabel.setAlignment(Qt.AlignLeft | Qt.AlignBottom)
+		elif properties['alignment'] == 8:
+			self.textLabel.setAlignment(Qt.AlignHCenter | Qt.AlignBottom)
+		elif properties['alignment'] == 9:
+			self.textLabel.setAlignment(Qt.AlignRight | Qt.AlignBottom)
+		
 		self.textLabel.setGeometry(properties['location'][0], properties['location'][1], properties['location'][2], properties['location'][3])
 		
 		# Set the text effect, if specified
