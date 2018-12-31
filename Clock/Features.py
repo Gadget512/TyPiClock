@@ -216,7 +216,7 @@ class Text(): # TODO
 	def setText():
 		return 0
 		
-class Image(): # TODO
+class Image():
 	
 	def __init__(self, page, properties):
 		
@@ -486,29 +486,21 @@ class Weather():
 		self.weatherData = {}
 		self.weatherFile = "weatherData.json"
 		
-		# TODO not needed?
-		"""
-		uriprefix = "http://api.wunderground.com/api/"
-		uriapi = "32ee89a66950a457"
-		language = "EN"
-		lat = "39.5867206"
-		long = "-104.9047336"
-		"""
+		self.weatherURI = properties['uri'] + properties['api'] +"/" + latlng['lat'] + "," + latlng['lng']
 		
-		self.weatherURI = properties['uri'] + properties['api'] + "/conditions/astronomy/hourly10day/forecast10day/lang:EN/q/" + latlng['lat'] + "," + latlng['lng'] + ".json"
+		self.weatherReply = self.http.request(self.weatherURI)
 		
-		self.weatherReply = self.http.request(self.weatherURI+ "?r=" + str(random.random()))[1]
-		
-		# TODO not needed?
+		# Write weather to file
 		"""
 		dataFile = open(self.weatherFile, 'w')
-		dataFile.write(self.weatherReply)
+		dataFile.write(self.weatherReply[1])
 		dataFile.close()
+		"""
 		
 		# TODO does this file close?
-		self.weatherData = json.load(open(self.weatherFile))
-		"""
-		self.weatherData = json.loads(self.weatherReply)
+		#self.weatherData = json.load(open(self.weatherFile))
+		
+		self.weatherData = json.loads(self.weatherReply[1])
 		
 		# Start timer
 		self.timer = QtCore.QTimer()
@@ -519,7 +511,7 @@ class Weather():
 		return 0 # TODO
 		
 	def getCurrent(self):
-		return self.weatherData['current_observation']
+		return self.weatherData['currently']
 		
 	def getForecast(self):
 		return self.weatherData['forecast']

@@ -78,14 +78,14 @@ class Window(QtGui.QWidget):
 		self.weathers = [] # TODO
 		
 		# Weather data (independent of pages, feature objects pull data as needed)
-		#loc = {"lat": str(self.config['config']['location']['lat']), "lng": str(self.config['config']['location']['lng'])}
-		#self.weather = Weather(self.config['config']['weather'], loc)
+		loc = {"lat": str(self.config['config']['location']['lat']), "lng": str(self.config['config']['location']['lng'])}
+		self.weather = Weather(self.config['config']['weather'], loc)
 		
 		# TODO
 		#print self.weather.getCurrent()
-		#currWeather = self.weather.getCurrent()
-		#print currWeather['temp_f']
-		#print currWeather['icon']
+		currWeather = self.weather.getCurrent()
+		print currWeather['temperature']
+		print currWeather['icon']
 		
 		# Set up pages
 		for page in self.config['pages']:
