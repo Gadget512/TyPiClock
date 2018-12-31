@@ -216,6 +216,23 @@ class Text(): # TODO
 	def setText():
 		return 0
 		
+class Image(): # TODO
+	
+	def __init__(self, page, properties):
+		
+		# Initialize member variables
+		self.name = properties['name']
+		self.image = properties['image']
+		
+		# Create picture frame
+		self.picFrame = QFrame(page)
+		self.picFrame.setObjectName(self.name+"frame")
+		self.picFrameRect = QtCore.QRect(properties['location'][0], properties['location'][1], properties['location'][2], properties['location'][3])
+		
+		# Display picture frame
+		self.picFrame.setGeometry(self.picFrameRect)
+		self.picFrame.setStyleSheet("#"+self.name+"frame { background-color: transparent; border-image: url("+self.image+") 0 0 0 0 stretch stretch;}")
+		
 class Slideshow():
 	
 	def switchPicture(self):

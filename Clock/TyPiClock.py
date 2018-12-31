@@ -9,7 +9,7 @@ import argparse, datetime, json, os, sys
 from PyQt4 import QtGui, QtCore
 from PyQt4.QtCore import Qt
 
-from Features import AnalogClock, Calendar, DateTime, Slideshow, Weather
+from Features import AnalogClock, Calendar, DateTime, Image, Slideshow, Weather
 
 # TODO what is needed here:?
 import platform
@@ -72,6 +72,7 @@ class Window(QtGui.QWidget):
 		
 		self.slideshows = []
 		self.calendars = []
+		self.images = []
 		self.clocks = []
 		self.datetimes = []
 		self.weathers = [] # TODO
@@ -82,6 +83,9 @@ class Window(QtGui.QWidget):
 		
 		# TODO
 		#print self.weather.getCurrent()
+		#currWeather = self.weather.getCurrent()
+		#print currWeather['temp_f']
+		#print currWeather['icon']
 		
 		# Set up pages
 		for page in self.config['pages']:
@@ -98,6 +102,10 @@ class Window(QtGui.QWidget):
 					# self.weathers.append(self.weather.addWeather(weather)) # TODO need to keep a list here, or let Weather handle them? (below)
 					#self.weather.addWeather(weather)
 		
+			# Images
+			for image in page['images']:
+				self.images.append(Image(self.pages[page['num']], image))
+			
 			# Analog Clocks
 			for clock in page['clocks']:
 				self.clocks.append(AnalogClock(self.pages[page['num']], clock))
