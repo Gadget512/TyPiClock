@@ -220,18 +220,14 @@ class Image():
 	
 	def __init__(self, page, properties):
 		
-		# Initialize member variables
-		self.name = properties['name']
-		self.image = properties['image']
-		
 		# Create picture frame
 		self.picFrame = QFrame(page)
-		self.picFrame.setObjectName(self.name+"frame")
+		self.picFrame.setObjectName(properties['name']+"frame")
 		self.picFrameRect = QtCore.QRect(properties['location'][0], properties['location'][1], properties['location'][2], properties['location'][3])
 		
 		# Display picture frame
 		self.picFrame.setGeometry(self.picFrameRect)
-		self.picFrame.setStyleSheet("#"+self.name+"frame { background-color: transparent; border-image: url("+self.image+") 0 0 0 0 stretch stretch;}")
+		self.picFrame.setStyleSheet("#"+properties['name']+"frame { background-color: transparent; border-image: url("+properties['image']+") 0 0 0 0 stretch stretch;}")
 		
 class Slideshow():
 	
@@ -465,6 +461,7 @@ class Calendar():
 class Weather():
 	
 	def update(self):
+		
 		self.weatherReply = self.http.request(self.weatherURI)
 		
 		# TODO not needed?
@@ -510,7 +507,7 @@ class Weather():
 	def addWeather(self):
 		return 0 # TODO
 		
-	def getCurrent(self):
+	def getCurrently(self):
 		return self.weatherData['currently']
 		
 	def getForecast(self): # TODO
@@ -530,20 +527,42 @@ class WeatherDisplay():
 	def update(self):
 		
 		# Get weather data
-		if properties['type'] == "current":
-			self.weatherData = wObj.getCurrent()
+		if self.type == "currently":
+			self.weatherData = self.wObj.getCurrently()
 			
-		for d in self.displays:
-			if d['type'] == "temperature":
+			if self.temperature:
+				self.temperature.setText(str(self.weatherData['temperature'])+"\xb0F")
+			if self.icon:
+				if self.weatherData['icon'] in self.supportedIcons:
+					self.icon.setPixmap(QPixmap(self.images[self.weatherData['icon']]))
+				else:
+					self.icon.setPixmap(QPixmap(self.images['default']))
+			if self.summary:
+				self.summary.setText(self.weatherData['summary'])
+				
 				
 		
 	def __init__(self, page, properties, wObj):
 		
 		# Initialize member variables
+		self.wObj = wObj
 		self.name = properties['name']
-		self.weatherData = {}
+		self.type = properties['type']
+		self.images = properties['images']
+		self.weatherData = wObj.getCurrently()
 		self.dataToDisplay = properties['data']
-		self.displays = []
+		self.supportedIcons = ["clear-day", "clear-night", "rain", "snow", "sleet", "wind", "fog", "cloudy", "partly-cloudy-day", "partly-cloudy-night"]
+		
+		# Potential weather data
+		self.topSummary = None
+		self.summary = None
+		self.topIcon = None
+		self.icon = None
+		self.temperature = None
+		self.apparentTemperature = None
+		self.humidity = None
+		self.temperatureHigh = None # only in daily
+		self.temperatureLow = None # only in daily
 		
 		# Create weather frame
 		self.wFrame = QFrame(page)
@@ -555,14 +574,74 @@ class WeatherDisplay():
 		self.wFrame.setStyleSheet("#"+self.name+"frame { background-color: transparent; border-image: url("+properties['background']+") 0 0 0 0 stretch stretch;}")
 		
 		# Set up displays
-		for disp in self.dataToDisplay:
-			thisLabel = QLabel(page) # create label on page
-			thisLabel.setObjectName(properties['name']+disp['name']) # name label
-			thisLabel.setStyleSheet("#"+properties['name']+disp['name']+" { background-color: transparent; }")
-			# TODO:
-			self.labpixmap = QPixmap(self.minutehand) # create pixmap with image
+		# TODO effects
+		if self.type == "currently":
+			for d in self.dataToDisplay:
+				if d['type'] == "summary":
+					self.summary = QLabel(page)
+					self.summary.setObjectName(self.name+d['name'])
+					self.summary.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
+					d['color'] + "; background-color: transparent; font-size: "+
+					d['fontsize']+"px; "+
+					d['fontattr']+"}")
+					self.summary.setAlignment(self.align(d['alignment']))
+					self.summary.setText(self.weatherData['summary'])
+					self.summary.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
+				
+				elif d['type'] == "icon":
+					self.icon = QLabel(page)
+					self.icon.setObjectName(self.name+d['name'])
+					self.icon.setStyleSheet("#"+self.name+d['name']+" { background-color: transparent; }")
+					if self.weatherData['icon'] in self.supportedIcons:
+						self.icon.setPixmap(QPixmap(self.images[self.weatherData['icon']]))
+					else:
+						self.icon.setPixmap(QPixmap(self.images['default']))
+					self.icon.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
+				
+				elif d['type'] == "temperature":
+					self.temperature = QLabel(page)
+					self.temperature.setObjectName(self.name+d['name'])
+					self.temperature.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
+					d['color'] + "; background-color: transparent; font-size: "+
+					d['fontsize']+"px; "+
+					d['fontattr']+"}")
+					self.temperature.setAlignment(self.align(d['alignment']))
+					self.temperature.setText(str(self.weatherData['temperature'])+"\xb0F")
+					self.temperature.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
+					
+				elif d['type'] == "apparentTemperature":
+					self.apparentTemperature = QLabel(page)
+				elif d['type'] == "humidity":
+					self.humidity = QLabel(page)
+					
+		elif self.type == "minutely":
+			pass # TODO
+		elif self.type == "hourly":
+			pass # TODO
+		elif self.type == "daily":
+			pass # TODO
 		
 		# Start timer
 		self.timer = QtCore.QTimer()
 		self.timer.timeout.connect(self.update)
 		self.timer.start(properties['interval']*1000)
+		
+	def align(self, a):
+		if a == 1:
+			return (Qt.AlignLeft | Qt.AlignTop)
+		elif a == 2:
+			return (Qt.AlignHCenter | Qt.AlignTop)
+		elif a == 3:
+			return (Qt.AlignRight | Qt.AlignTop)
+		elif a == 4:
+			return (Qt.AlignLeft | Qt.AlignVCenter)
+		elif a == 5:
+			return (Qt.AlignHCenter | Qt.AlignVCenter)
+		elif a == 6:
+			return (Qt.AlignRight | Qt.AlignVCenter)
+		elif a == 7:
+			return (Qt.AlignLeft | Qt.AlignBottom)
+		elif a == 8:
+			return (Qt.AlignHCenter | Qt.AlignBottom)
+		elif a == 9:
+			return (Qt.AlignRight | Qt.AlignBottom)

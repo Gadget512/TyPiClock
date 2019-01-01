@@ -75,17 +75,17 @@ class Window(QtGui.QWidget):
 		self.images = []
 		self.clocks = []
 		self.datetimes = []
-		self.weathers = [] # TODO
+		self.weathers = [] 
 		
 		# Weather data (independent of pages, feature objects pull data as needed)
 		loc = {"lat": str(self.config['config']['location']['lat']), "lng": str(self.config['config']['location']['lng'])}
-		#self.weather = Weather(self.config['config']['weather'], loc)
+		self.weather = Weather(self.config['config']['weather'], loc)
 		
 		# TODO
-		#print self.weather.getCurrent()
-		#currWeather = self.weather.getCurrent()
+		#print self.weather.getCurrently()
+		#currWeather = self.weather.getCurrently()
 		#temp = str(currWeather['temperature'])+"\u2109"
-		print u'\xb0'
+		#print u'\xb0'
 		#print currWeather['icon']
 		
 		# Set up pages
@@ -96,16 +96,16 @@ class Window(QtGui.QWidget):
 			for ss in page['slideshows']:
 				self.slideshows.append(Slideshow(self.pages[page['num']], ss))
 				
+			# Images
+			for image in page['images']:
+				self.images.append(Image(self.pages[page['num']], image))
+				
 			# Calendars and Weather
 			for cal in page['calendars']:
 				self.calendars.append(Calendar(self.pages[page['num']], cal))
 				# for weather in cal['weathers']:
 					# self.weathers.append(self.weather.addWeather(weather)) # TODO need to keep a list here, or let Weather handle them? (below)
 					#self.weather.addWeather(weather)
-		
-			# Images
-			for image in page['images']:
-				self.images.append(Image(self.pages[page['num']], image))
 			
 			# Analog Clocks
 			for clock in page['clocks']:
