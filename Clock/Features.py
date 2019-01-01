@@ -571,7 +571,10 @@ class WeatherDisplay():
 		
 		# Display weather frame
 		self.wFrame.setGeometry(self.wFrameRect)
-		self.wFrame.setStyleSheet("#"+self.name+"frame { background-color: transparent; border-image: url("+properties['background']+") 0 0 0 0 stretch stretch;}")
+		if properties['background']:
+			self.wFrame.setStyleSheet("#"+self.name+"frame { background-color: transparent; border-image: url("+properties['background']+") 0 0 0 0 stretch stretch;}")
+		else:
+			self.wFrame.setStyleSheet("#"+self.name+"frame { background-color: transparent;}")
 		
 		# Set up displays
 		# TODO effects
