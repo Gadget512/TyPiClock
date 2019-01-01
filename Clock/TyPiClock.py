@@ -9,7 +9,7 @@ import argparse, datetime, json, os, sys
 from PyQt4 import QtGui, QtCore
 from PyQt4.QtCore import Qt
 
-from Features import AnalogClock, Calendar, DateTime, Image, Slideshow, Weather
+from Features import AnalogClock, Calendar, DateTime, Image, Slideshow, Weather, WeatherDisplay
 
 # TODO what is needed here:?
 import platform
@@ -79,13 +79,14 @@ class Window(QtGui.QWidget):
 		
 		# Weather data (independent of pages, feature objects pull data as needed)
 		loc = {"lat": str(self.config['config']['location']['lat']), "lng": str(self.config['config']['location']['lng'])}
-		self.weather = Weather(self.config['config']['weather'], loc)
+		#self.weather = Weather(self.config['config']['weather'], loc)
 		
 		# TODO
 		#print self.weather.getCurrent()
-		currWeather = self.weather.getCurrent()
-		print currWeather['temperature']
-		print currWeather['icon']
+		#currWeather = self.weather.getCurrent()
+		#temp = str(currWeather['temperature'])+"\u2109"
+		print u'\xb0'
+		#print currWeather['icon']
 		
 		# Set up pages
 		for page in self.config['pages']:
@@ -113,6 +114,10 @@ class Window(QtGui.QWidget):
 			# DateTimes
 			for dt in page['datetimes']:
 				self.datetimes.append(DateTime(self.pages[page['num']], dt))
+				
+			# Weathers
+			for wtr in page['weathers']:
+				self.weathers.append(WeatherDisplay(self.pages[page['num']], wtr, self.weather))
 		
 		
 		# Display page0

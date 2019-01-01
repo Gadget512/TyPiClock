@@ -465,7 +465,7 @@ class Calendar():
 class Weather():
 	
 	def update(self):
-		self.weatherReply = self.http.request(self.weatherURI+ "?r=" + str(random.random()))[1]
+		self.weatherReply = self.http.request(self.weatherURI)
 		
 		# TODO not needed?
 		"""
@@ -476,7 +476,7 @@ class Weather():
 		# TODO does this file close?
 		self.weatherData = json.load(open(self.weatherFile))
 		"""
-		self.weatherData = json.loads(self.weatherReply)
+		self.weatherData = json.loads(self.weatherReply[1])
 		
 		# TODO update all weathers
 	
@@ -513,13 +513,56 @@ class Weather():
 	def getCurrent(self):
 		return self.weatherData['currently']
 		
-	def getForecast(self):
+	def getForecast(self): # TODO
 		return self.weatherData['forecast']
 		
-	def getSimpleForecast(self, day):
+	def getSimpleForecast(self, day): # TODO
 		# TODO
 		return self.weatherData['forecast']['simpleforecast']['forecastday']
 		
-	def getHourlyForecast(self):
+	def getHourlyForecast(self): # TODO
 		# TODO
 		return self.weatherData['forecast']['hourly_forecast']
+		
+		
+class WeatherDisplay():
+	
+	def update(self):
+		
+		# Get weather data
+		if properties['type'] == "current":
+			self.weatherData = wObj.getCurrent()
+			
+		for d in self.displays:
+			if d['type'] == "temperature":
+				
+		
+	def __init__(self, page, properties, wObj):
+		
+		# Initialize member variables
+		self.name = properties['name']
+		self.weatherData = {}
+		self.dataToDisplay = properties['data']
+		self.displays = []
+		
+		# Create weather frame
+		self.wFrame = QFrame(page)
+		self.wFrame.setObjectName(self.name+"frame")
+		self.wFrameRect = QtCore.QRect(properties['location'][0], properties['location'][1], properties['location'][2], properties['location'][3])
+		
+		# Display weather frame
+		self.wFrame.setGeometry(self.wFrameRect)
+		self.wFrame.setStyleSheet("#"+self.name+"frame { background-color: transparent; border-image: url("+properties['background']+") 0 0 0 0 stretch stretch;}")
+		
+		# Set up displays
+		for disp in self.dataToDisplay:
+			thisLabel = QLabel(page) # create label on page
+			thisLabel.setObjectName(properties['name']+disp['name']) # name label
+			thisLabel.setStyleSheet("#"+properties['name']+disp['name']+" { background-color: transparent; }")
+			# TODO:
+			self.labpixmap = QPixmap(self.minutehand) # create pixmap with image
+		
+		# Start timer
+		self.timer = QtCore.QTimer()
+		self.timer.timeout.connect(self.update)
+		self.timer.start(properties['interval']*1000)
