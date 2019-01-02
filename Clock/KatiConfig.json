@@ -1,0 +1,177 @@
+{
+	"config": {
+		"location": {
+			"lat": 39.5867206,
+			"lng": -104.9047336
+		},
+		"weather": {
+			"uri": "https://api.darksky.net/forecast/",
+			"api": "5dbbfda20bd2846c0eb832b28d6b2a2d",
+			"stream": "",
+			"interval": 600
+		}
+	},
+	
+	"pages": [
+		{
+			"num": 0,
+			"background": "images/kati_pics/IMG_0020.jpg",
+			
+			"clocks": [
+				{
+					"name": "MainClock",
+					"interval": 1,
+					"face": "images/kati_pics/clock/clock_face02.png",
+					"hour": "images/kati_pics/clock/hourhand.png",
+					"minute": "images/kati_pics/clock/minhand.png",
+					"second": "images/kati_pics/clock/sechand.png",
+					"location": [1300, 600, 300, 300]
+				}
+			],
+			
+			"datetimes": [
+				{
+					"name": "Date",
+					"interval": 3600,
+					"background": "images/kati_pics/clock/background.png",
+					"format": "{0:%A, %B %d}",
+					"font": "sans-serif",
+					"fontsize": "40",
+					"fontattr": "",
+					"color": "#6EB9FF",
+					"alignment": 5,
+					"effects": [
+						{
+							"type": "glow",
+							"typeattr": {
+								"radius": 8,
+								"color": "#000000"
+							}
+						}
+					],
+					"location": [550, 800, 500, 50]
+				}
+			],
+			
+			"slideshows": [
+				{
+					"name": "SlideShow",
+					"directory": "images/kati_pics/",
+					"random": true,
+					"interval": 60,
+					"location": [0, 0, 1600, 900]
+				}
+			],
+			
+			"images": [
+			
+			],
+			
+			"texts": [
+				{
+					"name": "Greeting",
+					"type": "static",
+					"interval": null,
+					"text": [
+						"Good Morning!"
+					],
+					"background": null,
+					"format": null,
+					"font": "sans-serif",
+					"fontsize": "200",
+					"fontattr": "font-weight: bold;",
+					"color": "#50CBEB",
+					"alignment": ["top", "center"],
+					"effects": [
+						
+					],
+					"location": [0, 0, 500, 300]
+				}
+			],
+			
+			"calendars": [
+			
+			],
+			
+			"weathers": [
+				{
+					"name": "CurrentWeather",
+					"type": "currently",
+					"interval": 60,
+					"background": "images/kati_weather/weatherbg.png",
+					"images": {
+						"clear-day": "images/kati_weather/clear.png",
+						"clear-night": "images/kati_weather/clear-night.png",
+						"rain": "images/kati_weather/rain.png",
+						"snow": "images/kati_weather/snow.png",
+						"sleet": "images/kati_weather/sleet.png",
+						"wind": "images/kati_weather/wind.png",
+						"fog": "images/kati_weather/fog.png",
+						"cloudy": "images/kati_weather/cloudy.png",
+						"partly-cloudy-day": "images/kati_weather/partly-cloudy.png",
+						"partly-cloudy-night": "images/kati_weather/partly-cloudy-night.png",
+						"default": "images/kati_weather/default.png"
+					},
+					"data": [
+						{
+							"name": "currTemp",
+							"type": "temperature",
+							"format": "",
+							"font": "sans-serif",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [0, 856, 300, 44]
+						},
+						{
+							"name": "currIcon",
+							"type": "icon",
+							"location": [22, 600, 256, 256]
+						}
+					],
+					"location": [0, 600, 300, 300]
+				},
+				{
+					"name": "HourSummary",
+					"type": "hourly",
+					"interval": 300,
+					"background": "images/kati_pics/clock/background.png",
+					"images": {
+						"clear-day": "images/typi/weather/large/clear.png",
+						"clear-night": "images/typi/weather/large/n_clear.png",
+						"rain": "images/typi/weather/large/rain.png",
+						"snow": "images/typi/weather/large/snow.png",
+						"sleet": "images/typi/weather/large/sleet.png",
+						"wind": "images/typi/weather/large/clear.png",
+						"fog": "images/typi/weather/large/mostlycloudy.png",
+						"cloudy": "images/typi/weather/large/cloudy.png",
+						"partly-cloudy-day": "images/typi/weather/large/mostlysunny.png",
+						"partly-cloudy-night": "images/typi/weather/large/n_mostlysunny.png",
+						"default": "images/typi/weather/large/tstorms.png"
+					},
+					"data": [
+						{
+							"name": "HSum",
+							"type": "topSummary",
+							"format": "",
+							"font": "sans-serif",
+							"fontsize": "20",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [550, 850, 500, 50]
+						}
+					],
+					"location": [550, 850, 500, 50]
+				}
+			]
+		}
+	]
+}
