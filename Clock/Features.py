@@ -510,6 +510,15 @@ class Weather():
 	def getCurrently(self):
 		return self.weatherData['currently']
 		
+	def getMinutely(self):
+		return self.weatherData['minutely']
+		
+	def getHourly(self):
+		return self.weatherData['hourly']
+		
+	def getDaily(self):
+		return self.weatherData['daily']
+		
 	def getForecast(self): # TODO
 		return self.weatherData['forecast']
 		
@@ -540,6 +549,12 @@ class WeatherDisplay():
 			if self.summary:
 				self.summary.setText(self.weatherData['summary'])
 				
+		elif self.type == "daily":
+			self.weatherData = self.wObj.getDaily()
+			
+			if self.topSummary:
+				self.topSummary.setText(self.weatherData['summary'])
+				
 				
 		
 	def __init__(self, page, properties, wObj):
@@ -549,7 +564,7 @@ class WeatherDisplay():
 		self.name = properties['name']
 		self.type = properties['type']
 		self.images = properties['images']
-		self.weatherData = wObj.getCurrently()
+		self.weatherData = {} #wObj.getCurrently()
 		self.dataToDisplay = properties['data']
 		self.supportedIcons = ["clear-day", "clear-night", "rain", "snow", "sleet", "wind", "fog", "cloudy", "partly-cloudy-day", "partly-cloudy-night"]
 		
@@ -579,6 +594,7 @@ class WeatherDisplay():
 		# Set up displays
 		# TODO effects
 		if self.type == "currently":
+			self.weatherData = wObj.getCurrently()
 			for d in self.dataToDisplay:
 				if d['type'] == "summary":
 					self.summary = QLabel(page)
@@ -618,11 +634,24 @@ class WeatherDisplay():
 					self.humidity = QLabel(page)
 					
 		elif self.type == "minutely":
+			self.weatherData = wObj.getMinutely()
 			pass # TODO
 		elif self.type == "hourly":
+			self.weatherData = wObj.getHourly()
 			pass # TODO
 		elif self.type == "daily":
-			pass # TODO
+			self.weatherData = wObj.getDaily()
+			for d in self.dataToDisplay:
+				if d['type'] == "topSummary":
+					self.topSummary = QLabel(page)
+					self.topSummary.setObjectName(self.name+d['name'])
+					self.topSummary.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
+					d['color'] + "; background-color: transparent; font-size: "+
+					d['fontsize']+"px; "+
+					d['fontattr']+"}")
+					self.topSummary.setAlignment(self.align(d['alignment']))
+					self.topSummary.setText(self.weatherData['summary'])
+					self.topSummary.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 		
 		# Start timer
 		self.timer = QtCore.QTimer()
