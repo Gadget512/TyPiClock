@@ -6,7 +6,7 @@
 		},
 		"weather": {
 			"uri": "https://api.darksky.net/forecast/",
-			"api": "5dbbfda20bd2846c0eb832b28d6b2a2d",
+			"api": "5883af0f543c7517f0373e2c620ee655",
 			"stream": "",
 			"interval": 600
 		}
