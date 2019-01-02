@@ -140,14 +140,50 @@
 							"fontsize": "30",
 							"fontattr": "",
 							"color": "#000000",
-							"alignment": 5,
+							"alignment": 4,
 							"effects": [
 							
 							],
-							"location": [500, 400, 500, 100]
+							"location": [500, 400, 1000, 100]
 						}
 					],
-					"location": [500, 0, 500, 500]
+					"location": [500, 0, 1000, 500]
+				},
+				{
+					"name": "HourSummary",
+					"type": "hourly",
+					"interval": 300,
+					"background": "images/background_shade.png",
+					"images": {
+						"clear-day": "images/typi/weather/large/clear.png",
+						"clear-night": "images/typi/weather/large/n_clear.png",
+						"rain": "images/typi/weather/large/rain.png",
+						"snow": "images/typi/weather/large/snow.png",
+						"sleet": "images/typi/weather/large/sleet.png",
+						"wind": "images/typi/weather/large/clear.png",
+						"fog": "images/typi/weather/large/mostlycloudy.png",
+						"cloudy": "images/typi/weather/large/cloudy.png",
+						"partly-cloudy-day": "images/typi/weather/large/mostlysunny.png",
+						"partly-cloudy-night": "images/typi/weather/large/n_mostlysunny.png",
+						"default": "images/typi/weather/large/tstorms.png"
+					},
+					"data": [
+						{
+							"name": "HSum",
+							"type": "topSummary",
+							"format": "",
+							"font": "sans-serif",
+							"fontsize": "30",
+							"fontattr": "",
+							"color": "#000000",
+							"alignment": 4,
+							"effects": [
+							
+							],
+							"location": [0, 800, 1000, 100]
+						}
+					],
+					"location": [0, 800, 1000, 100]
 				}
 			],
 			

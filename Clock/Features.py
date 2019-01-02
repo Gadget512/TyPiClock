@@ -549,6 +549,12 @@ class WeatherDisplay():
 			if self.summary:
 				self.summary.setText(self.weatherData['summary'])
 				
+		elif self.type == "hourly":
+			self.weatherData = self.wObj.getHourly()
+			
+			if self.topSummary:
+				self.topSummary.setText(self.weatherData['summary'])
+		
 		elif self.type == "daily":
 			self.weatherData = self.wObj.getDaily()
 			
@@ -564,7 +570,7 @@ class WeatherDisplay():
 		self.name = properties['name']
 		self.type = properties['type']
 		self.images = properties['images']
-		self.weatherData = {} #wObj.getCurrently()
+		self.weatherData = {}
 		self.dataToDisplay = properties['data']
 		self.supportedIcons = ["clear-day", "clear-night", "rain", "snow", "sleet", "wind", "fog", "cloudy", "partly-cloudy-day", "partly-cloudy-night"]
 		
@@ -638,7 +644,18 @@ class WeatherDisplay():
 			pass # TODO
 		elif self.type == "hourly":
 			self.weatherData = wObj.getHourly()
-			pass # TODO
+			for d in self.dataToDisplay:
+				if d['type'] == "topSummary":
+					self.topSummary = QLabel(page)
+					self.topSummary.setObjectName(self.name+d['name'])
+					self.topSummary.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
+					d['color'] + "; background-color: transparent; font-size: "+
+					d['fontsize']+"px; "+
+					d['fontattr']+"}")
+					self.topSummary.setAlignment(self.align(d['alignment']))
+					self.topSummary.setText(self.weatherData['summary'])
+					self.topSummary.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
+					
 		elif self.type == "daily":
 			self.weatherData = wObj.getDaily()
 			for d in self.dataToDisplay:
