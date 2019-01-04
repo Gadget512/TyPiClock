@@ -543,9 +543,9 @@ class WeatherDisplay():
 				self.temperature.setText(str(self.weatherData['temperature'])+"\xb0F")
 			if self.icon:
 				if self.weatherData['icon'] in self.supportedIcons:
-					self.icon.setPixmap(QPixmap(self.images[self.weatherData['icon']]))
+					self.icon.setPixmap(QPixmap(self.images[self.weatherData['icon']]).scaled(self.icon.size().width(), self.icon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
 				else:
-					self.icon.setPixmap(QPixmap(self.images['default']))
+					self.icon.setPixmap(QPixmap(self.images['default']).scaled(self.icon.size().width(), self.icon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
 			if self.summary:
 				self.summary.setText(self.weatherData['summary'])
 				
@@ -617,11 +617,12 @@ class WeatherDisplay():
 					self.icon = QLabel(page)
 					self.icon.setObjectName(self.name+d['name'])
 					self.icon.setStyleSheet("#"+self.name+d['name']+" { background-color: transparent; }")
-					if self.weatherData['icon'] in self.supportedIcons:
-						self.icon.setPixmap(QPixmap(self.images[self.weatherData['icon']]))
-					else:
-						self.icon.setPixmap(QPixmap(self.images['default']))
 					self.icon.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
+					if self.weatherData['icon'] in self.supportedIcons:
+						self.icon.setPixmap(QPixmap(self.images[self.weatherData['icon']]).scaled(self.icon.size().width(), self.icon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
+					else:
+						self.icon.setPixmap(QPixmap(self.images['default']).scaled(self.icon.size().width(), self.icon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
+					
 				
 				elif d['type'] == "temperature":
 					self.temperature = QLabel(page)
