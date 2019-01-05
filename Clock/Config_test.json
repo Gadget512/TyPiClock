@@ -15,7 +15,7 @@
 	"pages": [
 		{
 			"num": 0,
-			"background": "images/DenverSkyline_1080.jpg",
+			"background": "images/clockbackground-jean.png",
 			
 			"clocks": [
 				
@@ -61,6 +61,7 @@
 				{
 					"name": "CurrentWeather",
 					"type": "currently",
+					"subtype": null,
 					"interval": 60,
 					"background": "images/background_shade.png",
 					"images": {
@@ -94,7 +95,7 @@
 						{
 							"name": "currIcon",
 							"type": "icon",
-							"location": [100, 0, 300, 300]
+							"location": [100, 0, 128, 128]
 						},
 						{
 							"name": "currSum",
@@ -116,6 +117,7 @@
 				{
 					"name": "DaySummary",
 					"type": "daily",
+					"subtype": null,
 					"interval": 300,
 					"background": null,
 					"images": {
@@ -152,6 +154,7 @@
 				{
 					"name": "HourSummary",
 					"type": "hourly",
+					"subtype": null,
 					"interval": 300,
 					"background": "images/background_shade.png",
 					"images": {
@@ -189,6 +192,205 @@
 			
 			"calendars": [
 			
+			]
+		},
+		{
+			"num": 1,
+			"background": "images/DenverSkyline_900.jpg",
+			
+			"clocks": [
+				
+			],
+			
+			"datetimes": [
+				
+			],
+			
+			"slideshows": [
+				
+			],
+			
+			"images": [
+			
+			],
+			
+			"texts": [
+				
+			],
+			
+			"calendars": [
+			
+			],
+			
+			"weathers": [
+				{
+					"name": "Forecast0",
+					"type": "daily",
+					"subtype": "day0",
+					"interval": 3600,
+					"background": null,
+					"images": {
+						"clear-day": "images/typi/weather/large/clear.png",
+						"clear-night": "images/typi/weather/large/n_clear.png",
+						"rain": "images/typi/weather/large/rain.png",
+						"snow": "images/typi/weather/large/snow.png",
+						"sleet": "images/typi/weather/large/sleet.png",
+						"wind": "images/typi/weather/large/clear.png",
+						"fog": "images/typi/weather/large/mostlycloudy.png",
+						"cloudy": "images/typi/weather/large/cloudy.png",
+						"partly-cloudy-day": "images/typi/weather/large/mostlysunny.png",
+						"partly-cloudy-night": "images/typi/weather/large/n_mostlysunny.png",
+						"default": "images/typi/weather/large/tstorms.png"
+					},
+					"data": [
+						{
+							"name": "Todaytxt",
+							"type": "time",
+							"format": "{0:%A}",
+							"font": "sans-serif",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [0, 0, 400, 50]
+						},
+						{
+							"name": "TodayIcon",
+							"type": "icon",
+							"location": [0, 50, 400, 400]
+						}
+					],
+					"location": [0, 0, 400, 900]
+				},
+				{
+					"name": "Forecast1",
+					"type": "daily",
+					"subtype": "day1",
+					"interval": 3600,
+					"background": null,
+					"images": {
+						"clear-day": "images/typi/weather/large/clear.png",
+						"clear-night": "images/typi/weather/large/n_clear.png",
+						"rain": "images/typi/weather/large/rain.png",
+						"snow": "images/typi/weather/large/snow.png",
+						"sleet": "images/typi/weather/large/sleet.png",
+						"wind": "images/typi/weather/large/clear.png",
+						"fog": "images/typi/weather/large/mostlycloudy.png",
+						"cloudy": "images/typi/weather/large/cloudy.png",
+						"partly-cloudy-day": "images/typi/weather/large/mostlysunny.png",
+						"partly-cloudy-night": "images/typi/weather/large/n_mostlysunny.png",
+						"default": "images/typi/weather/large/tstorms.png"
+					},
+					"data": [
+						{
+							"name": "Tomtxt",
+							"type": "time",
+							"format": "{0:%A}",
+							"font": "sans-serif",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [400, 0, 400, 50]
+						},
+						{
+							"name": "TomIcon",
+							"type": "icon",
+							"location": [400, 50, 400, 400]
+						}
+					],
+					"location": [400, 0, 400, 900]
+				},
+				{
+					"name": "Forecast2",
+					"type": "daily",
+					"subtype": "day2",
+					"interval": 3600,
+					"background": null,
+					"images": {
+						"clear-day": "images/typi/weather/large/clear.png",
+						"clear-night": "images/typi/weather/large/n_clear.png",
+						"rain": "images/typi/weather/large/rain.png",
+						"snow": "images/typi/weather/large/snow.png",
+						"sleet": "images/typi/weather/large/sleet.png",
+						"wind": "images/typi/weather/large/clear.png",
+						"fog": "images/typi/weather/large/mostlycloudy.png",
+						"cloudy": "images/typi/weather/large/cloudy.png",
+						"partly-cloudy-day": "images/typi/weather/large/mostlysunny.png",
+						"partly-cloudy-night": "images/typi/weather/large/n_mostlysunny.png",
+						"default": "images/typi/weather/large/tstorms.png"
+					},
+					"data": [
+						{
+							"name": "Day2txt",
+							"type": "time",
+							"format": "{0:%A}",
+							"font": "sans-serif",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [800, 0, 400, 50]
+						},
+						{
+							"name": "Day2Icon",
+							"type": "icon",
+							"location": [800, 50, 400, 400]
+						}
+					],
+					"location": [800, 0, 400, 900]
+				},
+				{
+					"name": "Forecast3",
+					"type": "daily",
+					"subtype": "day3",
+					"interval": 3600,
+					"background": null,
+					"images": {
+						"clear-day": "images/typi/weather/large/clear.png",
+						"clear-night": "images/typi/weather/large/n_clear.png",
+						"rain": "images/typi/weather/large/rain.png",
+						"snow": "images/typi/weather/large/snow.png",
+						"sleet": "images/typi/weather/large/sleet.png",
+						"wind": "images/typi/weather/large/clear.png",
+						"fog": "images/typi/weather/large/mostlycloudy.png",
+						"cloudy": "images/typi/weather/large/cloudy.png",
+						"partly-cloudy-day": "images/typi/weather/large/mostlysunny.png",
+						"partly-cloudy-night": "images/typi/weather/large/n_mostlysunny.png",
+						"default": "images/typi/weather/large/tstorms.png"
+					},
+					"data": [
+						{
+							"name": "Day3txt",
+							"type": "time",
+							"format": "{0:%A}",
+							"font": "sans-serif",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [1200, 0, 400, 50]
+						},
+						{
+							"name": "Day3Icon",
+							"type": "icon",
+							"location": [1200, 50, 400, 400]
+						}
+					],
+					"location": [1200, 0, 400, 900]
+				}
 			]
 		}
 	]

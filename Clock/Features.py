@@ -1,4 +1,4 @@
-import datetime, httplib2, json, random, os
+import datetime, httplib2, json, random, os, operator
 
 from PyQt4 import QtGui, QtCore
 from PyQt4.QtCore import Qt
@@ -535,17 +535,24 @@ class WeatherDisplay():
 	
 	def update(self):
 		
+		now = datetime.datetime.now()
+		
 		# Get weather data
 		if self.type == "currently":
 			self.weatherData = self.wObj.getCurrently()
 			
+			# Temperature
 			if self.temperature:
 				self.temperature.setText(str(self.weatherData['temperature'])+"\xb0F")
+			
+			# Icon
 			if self.icon:
 				if self.weatherData['icon'] in self.supportedIcons:
 					self.icon.setPixmap(QPixmap(self.images[self.weatherData['icon']]).scaled(self.icon.size().width(), self.icon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
 				else:
 					self.icon.setPixmap(QPixmap(self.images['default']).scaled(self.icon.size().width(), self.icon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
+			
+			# Summary
 			if self.summary:
 				self.summary.setText(self.weatherData['summary'])
 				
@@ -557,9 +564,44 @@ class WeatherDisplay():
 		
 		elif self.type == "daily":
 			self.weatherData = self.wObj.getDaily()
+			daysData = self.weatherData['data']
+			daysData.sort(key=operator.itemgetter('time'))
+			
+			if self.subtype == "day0":
+				dayData = daysData[0]
+			elif self.subtype == "day1":
+				dayData = daysData[1]
+			elif self.subtype == "day2":
+				dayData = daysData[2]
+			elif self.subtype == "day3":
+				dayData = daysData[3]
+			elif self.subtype == "day4":
+				dayData = daysData[4]
+			elif self.subtype == "day5":
+				dayData = daysData[5]
+			elif self.subtype == "day6":
+				dayData = daysData[6]
+			elif self.subtype == "day7":
+				dayData = daysData[7]
 			
 			if self.topSummary:
 				self.topSummary.setText(self.weatherData['summary'])
+				
+			if self.topIcon:
+				if self.weatherData['icon'] in self.supportedIcons:
+					self.topIcon.setPixmap(QPixmap(self.images[self.weatherData['icon']]).scaled(self.topIcon.size().width(), self.topIcon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
+				else:
+					self.topIcon.setPixmap(QPixmap(self.images['default']).scaled(self.topIcon.size().width(), self.topIcon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
+				
+			if self.timeData:
+				dayTime = datetime.datetime.fromtimestamp(dayData['time'])
+				self.timeData.setText(self.timeFormat.format(dayTime))
+			
+			if self.icon:
+				if dayData['icon'] in self.supportedIcons:
+					self.icon.setPixmap(QPixmap(self.images[dayData['icon']]).scaled(self.icon.size().width(), self.icon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
+				else:
+					self.icon.setPixmap(QPixmap(self.images['default']).scaled(self.icon.size().width(), self.icon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
 				
 				
 		
@@ -569,12 +611,17 @@ class WeatherDisplay():
 		self.wObj = wObj
 		self.name = properties['name']
 		self.type = properties['type']
+		self.subtype = properties['subtype']
 		self.images = properties['images']
 		self.weatherData = {}
 		self.dataToDisplay = properties['data']
 		self.supportedIcons = ["clear-day", "clear-night", "rain", "snow", "sleet", "wind", "fog", "cloudy", "partly-cloudy-day", "partly-cloudy-night"]
 		
+		self.blockData = None # For minute, hour, and day blocks
+		
 		# Potential weather data
+		self.timeData = None
+		self.timeFormat = None
 		self.topSummary = None
 		self.summary = None
 		self.topIcon = None
@@ -582,8 +629,13 @@ class WeatherDisplay():
 		self.temperature = None
 		self.apparentTemperature = None
 		self.humidity = None
+		self.pressure = None
+		self.windSpeed = None
+		self.windBearing = None
 		self.temperatureHigh = None # only in daily
 		self.temperatureLow = None # only in daily
+		
+		now = datetime.datetime.now()
 		
 		# Create weather frame
 		self.wFrame = QFrame(page)
@@ -623,7 +675,6 @@ class WeatherDisplay():
 					else:
 						self.icon.setPixmap(QPixmap(self.images['default']).scaled(self.icon.size().width(), self.icon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
 					
-				
 				elif d['type'] == "temperature":
 					self.temperature = QLabel(page)
 					self.temperature.setObjectName(self.name+d['name'])
@@ -637,12 +688,23 @@ class WeatherDisplay():
 					
 				elif d['type'] == "apparentTemperature":
 					self.apparentTemperature = QLabel(page)
+					
 				elif d['type'] == "humidity":
 					self.humidity = QLabel(page)
 					
+				elif d['type'] == "pressure":
+					self.pressure = QLabel(page)
+					
+				elif d['type'] == "windSpeed":
+					self.windSpeed = QLabel(page)
+					
+				elif d['type'] == "windBearing":
+					self.windBearing = QLabel(page)
+					
 		elif self.type == "minutely":
 			self.weatherData = wObj.getMinutely()
-			pass # TODO
+			# TODO
+			
 		elif self.type == "hourly":
 			self.weatherData = wObj.getHourly()
 			for d in self.dataToDisplay:
@@ -659,7 +721,28 @@ class WeatherDisplay():
 					
 		elif self.type == "daily":
 			self.weatherData = wObj.getDaily()
+			daysData = self.weatherData['data']
+			daysData.sort(key=operator.itemgetter('time'))
+			
+			if self.subtype == "day0":
+				dayData = daysData[0]
+			elif self.subtype == "day1":
+				dayData = daysData[1]
+			elif self.subtype == "day2":
+				dayData = daysData[2]
+			elif self.subtype == "day3":
+				dayData = daysData[3]
+			elif self.subtype == "day4":
+				dayData = daysData[4]
+			elif self.subtype == "day5":
+				dayData = daysData[5]
+			elif self.subtype == "day6":
+				dayData = daysData[6]
+			elif self.subtype == "day7":
+				dayData = daysData[7]
+				
 			for d in self.dataToDisplay:
+				# TOP DATA
 				if d['type'] == "topSummary":
 					self.topSummary = QLabel(page)
 					self.topSummary.setObjectName(self.name+d['name'])
@@ -670,6 +753,62 @@ class WeatherDisplay():
 					self.topSummary.setAlignment(self.align(d['alignment']))
 					self.topSummary.setText(self.weatherData['summary'])
 					self.topSummary.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
+					
+				elif d['type'] == "topIcon":
+					self.topIcon = QLabel(page)
+					self.topIcon.setObjectName(self.name+d['name'])
+					self.topIcon.setStyleSheet("#"+self.name+d['name']+" { background-color: transparent; }")
+					self.topIcon.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
+					if self.weatherData['icon'] in self.supportedIcons:
+						self.topIcon.setPixmap(QPixmap(self.images[self.weatherData['icon']]).scaled(self.topIcon.size().width(), self.topIcon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
+					else:
+						self.topIcon.setPixmap(QPixmap(self.images['default']).scaled(self.topIcon.size().width(), self.topIcon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
+					
+				# DATA BLOCKS
+				elif d['type'] == "time":
+					self.timeFormat = d['format']
+					self.timeData = QLabel(page)
+					self.timeData.setObjectName(self.name+d['name'])
+					self.timeData.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
+					d['color'] + "; background-color: transparent; font-size: "+
+					d['fontsize']+"px; "+
+					d['fontattr']+"}")
+					self.timeData.setAlignment(self.align(d['alignment']))
+					dayTime = datetime.datetime.fromtimestamp(dayData['time'])
+					self.timeData.setText(self.timeFormat.format(dayTime))
+					self.timeData.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
+					
+				elif 	d['type'] == "summary":
+					self.summary = QLabel(page)
+					
+				elif d['type'] == "icon":
+					self.icon = QLabel(page)
+					self.icon.setObjectName(self.name+d['name'])
+					self.icon.setStyleSheet("#"+self.name+d['name']+" { background-color: transparent; }")
+					self.icon.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
+					if self.weatherData['icon'] in self.supportedIcons:
+						self.icon.setPixmap(QPixmap(self.images[self.weatherData['icon']]).scaled(self.icon.size().width(), self.icon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
+					else:
+						self.icon.setPixmap(QPixmap(self.images['default']).scaled(self.icon.size().width(), self.icon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
+					
+				elif d['type'] == "temperatureHigh":
+					self.temperatureHigh = QLabel(page)
+					
+				elif d['type'] == "temperatureLow":
+					self.temperatureLow = QLabel(page)
+					
+				elif d['type'] == "humidity":
+					self.humidity = QLabel(page)
+					
+				elif d['type'] == "pressure":
+					self.pressure = QLabel(page)
+					
+				elif d['type'] == "windSpeed":
+					self.windSpeed = QLabel(page)
+					
+				elif d['type'] == "windBearing":
+					self.windBearing = QLabel(page)
+				
 		
 		# Start timer
 		self.timer = QtCore.QTimer()
