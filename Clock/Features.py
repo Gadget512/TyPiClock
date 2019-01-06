@@ -543,7 +543,7 @@ class WeatherDisplay():
 			
 			# Temperature
 			if self.temperature:
-				self.temperature.setText(str(self.weatherData['temperature'])+"\xb0F")
+				self.temperature.setText(self.temperatureFormat.format(self.weatherData['temperature']))
 			
 			# Icon
 			if self.icon:
@@ -627,6 +627,7 @@ class WeatherDisplay():
 		self.topIcon = None
 		self.icon = None
 		self.temperature = None
+		self.temperatureFormat = None
 		self.apparentTemperature = None
 		self.humidity = None
 		self.pressure = None
@@ -676,6 +677,7 @@ class WeatherDisplay():
 						self.icon.setPixmap(QPixmap(self.images['default']).scaled(self.icon.size().width(), self.icon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
 					
 				elif d['type'] == "temperature":
+					self.temperatureFormat = d['format']
 					self.temperature = QLabel(page)
 					self.temperature.setObjectName(self.name+d['name'])
 					self.temperature.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
@@ -683,7 +685,7 @@ class WeatherDisplay():
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
 					self.temperature.setAlignment(self.align(d['alignment']))
-					self.temperature.setText(str(self.weatherData['temperature'])+"\xb0F")
+					self.temperature.setText(self.temperatureFormat.format(self.weatherData['temperature']))
 					self.temperature.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
 				elif d['type'] == "apparentTemperature":
