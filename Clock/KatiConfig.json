@@ -258,6 +258,34 @@
 							"name": "TodayIcon",
 							"type": "icon",
 							"location": [50, 50, 300, 300]
+						},
+						{
+							"name": "TodayHighTemp",
+							"type": "temperatureHigh",
+							"format": "High: {:.0f}\u00b0F",
+							"font": "sans-serif",
+							"fontsize": "60",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [0, 400, 400, 100]
+						},
+						{
+							"name": "TodayLowTemp",
+							"type": "temperatureLow",
+							"format": "Low: {:.0f}\u00b0F",
+							"font": "sans-serif",
+							"fontsize": "60",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [0, 500, 400, 100]
 						}
 					],
 					"location": [0, 0, 400, 900]
@@ -315,6 +343,34 @@
 							"name": "TomIcon",
 							"type": "icon",
 							"location": [450, 50, 300, 300]
+						},
+						{
+							"name": "TomHighTemp",
+							"type": "temperatureHigh",
+							"format": "High: {:.0f}\u00b0F",
+							"font": "sans-serif",
+							"fontsize": "60",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [400, 400, 400, 100]
+						},
+						{
+							"name": "TomLowTemp",
+							"type": "temperatureLow",
+							"format": "Low: {:.0f}\u00b0F",
+							"font": "sans-serif",
+							"fontsize": "60",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [400, 500, 400, 100]
 						}
 					],
 					"location": [400, 0, 400, 900]
@@ -372,6 +428,34 @@
 							"name": "Day2Icon",
 							"type": "icon",
 							"location": [850, 50, 300, 300]
+						},
+						{
+							"name": "Day2HighTemp",
+							"type": "temperatureHigh",
+							"format": "High: {:.0f}\u00b0F",
+							"font": "sans-serif",
+							"fontsize": "60",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [800, 400, 400, 100]
+						},
+						{
+							"name": "Day2LowTemp",
+							"type": "temperatureLow",
+							"format": "Low: {:.0f}\u00b0F",
+							"font": "sans-serif",
+							"fontsize": "60",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [800, 500, 400, 100]
 						}
 					],
 					"location": [800, 0, 400, 900]
@@ -429,6 +513,34 @@
 							"name": "Day3Icon",
 							"type": "icon",
 							"location": [1250, 50, 300, 300]
+						},
+						{
+							"name": "Day3HighTemp",
+							"type": "temperatureHigh",
+							"format": "High: {:.0f}\u00b0F",
+							"font": "sans-serif",
+							"fontsize": "60",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [1200, 400, 400, 100]
+						},
+						{
+							"name": "Day4LowTemp",
+							"type": "temperatureLow",
+							"format": "Low: {:.0f}\u00b0F",
+							"font": "sans-serif",
+							"fontsize": "60",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [1200, 500, 400, 100]
 						}
 					],
 					"location": [1200, 0, 400, 900]

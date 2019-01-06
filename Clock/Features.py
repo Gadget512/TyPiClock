@@ -625,7 +625,13 @@ class WeatherDisplay():
 				else:
 					self.icon.setPixmap(QPixmap(self.images['default']).scaled(self.icon.size().width(), self.icon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
 			
-			# Temperature High	
+			# Temperature High
+			if self.temperatureHigh:
+				self.temperatureHigh.setText(self.temperatureHighFormat.format(dayData['temperatureHigh']))
+			
+			# Temperature Low
+			if self.temperatureLow:
+				self.temperatureLow.setText(self.temperatureLowFormat.format(dayData['temperatureLow']))
 				
 		
 	def __init__(self, page, properties, wObj):
@@ -859,10 +865,28 @@ class WeatherDisplay():
 						self.icon.setPixmap(QPixmap(self.images['default']).scaled(self.icon.size().width(), self.icon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
 					
 				elif d['type'] == "temperatureHigh":
+					self.temperatureHighFormat = d['format']
 					self.temperatureHigh = QLabel(page)
+					self.temperatureHigh.setObjectName(self.name+d['name'])
+					self.temperatureHigh.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
+					d['color'] + "; background-color: transparent; font-size: "+
+					d['fontsize']+"px; "+
+					d['fontattr']+"}")
+					self.temperatureHigh.setAlignment(self.align(d['alignment']))
+					self.temperatureHigh.setText(self.temperatureHighFormat.format(dayData['temperatureHigh']))
+					self.temperatureHigh.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
 				elif d['type'] == "temperatureLow":
+					self.temperatureLowFormat = d['format']
 					self.temperatureLow = QLabel(page)
+					self.temperatureLow.setObjectName(self.name+d['name'])
+					self.temperatureLow.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
+					d['color'] + "; background-color: transparent; font-size: "+
+					d['fontsize']+"px; "+
+					d['fontattr']+"}")
+					self.temperatureLow.setAlignment(self.align(d['alignment']))
+					self.temperatureLow.setText(self.temperatureLowFormat.format(dayData['temperatureLow']))
+					self.temperatureLow.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
 				elif d['type'] == "humidity":
 					self.humidity = QLabel(page)
