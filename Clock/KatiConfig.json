@@ -21,10 +21,10 @@
 				{
 					"name": "MainClock",
 					"interval": 1,
-					"face": "images/kati_pics/clock/clock_face02.png",
-					"hour": "images/kati_pics/clock/hourhand.png",
-					"minute": "images/kati_pics/clock/minhand.png",
-					"second": "images/kati_pics/clock/sechand.png",
+					"face": "images/kati_clock/clock_face02.png",
+					"hour": "images/kati_clock/hourhand.png",
+					"minute": "images/kati_clock/minhand.png",
+					"second": "images/kati_clock/sechand.png",
 					"location": [1300, 600, 300, 300]
 				}
 			],
@@ -33,7 +33,7 @@
 				{
 					"name": "Date",
 					"interval": 3600,
-					"background": "images/kati_pics/clock/background.png",
+					"background": "images/kati_clock/background.png",
 					"format": "{0:%A, %B %d}",
 					"font": "sans-serif",
 					"fontsize": "40",
@@ -97,6 +97,7 @@
 				{
 					"name": "CurrentWeather",
 					"type": "currently",
+					"subtype": null,
 					"interval": 60,
 					"background": "images/kati_weather/weatherbg.png",
 					"images": {
@@ -116,7 +117,7 @@
 						{
 							"name": "currTemp",
 							"type": "temperature",
-							"format": "",
+							"format": "{:.0f}\u00b0F",
 							"font": "sans-serif",
 							"fontsize": "40",
 							"fontattr": "",
@@ -138,8 +139,9 @@
 				{
 					"name": "HourSummary",
 					"type": "hourly",
+					"subtype": null,
 					"interval": 300,
-					"background": "images/kati_pics/clock/background.png",
+					"background": "images/kati_clock/background.png",
 					"images": {
 						"clear-day": "images/typi/weather/large/clear.png",
 						"clear-night": "images/typi/weather/large/n_clear.png",
@@ -170,6 +172,79 @@
 						}
 					],
 					"location": [550, 850, 500, 50]
+				}
+			]
+		},
+		{
+			"num": 1,
+			"background": "images/DenverSkyline_900.jpg",
+			
+			"clocks": [
+				
+			],
+			
+			"datetimes": [
+				
+			],
+			
+			"slideshows": [
+				
+			],
+			
+			"images": [
+			
+			],
+			
+			"texts": [
+				
+			],
+			
+			"calendars": [
+			
+			],
+			
+			"weathers": [
+				{
+					"name": "Forecast0",
+					"type": "daily",
+					"subtype": "day0",
+					"interval": 3600,
+					"background": null,
+					"images": {
+						"clear-day": "images/typi/weather/large/clear.png",
+						"clear-night": "images/typi/weather/large/n_clear.png",
+						"rain": "images/typi/weather/large/rain.png",
+						"snow": "images/typi/weather/large/snow.png",
+						"sleet": "images/typi/weather/large/sleet.png",
+						"wind": "images/typi/weather/large/clear.png",
+						"fog": "images/typi/weather/large/mostlycloudy.png",
+						"cloudy": "images/typi/weather/large/cloudy.png",
+						"partly-cloudy-day": "images/typi/weather/large/mostlysunny.png",
+						"partly-cloudy-night": "images/typi/weather/large/n_mostlysunny.png",
+						"default": "images/typi/weather/large/tstorms.png"
+					},
+					"data": [
+						{
+							"name": "Todaytxt",
+							"type": "time",
+							"format": "{0:%A}",
+							"font": "sans-serif",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [0, 0, 400, 50]
+						},
+						{
+							"name": "TodayIcon",
+							"type": "icon",
+							"location": [0, 50, 400, 400]
+						}
+					],
+					"location": [0, 0, 400, 900]
 				}
 			]
 		}
