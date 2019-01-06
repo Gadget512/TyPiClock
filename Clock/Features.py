@@ -558,7 +558,23 @@ class WeatherDisplay():
 			if self.summary:
 				self.summary.setText(fill(self.summaryFormat.format(self.weatherData['summary']), width=self.summaryWidth))
 				
-			# TODO
+			# Apparent Temperature
+			if self.apparentTemperature:
+				self.apparentTemperature.setText(self.apparentTemperatureFormat.format(self.weatherData['apparentTemperature']))
+				
+			# Humidity
+			if self.humidity:
+				self.humidity.setText(self.humidityFormat.format(self.weatherData['humidity']))
+			
+			# Pressure
+			if self.pressure:
+				self.pressure.setText(self.pressureFormat.format(self.weatherData['pressure']))
+			
+			# Wind Speed
+				# TODO
+			
+			# Wind Bearing
+				# TODO
 				
 		# MINUTELY
 		elif self.type == "minutely":
@@ -640,6 +656,12 @@ class WeatherDisplay():
 			# Pressure
 			if self.pressure:
 				self.pressure.setText(self.pressureFormat.format(dayData['pressure']))
+				
+			# Wind Speed
+				# TODO
+				
+			# Wind Bearing
+				# TODO
 				
 		
 	def __init__(self, page, properties, wObj):
@@ -749,16 +771,40 @@ class WeatherDisplay():
 					self.temperature.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
 				elif d['type'] == "apparentTemperature":
+					self.apparentTemperatureFormat = d['format']
 					self.apparentTemperature = QLabel(page)
-					# TODO
+					self.apparentTemperature.setObjectName(self.name+d['name'])
+					self.apparentTemperature.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
+					d['color'] + "; background-color: transparent; font-size: "+
+					d['fontsize']+"px; "+
+					d['fontattr']+"}")
+					self.apparentTemperature.setAlignment(self.align(d['alignment']))
+					self.apparentTemperature.setText(self.apparentTemperatureFormat.format(self.weatherData['apparentTemperature']))
+					self.apparentTemperature.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
 				elif d['type'] == "humidity":
+					self.humidityFormat = d['format']
 					self.humidity = QLabel(page)
-					# TODO
+					self.humidity.setObjectName(self.name+d['name'])
+					self.humidity.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
+					d['color'] + "; background-color: transparent; font-size: "+
+					d['fontsize']+"px; "+
+					d['fontattr']+"}")
+					self.humidity.setAlignment(self.align(d['alignment']))
+					self.humidity.setText(self.humidityFormat.format(self.weatherData['humidity']))
+					self.humidity.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
 				elif d['type'] == "pressure":
+					self.pressureFormat = d['format']
 					self.pressure = QLabel(page)
-					# TODO
+					self.pressure.setObjectName(self.name+d['name'])
+					self.pressure.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
+					d['color'] + "; background-color: transparent; font-size: "+
+					d['fontsize']+"px; "+
+					d['fontattr']+"}")
+					self.pressure.setAlignment(self.align(d['alignment']))
+					self.pressure.setText(self.pressureFormat.format(self.weatherData['pressure']))
+					self.pressure.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
 				elif d['type'] == "windSpeed":
 					self.windSpeed = QLabel(page)
