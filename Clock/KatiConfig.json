@@ -159,7 +159,7 @@
 						{
 							"name": "HSum",
 							"type": "topSummary",
-							"format": "",
+							"format": "{:.0f}\u00b0F",
 							"font": "sans-serif",
 							"fontsize": "20",
 							"fontattr": "",
