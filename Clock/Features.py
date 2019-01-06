@@ -633,6 +633,14 @@ class WeatherDisplay():
 			if self.temperatureLow:
 				self.temperatureLow.setText(self.temperatureLowFormat.format(dayData['temperatureLow']))
 				
+			# Humidity
+			if self.humidity:
+				self.humidity.setText(self.humidityFormat.format(dayData['humidity']))
+				
+			# Pressure
+			if self.pressure:
+				self.pressure.setText(self.pressureFormat.format(dayData['pressure']))
+				
 		
 	def __init__(self, page, properties, wObj):
 		
@@ -889,16 +897,36 @@ class WeatherDisplay():
 					self.temperatureLow.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
 				elif d['type'] == "humidity":
+					self.humidityFormat = d['format']
 					self.humidity = QLabel(page)
+					self.humidity.setObjectName(self.name+d['name'])
+					self.humidity.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
+					d['color'] + "; background-color: transparent; font-size: "+
+					d['fontsize']+"px; "+
+					d['fontattr']+"}")
+					self.humidity.setAlignment(self.align(d['alignment']))
+					self.humidity.setText(self.humidityFormat.format(dayData['humidity']))
+					self.humidity.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
 				elif d['type'] == "pressure":
+					self.pressureFormat = d['format']
 					self.pressure = QLabel(page)
+					self.pressure.setObjectName(self.name+d['name'])
+					self.pressure.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
+					d['color'] + "; background-color: transparent; font-size: "+
+					d['fontsize']+"px; "+
+					d['fontattr']+"}")
+					self.pressure.setAlignment(self.align(d['alignment']))
+					self.pressure.setText(self.pressureFormat.format(dayData['pressure']))
+					self.pressure.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
 				elif d['type'] == "windSpeed":
 					self.windSpeed = QLabel(page)
+					# TODO
 					
 				elif d['type'] == "windBearing":
 					self.windBearing = QLabel(page)
+					# TODO
 				
 		
 		# Start timer

@@ -307,6 +307,34 @@
 							
 							],
 							"location": [0, 500, 400, 100]
+						},
+						{
+							"name": "TodayHumidity",
+							"type": "humidity",
+							"format": "Humidity: {:.0%}",
+							"font": "sans-serif",
+							"fontsize": "20",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [0, 600, 400, 50]
+						},
+						{
+							"name": "TodayPressure",
+							"type": "pressure",
+							"format": "Pressure: {:0} mb",
+							"font": "sans-serif",
+							"fontsize": "20",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [0, 650, 400, 50]
 						}
 					],
 					"location": [0, 0, 400, 900]
@@ -392,6 +420,34 @@
 							
 							],
 							"location": [400, 500, 400, 100]
+						},
+						{
+							"name": "TomHumidity",
+							"type": "humidity",
+							"format": "Humidity: {:.0%}",
+							"font": "sans-serif",
+							"fontsize": "20",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [400, 600, 400, 50]
+						},
+						{
+							"name": "TomPressure",
+							"type": "pressure",
+							"format": "Pressure: {:0} mb",
+							"font": "sans-serif",
+							"fontsize": "20",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [400, 650, 400, 50]
 						}
 					],
 					"location": [400, 0, 400, 900]
@@ -477,6 +533,34 @@
 							
 							],
 							"location": [800, 500, 400, 100]
+						},
+						{
+							"name": "Day2Humidity",
+							"type": "humidity",
+							"format": "Humidity: {:.0%}",
+							"font": "sans-serif",
+							"fontsize": "20",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [800, 600, 400, 50]
+						},
+						{
+							"name": "Day2Pressure",
+							"type": "pressure",
+							"format": "Pressure: {:0} mb",
+							"font": "sans-serif",
+							"fontsize": "20",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [800, 650, 400, 50]
 						}
 					],
 					"location": [800, 0, 400, 900]
@@ -550,7 +634,7 @@
 							"location": [1200, 400, 400, 100]
 						},
 						{
-							"name": "Day4LowTemp",
+							"name": "Day3LowTemp",
 							"type": "temperatureLow",
 							"format": "Low: {:.0f}\u00b0F",
 							"font": "sans-serif",
@@ -562,6 +646,34 @@
 							
 							],
 							"location": [1200, 500, 400, 100]
+						},
+						{
+							"name": "Day3Humidity",
+							"type": "humidity",
+							"format": "Humidity: {:.0%}",
+							"font": "sans-serif",
+							"fontsize": "20",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [1200, 600, 400, 50]
+						},
+						{
+							"name": "Day3Pressure",
+							"type": "pressure",
+							"format": "Pressure: {:0} mb",
+							"font": "sans-serif",
+							"fontsize": "20",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [1200, 650, 400, 50]
 						}
 					],
 					"location": [1200, 0, 400, 900]
