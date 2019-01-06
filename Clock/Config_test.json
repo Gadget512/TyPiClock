@@ -81,7 +81,7 @@
 						{
 							"name": "currTemp",
 							"type": "temperature",
-							"format": "",
+							"format": "{:.0f}\u00b0F",
 							"font": "sans-serif",
 							"fontsize": "30",
 							"fontattr": "",
@@ -100,7 +100,7 @@
 						{
 							"name": "currSum",
 							"type": "summary",
-							"format": "",
+							"format": "{}",
 							"font": "sans-serif",
 							"fontsize": "30",
 							"fontattr": "",
@@ -137,7 +137,7 @@
 						{
 							"name": "DSum",
 							"type": "topSummary",
-							"format": "",
+							"format": "{}",
 							"font": "sans-serif",
 							"fontsize": "30",
 							"fontattr": "",
@@ -174,7 +174,7 @@
 						{
 							"name": "HSum",
 							"type": "topSummary",
-							"format": "",
+							"format": "{}",
 							"font": "sans-serif",
 							"fontsize": "30",
 							"fontattr": "",
@@ -246,7 +246,7 @@
 						{
 							"name": "Todaytxt",
 							"type": "time",
-							"format": "{0:%A}",
+							"format": "Today",
 							"font": "sans-serif",
 							"fontsize": "40",
 							"fontattr": "",

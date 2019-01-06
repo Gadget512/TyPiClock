@@ -554,13 +554,13 @@ class WeatherDisplay():
 			
 			# Summary
 			if self.summary:
-				self.summary.setText(self.weatherData['summary'])
+				self.summary.setText(self.summaryFormat(self.weatherData['summary']))
 				
 		elif self.type == "hourly":
 			self.weatherData = self.wObj.getHourly()
 			
 			if self.topSummary:
-				self.topSummary.setText(self.weatherData['summary'])
+				self.topSummary.setText(self.topSummaryFormat(self.weatherData['summary']))
 		
 		elif self.type == "daily":
 			self.weatherData = self.wObj.getDaily()
@@ -585,7 +585,7 @@ class WeatherDisplay():
 				dayData = daysData[7]
 			
 			if self.topSummary:
-				self.topSummary.setText(self.weatherData['summary'])
+				self.topSummary.setText(self.topSummaryFormat(self.weatherData['summary']))
 				
 			if self.topIcon:
 				if self.weatherData['icon'] in self.supportedIcons:
@@ -622,19 +622,38 @@ class WeatherDisplay():
 		# Potential weather data
 		self.timeData = None
 		self.timeFormat = None
+		
 		self.topSummary = None
+		self.topSummaryFormat = None
+		
 		self.summary = None
+		self.summaryFormat = None
+		
 		self.topIcon = None
 		self.icon = None
+		
 		self.temperature = None
 		self.temperatureFormat = None
+		
 		self.apparentTemperature = None
+		self.apparentTemperatureFormat = None
+		
 		self.humidity = None
+		self.humidityFormat = None
+		
 		self.pressure = None
+		self.pressureFormat = None
+		
 		self.windSpeed = None
+		self.windSpeedFormat = None
+		
 		self.windBearing = None
+		self.windBearingFormat = None
+		
 		self.temperatureHigh = None # only in daily
+		self.temperatureHighFormat = None
 		self.temperatureLow = None # only in daily
+		self.temperatureLowFormat = None
 		
 		now = datetime.datetime.now()
 		
@@ -656,6 +675,7 @@ class WeatherDisplay():
 			self.weatherData = wObj.getCurrently()
 			for d in self.dataToDisplay:
 				if d['type'] == "summary":
+					self.summaryFormat = d['format']
 					self.summary = QLabel(page)
 					self.summary.setObjectName(self.name+d['name'])
 					self.summary.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
@@ -663,7 +683,7 @@ class WeatherDisplay():
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
 					self.summary.setAlignment(self.align(d['alignment']))
-					self.summary.setText(self.weatherData['summary'])
+					self.summary.setText(self.summaryFormat.format(self.weatherData['summary']))
 					self.summary.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 				
 				elif d['type'] == "icon":
@@ -690,18 +710,23 @@ class WeatherDisplay():
 					
 				elif d['type'] == "apparentTemperature":
 					self.apparentTemperature = QLabel(page)
+					# TODO
 					
 				elif d['type'] == "humidity":
 					self.humidity = QLabel(page)
+					# TODO
 					
 				elif d['type'] == "pressure":
 					self.pressure = QLabel(page)
+					# TODO
 					
 				elif d['type'] == "windSpeed":
 					self.windSpeed = QLabel(page)
+					# TODO
 					
 				elif d['type'] == "windBearing":
 					self.windBearing = QLabel(page)
+					# TODO
 					
 		elif self.type == "minutely":
 			self.weatherData = wObj.getMinutely()
@@ -711,6 +736,7 @@ class WeatherDisplay():
 			self.weatherData = wObj.getHourly()
 			for d in self.dataToDisplay:
 				if d['type'] == "topSummary":
+					self.topSummaryFormat = d['format']
 					self.topSummary = QLabel(page)
 					self.topSummary.setObjectName(self.name+d['name'])
 					self.topSummary.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
@@ -718,7 +744,7 @@ class WeatherDisplay():
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
 					self.topSummary.setAlignment(self.align(d['alignment']))
-					self.topSummary.setText(self.weatherData['summary'])
+					self.topSummary.setText(self.topSummaryFormat.format(self.weatherData['summary']))
 					self.topSummary.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
 		elif self.type == "daily":
@@ -746,6 +772,7 @@ class WeatherDisplay():
 			for d in self.dataToDisplay:
 				# TOP DATA
 				if d['type'] == "topSummary":
+					self.topSummaryFormat = d['format']
 					self.topSummary = QLabel(page)
 					self.topSummary.setObjectName(self.name+d['name'])
 					self.topSummary.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
