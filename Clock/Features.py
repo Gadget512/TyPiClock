@@ -535,9 +535,10 @@ class WeatherDisplay():
 	
 	def update(self):
 		
-		now = datetime.datetime.now()
+		# TODO Needed for "last updated"?
+		#now = datetime.datetime.now()
 		
-		# Get weather data
+		# CURRENTLY
 		if self.type == "currently":
 			self.weatherData = self.wObj.getCurrently()
 			
@@ -556,12 +557,24 @@ class WeatherDisplay():
 			if self.summary:
 				self.summary.setText(self.summaryFormat(self.weatherData['summary']))
 				
+			# TODO
+				
+		# MINUTELY
+		elif self.type == "minutely":
+			self.weatherData = self.wObj.getMinutely()
+			# TODO
+		
+		# HOURLY
 		elif self.type == "hourly":
 			self.weatherData = self.wObj.getHourly()
 			
+			# Top Summary
 			if self.topSummary:
 				self.topSummary.setText(self.topSummaryFormat(self.weatherData['summary']))
+				
+			# TODO
 		
+		# DAILY
 		elif self.type == "daily":
 			self.weatherData = self.wObj.getDaily()
 			daysData = self.weatherData['data']
@@ -584,25 +597,34 @@ class WeatherDisplay():
 			elif self.subtype == "day7":
 				dayData = daysData[7]
 			
+			# Top Summary
 			if self.topSummary:
 				self.topSummary.setText(self.topSummaryFormat(self.weatherData['summary']))
 				
+			# Top Icon
 			if self.topIcon:
 				if self.weatherData['icon'] in self.supportedIcons:
 					self.topIcon.setPixmap(QPixmap(self.images[self.weatherData['icon']]).scaled(self.topIcon.size().width(), self.topIcon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
 				else:
 					self.topIcon.setPixmap(QPixmap(self.images['default']).scaled(self.topIcon.size().width(), self.topIcon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
 				
+			# Time
 			if self.timeData:
 				dayTime = datetime.datetime.fromtimestamp(dayData['time'])
 				self.timeData.setText(self.timeFormat.format(dayTime))
+				
+			# Summary
+			if self.summary:
+				self.summary.setText(self.summaryFormat(dayData['summary']))
 			
+			# Icon
 			if self.icon:
 				if dayData['icon'] in self.supportedIcons:
 					self.icon.setPixmap(QPixmap(self.images[dayData['icon']]).scaled(self.icon.size().width(), self.icon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
 				else:
 					self.icon.setPixmap(QPixmap(self.images['default']).scaled(self.icon.size().width(), self.icon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
-				
+			
+			# Temperature High	
 				
 		
 	def __init__(self, page, properties, wObj):
@@ -808,7 +830,16 @@ class WeatherDisplay():
 					self.timeData.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
 				elif 	d['type'] == "summary":
+					self.summaryFormat = d['format']
 					self.summary = QLabel(page)
+					self.summary.setObjectName(self.name+d['name'])
+					self.summary.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
+					d['color'] + "; background-color: transparent; font-size: "+
+					d['fontsize']+"px; "+
+					d['fontattr']+"}")
+					self.summary.setAlignment(self.align(d['alignment']))
+					self.summary.setText(self.summaryFormat.format(dayData['summary']))
+					self.summary.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
 				elif d['type'] == "icon":
 					self.icon = QLabel(page)
@@ -816,7 +847,7 @@ class WeatherDisplay():
 					self.icon.setStyleSheet("#"+self.name+d['name']+" { background-color: transparent; }")
 					self.icon.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					if self.weatherData['icon'] in self.supportedIcons:
-						self.icon.setPixmap(QPixmap(self.images[self.weatherData['icon']]).scaled(self.icon.size().width(), self.icon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
+						self.icon.setPixmap(QPixmap(self.images[dayData['icon']]).scaled(self.icon.size().width(), self.icon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
 					else:
 						self.icon.setPixmap(QPixmap(self.images['default']).scaled(self.icon.size().width(), self.icon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
 					

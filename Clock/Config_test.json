@@ -228,7 +228,7 @@
 					"type": "daily",
 					"subtype": "day0",
 					"interval": 3600,
-					"background": null,
+					"background": "images/kati_weather/weather_daily_bg.png",
 					"images": {
 						"clear-day": "images/typi/weather/large/clear.png",
 						"clear-night": "images/typi/weather/large/n_clear.png",
@@ -258,9 +258,23 @@
 							"location": [0, 0, 400, 50]
 						},
 						{
+							"name": "TodaySum",
+							"type": "summary",
+							"format": "{}",
+							"font": "sans-serif",
+							"fontsize": "20",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [0, 350, 400, 50]
+						},
+						{
 							"name": "TodayIcon",
 							"type": "icon",
-							"location": [0, 50, 400, 400]
+							"location": [50, 50, 300, 300]
 						}
 					],
 					"location": [0, 0, 400, 900]
@@ -270,7 +284,7 @@
 					"type": "daily",
 					"subtype": "day1",
 					"interval": 3600,
-					"background": null,
+					"background": "images/kati_weather/weather_daily_bg.png",
 					"images": {
 						"clear-day": "images/typi/weather/large/clear.png",
 						"clear-night": "images/typi/weather/large/n_clear.png",
@@ -300,9 +314,23 @@
 							"location": [400, 0, 400, 50]
 						},
 						{
+							"name": "TomSum",
+							"type": "summary",
+							"format": "{}",
+							"font": "sans-serif",
+							"fontsize": "20",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [400, 350, 400, 50]
+						},
+						{
 							"name": "TomIcon",
 							"type": "icon",
-							"location": [400, 50, 400, 400]
+							"location": [450, 50, 300, 300]
 						}
 					],
 					"location": [400, 0, 400, 900]
@@ -312,7 +340,7 @@
 					"type": "daily",
 					"subtype": "day2",
 					"interval": 3600,
-					"background": null,
+					"background": "images/kati_weather/weather_daily_bg.png",
 					"images": {
 						"clear-day": "images/typi/weather/large/clear.png",
 						"clear-night": "images/typi/weather/large/n_clear.png",
@@ -342,9 +370,23 @@
 							"location": [800, 0, 400, 50]
 						},
 						{
+							"name": "Day2Sum",
+							"type": "summary",
+							"format": "{}",
+							"font": "sans-serif",
+							"fontsize": "20",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [800, 350, 400, 50]
+						},
+						{
 							"name": "Day2Icon",
 							"type": "icon",
-							"location": [800, 50, 400, 400]
+							"location": [850, 50, 300, 300]
 						}
 					],
 					"location": [800, 0, 400, 900]
@@ -354,7 +396,7 @@
 					"type": "daily",
 					"subtype": "day3",
 					"interval": 3600,
-					"background": null,
+					"background": "images/kati_weather/weather_daily_bg.png",
 					"images": {
 						"clear-day": "images/typi/weather/large/clear.png",
 						"clear-night": "images/typi/weather/large/n_clear.png",
@@ -384,9 +426,23 @@
 							"location": [1200, 0, 400, 50]
 						},
 						{
+							"name": "Day3Sum",
+							"type": "summary",
+							"format": "{}",
+							"font": "sans-serif",
+							"fontsize": "20",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [1200, 350, 400, 50]
+						},
+						{
 							"name": "Day3Icon",
 							"type": "icon",
-							"location": [1200, 50, 400, 400]
+							"location": [1250, 50, 300, 300]
 						}
 					],
 					"location": [1200, 0, 400, 900]
