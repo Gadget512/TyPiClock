@@ -1,4 +1,5 @@
 import datetime, httplib2, json, random, os, operator
+from textwrap import fill
 
 from PyQt4 import QtGui, QtCore
 from PyQt4.QtCore import Qt
@@ -555,7 +556,7 @@ class WeatherDisplay():
 			
 			# Summary
 			if self.summary:
-				self.summary.setText(self.summaryFormat(self.weatherData['summary']))
+				self.summary.setText(fill(self.summaryFormat(self.weatherData['summary']), width=self.summaryWidth))
 				
 			# TODO
 				
@@ -570,7 +571,7 @@ class WeatherDisplay():
 			
 			# Top Summary
 			if self.topSummary:
-				self.topSummary.setText(self.topSummaryFormat(self.weatherData['summary']))
+				self.topSummary.setText(fill(self.topSummaryFormat(self.weatherData['summary']), width=self.topSummaryWidth))
 				
 			# TODO
 		
@@ -599,7 +600,7 @@ class WeatherDisplay():
 			
 			# Top Summary
 			if self.topSummary:
-				self.topSummary.setText(self.topSummaryFormat(self.weatherData['summary']))
+				self.topSummary.setText(fill(self.topSummaryFormat(self.weatherData['summary']), width=self.topSummaryWidth))
 				
 			# Top Icon
 			if self.topIcon:
@@ -615,7 +616,7 @@ class WeatherDisplay():
 				
 			# Summary
 			if self.summary:
-				self.summary.setText(self.summaryFormat(dayData['summary']))
+				self.summary.setText(fill(self.summaryFormat(dayData['summary']), width=self.summaryWidth))
 			
 			# Icon
 			if self.icon:
@@ -647,9 +648,11 @@ class WeatherDisplay():
 		
 		self.topSummary = None
 		self.topSummaryFormat = None
+		self.topSummaryWidth = None
 		
 		self.summary = None
 		self.summaryFormat = None
+		self.summaryWidth = None
 		
 		self.topIcon = None
 		self.icon = None
@@ -698,6 +701,7 @@ class WeatherDisplay():
 			for d in self.dataToDisplay:
 				if d['type'] == "summary":
 					self.summaryFormat = d['format']
+					self.summaryWidth = d['width']
 					self.summary = QLabel(page)
 					self.summary.setObjectName(self.name+d['name'])
 					self.summary.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
@@ -705,7 +709,7 @@ class WeatherDisplay():
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
 					self.summary.setAlignment(self.align(d['alignment']))
-					self.summary.setText(self.summaryFormat.format(self.weatherData['summary']))
+					self.summary.setText(fill(self.summaryFormat.format(self.weatherData['summary']), width=self.summaryWidth))
 					self.summary.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 				
 				elif d['type'] == "icon":
@@ -759,6 +763,7 @@ class WeatherDisplay():
 			for d in self.dataToDisplay:
 				if d['type'] == "topSummary":
 					self.topSummaryFormat = d['format']
+					self.topSummaryWidth = d['width']
 					self.topSummary = QLabel(page)
 					self.topSummary.setObjectName(self.name+d['name'])
 					self.topSummary.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
@@ -766,7 +771,7 @@ class WeatherDisplay():
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
 					self.topSummary.setAlignment(self.align(d['alignment']))
-					self.topSummary.setText(self.topSummaryFormat.format(self.weatherData['summary']))
+					self.topSummary.setText(fill(self.topSummaryFormat.format(self.weatherData['summary']), width=self.topSummaryWidth))
 					self.topSummary.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
 		elif self.type == "daily":
@@ -795,6 +800,7 @@ class WeatherDisplay():
 				# TOP DATA
 				if d['type'] == "topSummary":
 					self.topSummaryFormat = d['format']
+					self.topSummaryWidth = d['width']
 					self.topSummary = QLabel(page)
 					self.topSummary.setObjectName(self.name+d['name'])
 					self.topSummary.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
@@ -802,7 +808,7 @@ class WeatherDisplay():
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
 					self.topSummary.setAlignment(self.align(d['alignment']))
-					self.topSummary.setText(self.weatherData['summary'])
+					self.topSummary.setText(fill(self.weatherData['summary'], width=self.topSummaryWidth))
 					self.topSummary.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
 				elif d['type'] == "topIcon":
@@ -831,6 +837,7 @@ class WeatherDisplay():
 					
 				elif 	d['type'] == "summary":
 					self.summaryFormat = d['format']
+					self.summaryWidth = d['width']
 					self.summary = QLabel(page)
 					self.summary.setObjectName(self.name+d['name'])
 					self.summary.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
@@ -838,7 +845,7 @@ class WeatherDisplay():
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
 					self.summary.setAlignment(self.align(d['alignment']))
-					self.summary.setText(self.summaryFormat.format(dayData['summary']))
+					self.summary.setText(fill(self.summaryFormat.format(dayData['summary']), width=self.summaryWidth))
 					self.summary.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
 				elif d['type'] == "icon":
