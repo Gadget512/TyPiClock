@@ -160,6 +160,7 @@
 							"name": "HSum",
 							"type": "topSummary",
 							"format": "{}",
+							"width": 500,
 							"font": "sans-serif",
 							"fontsize": "20",
 							"fontattr": "",

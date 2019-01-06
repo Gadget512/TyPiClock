@@ -556,7 +556,7 @@ class WeatherDisplay():
 			
 			# Summary
 			if self.summary:
-				self.summary.setText(fill(self.summaryFormat(self.weatherData['summary']), width=self.summaryWidth))
+				self.summary.setText(fill(self.summaryFormat.format(self.weatherData['summary']), width=self.summaryWidth))
 				
 			# TODO
 				
@@ -571,7 +571,7 @@ class WeatherDisplay():
 			
 			# Top Summary
 			if self.topSummary:
-				self.topSummary.setText(fill(self.topSummaryFormat(self.weatherData['summary']), width=self.topSummaryWidth))
+				self.topSummary.setText(fill(self.topSummaryFormat.format(self.weatherData['summary']), width=self.topSummaryWidth))
 				
 			# TODO
 		
@@ -600,7 +600,7 @@ class WeatherDisplay():
 			
 			# Top Summary
 			if self.topSummary:
-				self.topSummary.setText(fill(self.topSummaryFormat(self.weatherData['summary']), width=self.topSummaryWidth))
+				self.topSummary.setText(fill(self.topSummaryFormat.format(self.weatherData['summary']), width=self.topSummaryWidth))
 				
 			# Top Icon
 			if self.topIcon:
@@ -616,7 +616,7 @@ class WeatherDisplay():
 				
 			# Summary
 			if self.summary:
-				self.summary.setText(fill(self.summaryFormat(dayData['summary']), width=self.summaryWidth))
+				self.summary.setText(fill(self.summaryFormat.format(dayData['summary']), width=self.summaryWidth))
 			
 			# Icon
 			if self.icon:

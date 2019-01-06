@@ -101,7 +101,7 @@
 							"name": "currSum",
 							"type": "summary",
 							"format": "{}",
-							"width": 20,
+							"width": 500,
 							"font": "sans-serif",
 							"fontsize": "30",
 							"fontattr": "",
