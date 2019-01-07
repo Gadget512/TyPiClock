@@ -79,6 +79,7 @@ class Window(QtGui.QWidget):
 		
 		# Weather data (independent of pages, feature objects pull data as needed)
 		loc = {"lat": str(self.config['config']['location']['lat']), "lng": str(self.config['config']['location']['lng'])}
+		# TODO Handle weather not specified
 		self.weather = Weather(self.config['config']['weather'], loc)
 		
 		# TODO

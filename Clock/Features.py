@@ -272,7 +272,7 @@ class Slideshow():
 
 class Calendar():
 	
-	def tick(self):
+	def update(self):
 		return 0
 	
 	def __init__(self, page, properties):
@@ -348,7 +348,7 @@ class Calendar():
 		
 		# Start timer
 		self.timer = QtCore.QTimer()
-		self.timer.timeout.connect(self.tick)
+		self.timer.timeout.connect(self.update)
 		self.timer.start(properties['interval']*1000)
 			
 	def getEvents(self, day=None, month=None, year=None):
