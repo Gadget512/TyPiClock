@@ -6,9 +6,14 @@
 		},
 		"weather": {
 			"uri": "https://api.darksky.net/forecast/",
-			"api": "5dbbfda20bd2846c0eb832b28d6b2a2d",
+			"api": "",
 			"stream": "",
 			"interval": 600
+		},
+		"calendar": {
+			"uri": "",
+			"api": "",
+			"interval": 3600
 		}
 	},
 	
@@ -677,6 +682,63 @@
 						}
 					],
 					"location": [1200, 0, 400, 900]
+				}
+			]
+		},
+		{
+			"num": 2,
+			"background": "images/default/DenverSkyline_1080",
+			
+			"clocks": [
+				
+			],
+			
+			"datetimes": [
+				
+			],
+			
+			"slideshows": [
+				
+			],
+			
+			"texts": [
+				
+			],
+			
+			"images": [
+				
+			],
+			
+			"weathers": [
+				
+			],
+			
+			"calendars": [
+				{
+					"name": "MonthCalendar",
+					"type": "28day",
+					"interval": 3600,
+					"background": null,
+					"cell": {
+						"size": [274, 250],
+						"background": "images/default/calendar/cell.png",
+						"datetimes": [
+							{
+								"name": "DayOfMonth",
+								"format": "{0:%d}",
+								"font": "sans-serif",
+								"fontsize": "30",
+								"fontattr": "",
+								"color": "#000000",
+								"alignment": 5,
+								"effects": [
+									
+								],
+								"location": [0, 0, 50, 50]
+							}
+						]
+					},
+					"location": [0, 80, 1920, 1080]
 				}
 			]
 		}
