@@ -140,7 +140,7 @@
 		},
 		{
 			"num": 1,
-			"background": "images/DenverSkyline_900.jpg",
+			"background": "images/default/DenverSkyline_900.jpg",
 			
 			"clocks": [
 				
@@ -174,17 +174,17 @@
 					"interval": 3600,
 					"background": "images/kati_weather/weather_daily_bg.png",
 					"images": {
-						"clear-day": "images/typi/weather/large/clear.png",
-						"clear-night": "images/typi/weather/large/clear.png",
-						"rain": "images/typi/weather/large/rain.png",
-						"snow": "images/typi/weather/large/snow.png",
-						"sleet": "images/typi/weather/large/sleet.png",
-						"wind": "images/typi/weather/large/clear.png",
-						"fog": "images/typi/weather/large/mostlycloudy.png",
-						"cloudy": "images/typi/weather/large/cloudy.png",
-						"partly-cloudy-day": "images/typi/weather/large/mostlysunny.png",
-						"partly-cloudy-night": "images/typi/weather/large/mostlysunny.png",
-						"default": "images/typi/weather/large/tstorms.png"
+						"clear-day": "images/default/weather/clear.png",
+						"clear-night": "images/default/weather/clear.png",
+						"rain": "images/default/weather/rain.png",
+						"snow": "images/default/weather/snow.png",
+						"sleet": "images/default/weather/sleet.png",
+						"wind": "images/default/weather/clear.png",
+						"fog": "images/default/weather/mostlycloudy.png",
+						"cloudy": "images/default/weather/cloudy.png",
+						"partly-cloudy-day": "images/default/weather/mostlysunny.png",
+						"partly-cloudy-night": "images/default/weather/mostlysunny.png",
+						"default": "images/default/weather/tstorms.png"
 					},
 					"data": [
 						{
@@ -287,17 +287,17 @@
 					"interval": 3600,
 					"background": "images/kati_weather/weather_daily_bg.png",
 					"images": {
-						"clear-day": "images/typi/weather/large/clear.png",
-						"clear-night": "images/typi/weather/large/clear.png",
-						"rain": "images/typi/weather/large/rain.png",
-						"snow": "images/typi/weather/large/snow.png",
-						"sleet": "images/typi/weather/large/sleet.png",
-						"wind": "images/typi/weather/large/clear.png",
-						"fog": "images/typi/weather/large/mostlycloudy.png",
-						"cloudy": "images/typi/weather/large/cloudy.png",
-						"partly-cloudy-day": "images/typi/weather/large/mostlysunny.png",
-						"partly-cloudy-night": "images/typi/weather/large/mostlysunny.png",
-						"default": "images/typi/weather/large/tstorms.png"
+						"clear-day": "images/default/weather/clear.png",
+						"clear-night": "images/default/weather/clear.png",
+						"rain": "images/default/weather/rain.png",
+						"snow": "images/default/weather/snow.png",
+						"sleet": "images/default/weather/sleet.png",
+						"wind": "images/default/weather/clear.png",
+						"fog": "images/default/weather/mostlycloudy.png",
+						"cloudy": "images/default/weather/cloudy.png",
+						"partly-cloudy-day": "images/default/weather/mostlysunny.png",
+						"partly-cloudy-night": "images/default/weather/mostlysunny.png",
+						"default": "images/default/weather/tstorms.png"
 					},
 					"data": [
 						{
@@ -400,17 +400,17 @@
 					"interval": 3600,
 					"background": "images/kati_weather/weather_daily_bg.png",
 					"images": {
-						"clear-day": "images/typi/weather/large/clear.png",
-						"clear-night": "images/typi/weather/large/clear.png",
-						"rain": "images/typi/weather/large/rain.png",
-						"snow": "images/typi/weather/large/snow.png",
-						"sleet": "images/typi/weather/large/sleet.png",
-						"wind": "images/typi/weather/large/clear.png",
-						"fog": "images/typi/weather/large/mostlycloudy.png",
-						"cloudy": "images/typi/weather/large/cloudy.png",
-						"partly-cloudy-day": "images/typi/weather/large/mostlysunny.png",
-						"partly-cloudy-night": "images/typi/weather/large/mostlysunny.png",
-						"default": "images/typi/weather/large/tstorms.png"
+						"clear-day": "images/default/weather/clear.png",
+						"clear-night": "images/default/weather/clear.png",
+						"rain": "images/default/weather/rain.png",
+						"snow": "images/default/weather/snow.png",
+						"sleet": "images/default/weather/sleet.png",
+						"wind": "images/default/weather/clear.png",
+						"fog": "images/default/weather/mostlycloudy.png",
+						"cloudy": "images/default/weather/cloudy.png",
+						"partly-cloudy-day": "images/default/weather/mostlysunny.png",
+						"partly-cloudy-night": "images/default/weather/mostlysunny.png",
+						"default": "images/default/weather/tstorms.png"
 					},
 					"data": [
 						{
@@ -513,17 +513,17 @@
 					"interval": 3600,
 					"background": "images/kati_weather/weather_daily_bg.png",
 					"images": {
-						"clear-day": "images/typi/weather/large/clear.png",
-						"clear-night": "images/typi/weather/large/clear.png",
-						"rain": "images/typi/weather/large/rain.png",
-						"snow": "images/typi/weather/large/snow.png",
-						"sleet": "images/typi/weather/large/sleet.png",
-						"wind": "images/typi/weather/large/clear.png",
-						"fog": "images/typi/weather/large/mostlycloudy.png",
-						"cloudy": "images/typi/weather/large/cloudy.png",
-						"partly-cloudy-day": "images/typi/weather/large/mostlysunny.png",
-						"partly-cloudy-night": "images/typi/weather/large/mostlysunny.png",
-						"default": "images/typi/weather/large/tstorms.png"
+						"clear-day": "images/default/weather/clear.png",
+						"clear-night": "images/default/weather/clear.png",
+						"rain": "images/default/weather/rain.png",
+						"snow": "images/default/weather/snow.png",
+						"sleet": "images/default/weather/sleet.png",
+						"wind": "images/default/weather/clear.png",
+						"fog": "images/default/weather/mostlycloudy.png",
+						"cloudy": "images/default/weather/cloudy.png",
+						"partly-cloudy-day": "images/default/weather/mostlysunny.png",
+						"partly-cloudy-night": "images/default/weather/mostlysunny.png",
+						"default": "images/default/weather/tstorms.png"
 					},
 					"data": [
 						{

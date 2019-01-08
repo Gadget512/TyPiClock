@@ -316,7 +316,7 @@ class CalendarDisplay():
 				for x in range (0,7):
 					cellLabel = QLabel(page)
 					cellLabel.setObjectName(properties['name']+str(y+x))
-					cellLabel.setStyleSheet("#"+properties['name']+str(y+x)+"
+					cellLabel.setStyleSheet("#"+properties['name']+str(y+x)+"")
 					
 					self.topSummaryFormat = d['format']
 					self.topSummaryWidth = d['width']

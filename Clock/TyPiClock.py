@@ -9,7 +9,7 @@ import argparse, datetime, json, os, sys
 from PyQt4 import QtGui, QtCore
 from PyQt4.QtCore import Qt
 
-from Features import AnalogClock, Calendar, DateTime, Image, Slideshow, Weather, WeatherDisplay
+from Features import AnalogClock, CalendarDisplay, DateTime, Image, Slideshow, Weather, WeatherDisplay
 
 # TODO what is needed here:?
 import platform
