@@ -75,19 +75,19 @@ class Window(QtGui.QWidget):
 		self.images = []
 		self.clocks = []
 		self.datetimes = []
-		self.weathers = [] 
+		self.weathers = []
+		
+		# About Page
+		# TODO
+		#self.aboutPage = 
 		
 		# Weather data (independent of pages, feature objects pull data as needed)
 		loc = {"lat": str(self.config['config']['location']['lat']), "lng": str(self.config['config']['location']['lng'])}
-		# TODO Handle weather not specified
-		self.weather = Weather(self.config['config']['weather'], loc)
-		
+		if self.config['config']['weather']['api']:
+			self.weather = Weather(self.config['config']['weather'], loc)
+			
+		# Calendar data
 		# TODO
-		#print self.weather.getCurrently()
-		#currWeather = self.weather.getCurrently()
-		#temp = str(currWeather['temperature'])+"\u2109"
-		#print u'\xb0'
-		#print currWeather['icon']
 		
 		# Set up pages
 		for page in self.config['pages']:
@@ -103,7 +103,7 @@ class Window(QtGui.QWidget):
 				
 			# Calendars and Weather
 			for cal in page['calendars']:
-				self.calendars.append(Calendar(self.pages[page['num']], cal))
+				self.calendars.append(CalendarDisplay(self.pages[page['num']], cal))
 				# for weather in cal['weathers']:
 					# self.weathers.append(self.weather.addWeather(weather)) # TODO need to keep a list here, or let Weather handle them? (below)
 					#self.weather.addWeather(weather)
@@ -117,8 +117,9 @@ class Window(QtGui.QWidget):
 				self.datetimes.append(DateTime(self.pages[page['num']], dt))
 				
 			# Weathers
-			for wtr in page['weathers']:
-				self.weathers.append(WeatherDisplay(self.pages[page['num']], wtr, self.weather))
+			if self.config['config']['weather']['api']:
+				for wtr in page['weathers']:
+					self.weathers.append(WeatherDisplay(self.pages[page['num']], wtr, self.weather))
 		
 		
 		# Display page0
@@ -134,6 +135,8 @@ class Window(QtGui.QWidget):
 			
 			# EXIT:
 			if event.key() == Qt.Key_F4:
+				QtGui.QApplication.exit(0)
+			if event.key() == Qt.Key_Escape:
 				QtGui.QApplication.exit(0)
 			
 			# Cycle Pages:
@@ -164,7 +167,7 @@ class Window(QtGui.QWidget):
 			if event.key() == Qt.Key_9:
 				self.switchPage(page=8)
 			if event.key() == Qt.Key_0:
-				self.switchPage(page=0)
+				self.switchPage(page=9)
 					
 	def mousePressEvent(self, event):
 		if type(event) == QtGui.QMouseEvent:

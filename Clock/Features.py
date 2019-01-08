@@ -316,8 +316,9 @@ class CalendarDisplay():
 				for x in range (0,7):
 					cellLabel = QLabel(page)
 					cellLabel.setObjectName(properties['name']+str(y+x))
-					cellLabel.setStyleSheet("#"+properties['name']+str(y+x)+"")
+					cellLabel.setStyleSheet("#"+properties['name']+str(y+x)+"") # TODO
 					
+					"""
 					self.topSummaryFormat = d['format']
 					self.topSummaryWidth = d['width']
 					self.topSummary = QLabel(page)
@@ -329,6 +330,7 @@ class CalendarDisplay():
 					self.topSummary.setAlignment(self.align(d['alignment']))
 					self.topSummary.setText(fill(self.weatherData['summary'], width=self.topSummaryWidth))
 					self.topSummary.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
+					"""
 		
 		# Start timer
 		self.timer = QtCore.QTimer()
