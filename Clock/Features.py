@@ -270,7 +270,7 @@ class Slideshow():
 		self.timer.start(properties['interval']*1000)
 
 
-class Calendar():
+class CalendarDisplay():
 	
 	def update(self):
 		return 0
@@ -285,10 +285,12 @@ class Calendar():
 		self.service = discovery.build('calendar', 'v3', http=http)
 		"""
 		
+		now = datetime.datetime.now()
+		
 		# Initialize member variables
 		self.type = properties['type']
-		self.fontformat = properties['format']
-		self.datetimes = []
+		self.cell = properties['cell']
+		self.cells = []
 		
 		# Create calendar frame
 		self.calFrame = QFrame(page)
@@ -302,49 +304,31 @@ class Calendar():
 		else:
 			self.calFrame.setStyleSheet("#"+properties['name']+"frame { background-color: transparent;}")
 			
-		# Datetimes
-		for dt in properties['datetimes']:
-			self.datetimes.append(DateTime(page, dt))
+		if self.type == "1day":
+			pass
+			# TODO
+		elif self.type == "7day":
+			pass
+			# TODO
 			
-		# Weather TODO
-		#for weather in properties['weathers']:
-			
-			
-			
-		wxicon = QtGui.QLabel(self.calFrame)
-		wxicon.setObjectName("wxicon")
-		wxicon.setStyleSheet("#wxicon { background-color: transparent; }")
-		wxicon.setGeometry(0, 0, 128, 128)
-		
-		wxiconpixmap = QtGui.QPixmap("images/typi/weather/large/snow.png")
-		wxicon.setPixmap(wxiconpixmap.scaled(
-			wxicon.width(),
-			wxicon.height(),
-			Qt.IgnoreAspectRatio,
-			Qt.SmoothTransformation))
-		"""
-		wxicon2.setPixmap(wxiconpixmap.scaled(
-			wxicon.width(),
-			wxicon.height(),
-			Qt.IgnoreAspectRatio,
-			Qt.SmoothTransformation))
-		"""
-		
-		# Create calendar stylesheet based on given properties
-		self.calLabel = QLabel(page)
-		self.calLabel.setObjectName(properties['name'])
-		self.calLabel.setStyleSheet("#"+properties['name']+"{ font-family:"+self.fontformat['font']+"; color: "+
-			self.fontformat['color'] + "; background-color: transparent; font-size: "+
-			self.fontformat['fontsize']+"px; "+
-			self.fontformat['fontattr']+"}")
-			
-		# TODO effect
-			
-		# TODO alignment::: self.textLabel.setAlignment(Qt.AlignHCenter | Qt.AlignTop)
-		self.calLabel.setGeometry(self.fontformat['location'][0], self.fontformat['location'][1], self.fontformat['location'][2], self.fontformat['location'][3])
-		
-		# TODO
-		self.calLabel.setText("TEST1")
+		elif self.type == "28day":
+			for y in range(0,4):
+				for x in range (0,7):
+					cellLabel = QLabel(page)
+					cellLabel.setObjectName(properties['name']+str(y+x))
+					cellLabel.setStyleSheet("#"+properties['name']+str(y+x)+"
+					
+					self.topSummaryFormat = d['format']
+					self.topSummaryWidth = d['width']
+					self.topSummary = QLabel(page)
+					self.topSummary.setObjectName(self.name+d['name'])
+					self.topSummary.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
+					d['color'] + "; background-color: transparent; font-size: "+
+					d['fontsize']+"px; "+
+					d['fontattr']+"}")
+					self.topSummary.setAlignment(self.align(d['alignment']))
+					self.topSummary.setText(fill(self.weatherData['summary'], width=self.topSummaryWidth))
+					self.topSummary.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 		
 		# Start timer
 		self.timer = QtCore.QTimer()
@@ -463,7 +447,10 @@ class Weather():
 	
 	def update(self):
 		
-		self.weatherReply = self.http.request(self.weatherURI)
+		try:
+			self.weatherReply = self.http.request(self.weatherURI)
+		except:
+			print "Error requesting weather!"
 		
 		# TODO not needed?
 		"""
@@ -486,7 +473,10 @@ class Weather():
 		
 		self.weatherURI = properties['uri'] + properties['api'] +"/" + latlng['lat'] + "," + latlng['lng']
 		
-		self.weatherReply = self.http.request(self.weatherURI)
+		try:
+			self.weatherReply = self.http.request(self.weatherURI)
+		except:
+			print "Error requesting weather!"
 		
 		# Write weather to file
 		"""
@@ -505,9 +495,6 @@ class Weather():
 		self.timer.timeout.connect(self.update)
 		self.timer.start(properties['interval']*1000)
 		
-	def addWeather(self):
-		return 0 # TODO
-		
 	def getCurrently(self):
 		return self.weatherData['currently']
 		
@@ -519,17 +506,6 @@ class Weather():
 		
 	def getDaily(self):
 		return self.weatherData['daily']
-		
-	def getForecast(self): # TODO
-		return self.weatherData['forecast']
-		
-	def getSimpleForecast(self, day): # TODO
-		# TODO
-		return self.weatherData['forecast']['simpleforecast']['forecastday']
-		
-	def getHourlyForecast(self): # TODO
-		# TODO
-		return self.weatherData['forecast']['hourly_forecast']
 		
 		
 class WeatherDisplay():
@@ -981,6 +957,7 @@ class WeatherDisplay():
 		self.timer.start(properties['interval']*1000)
 		
 	def align(self, a):
+		# TODO move to Utils?
 		if a == 1:
 			return (Qt.AlignLeft | Qt.AlignTop)
 		elif a == 2:
