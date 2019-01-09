@@ -451,46 +451,45 @@ class Weather():
 		
 		try:
 			self.weatherReply = self.http.request(self.weatherURI)
+			
+			self.weatherData = json.loads(self.weatherReply[1])
+			#self.weatherHeader = json.loads(self.weatherReply[0])
+			self.lastUpdated = datetime.datetime.now()
 		except:
-			print "Error requesting weather!"
+			print "Error requesting weather update!"
 		
 		# TODO not needed?
 		"""
 		dataFile = open(self.weatherFile, 'w')
 		dataFile.write(self.weatherReply)
 		dataFile.close()
-		
-		# TODO does this file close?
-		self.weatherData = json.load(open(self.weatherFile))
 		"""
-		self.weatherData = json.loads(self.weatherReply[1])
-		
-		# TODO update all weathers
 	
 	def __init__(self, properties, latlng):
 		
 		self.http = httplib2.Http()
 		self.weatherData = {}
 		self.weatherFile = "weatherData.json"
+		self.lastUpdated = None
+		self.weatherHeader = None
 		
 		self.weatherURI = properties['uri'] + properties['api'] +"/" + latlng['lat'] + "," + latlng['lng']
 		
 		try:
 			self.weatherReply = self.http.request(self.weatherURI)
+			
+			self.weatherData = json.loads(self.weatherReply[1])
+			#self.weatherHeader = json.loads(self.weatherReply[0])
+			self.lastUpdated = datetime.datetime.now()
 		except:
-			print "Error requesting weather!"
+			print "Error requesting initial weather!"
 		
 		# Write weather to file
 		"""
 		dataFile = open(self.weatherFile, 'w')
-		dataFile.write(self.weatherReply[1])
+		dataFile.write(str(self.weatherReply))
 		dataFile.close()
 		"""
-		
-		# TODO does this file close?
-		#self.weatherData = json.load(open(self.weatherFile))
-		
-		self.weatherData = json.loads(self.weatherReply[1])
 		
 		# Start timer
 		self.timer = QtCore.QTimer()
@@ -509,16 +508,23 @@ class Weather():
 	def getDaily(self):
 		return self.weatherData['daily']
 		
+	def getLastUpdated(self):
+		return self.lastUpdated
+		
+	def getHeader(self):
+		return self.weatherHeader
+		
 		
 class WeatherDisplay():
 	
 	def update(self):
 		
-		# TODO Needed for "last updated"?
-		#now = datetime.datetime.now()
+		# Last Updated
+		if self.lastUpdated:
+			self.lastUpdated.setText(self.lastUpdatedFormat.format(self.wObj.getLastUpdated()))
 		
 		# CURRENTLY
-		if self.type == "currently":
+		elif self.type == "currently":
 			self.weatherData = self.wObj.getCurrently()
 			
 			# Temperature
@@ -654,7 +660,8 @@ class WeatherDisplay():
 		self.dataToDisplay = properties['data']
 		self.supportedIcons = ["clear-day", "clear-night", "rain", "snow", "sleet", "wind", "fog", "cloudy", "partly-cloudy-day", "partly-cloudy-night"]
 		
-		self.blockData = None # For minute, hour, and day blocks
+		self.lastUpdated = None
+		self.lastUpdatedFormat = None
 		
 		# Potential weather data
 		self.timeData = None
@@ -694,8 +701,6 @@ class WeatherDisplay():
 		self.temperatureLow = None # only in daily
 		self.temperatureLowFormat = None
 		
-		now = datetime.datetime.now()
-		
 		# Create weather frame
 		self.wFrame = QFrame(page)
 		self.wFrame.setObjectName(self.name+"frame")
@@ -710,7 +715,21 @@ class WeatherDisplay():
 		
 		# Set up displays
 		# TODO effects
-		if self.type == "currently":
+		if self.type == "lastUpdated":
+			for d in self.dataToDisplay:
+				if d['type'] == "lastUpdated":
+					self.lastUpdatedFormat = d['format']
+					self.lastUpdated = QLabel(page)
+					self.lastUpdated.setObjectName(self.name+d['name'])
+					self.lastUpdated.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
+					d['color'] + "; background-color: transparent; font-size: "+
+					d['fontsize']+"px; "+
+					d['fontattr']+"}")
+					self.lastUpdated.setAlignment(self.align(d['alignment']))
+					self.lastUpdated.setText(self.lastUpdatedFormat.format(self.wObj.getLastUpdated()))
+					self.lastUpdated.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
+		
+		elif self.type == "currently":
 			self.weatherData = wObj.getCurrently()
 			for d in self.dataToDisplay:
 				if d['type'] == "summary":

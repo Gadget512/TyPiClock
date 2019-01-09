@@ -77,10 +77,6 @@ class Window(QtGui.QWidget):
 		self.datetimes = []
 		self.weathers = []
 		
-		# About Page
-		# TODO
-		#self.aboutPage = 
-		
 		# Weather data (independent of pages, feature objects pull data as needed)
 		loc = {"lat": str(self.config['config']['location']['lat']), "lng": str(self.config['config']['location']['lng'])}
 		if self.config['config']['weather']['api']:
@@ -88,6 +84,9 @@ class Window(QtGui.QWidget):
 			
 		# Calendar data
 		# TODO
+		
+		# About Page
+		self.createAboutPage()
 		
 		# Set up pages
 		for page in self.config['pages']:
@@ -101,9 +100,9 @@ class Window(QtGui.QWidget):
 			for image in page['images']:
 				self.images.append(Image(self.pages[page['num']], image))
 				
-			# Calendars and Weather
-			for cal in page['calendars']:
-				self.calendars.append(CalendarDisplay(self.pages[page['num']], cal))
+			# Calendars TODO
+			#for cal in page['calendars']:
+				#self.calendars.append(CalendarDisplay(self.pages[page['num']], cal))
 				# for weather in cal['weathers']:
 					# self.weathers.append(self.weather.addWeather(weather)) # TODO need to keep a list here, or let Weather handle them? (below)
 					#self.weather.addWeather(weather)
@@ -168,6 +167,14 @@ class Window(QtGui.QWidget):
 				self.switchPage(page=8)
 			if event.key() == Qt.Key_0:
 				self.switchPage(page=9)
+				
+			# About Page:
+			if event.key() == Qt.Key_A:
+				self.showAboutPage()
+			if event.key() == Qt.Key_Up:
+				self.showAboutPage()
+			if event.key() == Qt.Key_Down:
+				self.showAboutPage()
 					
 	def mousePressEvent(self, event):
 		if type(event) == QtGui.QMouseEvent:
@@ -201,12 +208,58 @@ class Window(QtGui.QWidget):
 		
 	def setPage(self, page):
 		
-		self.pages[self.currentPage].setVisible(False)
+		if self.currentPage == 99: # About Page
+			self.aboutPage.setVisible(False)
+		else:
+			self.pages[self.currentPage].setVisible(False)
 		self.pages[page].setVisible(True)
 		
-		# TODO RADAR?
-		
 		self.currentPage = page
+		
+	def createAboutPage(self):
+		self.aboutPage = QtGui.QFrame(self)
+		self.aboutPage.setObjectName("AboutPage")
+		self.aboutPage.setGeometry(0, 0, self.width, self.height)
+		self.aboutPage.setStyleSheet("#AboutPage { background-color: black; border-image: url(images/default/DenverSkyline_1080.jpg) 0 0 0 0 stretch stretch;}")
+		self.aboutPage.setVisible(False)
+		
+		logo = {"name": "TyPiLogo",
+				"image": "images/default/TyPiClockLogo.png",
+				"location": [0, 0, 1028, 256]}
+		self.images.append(Image(self.aboutPage, logo))
+		darksky = {"name": "WeatherAtt",
+					"image": "images/default/poweredby_small_green.png",
+					"location": [0, 500, 250, 90]}
+		self.images.append(Image(self.aboutPage, darksky))
+		
+		lastUpdated = { "name": "AboutLastUpdated",
+						"type": "lastUpdated",
+						"subtype": None,
+						"interval": 60,
+						"background": "images/default/background_shade.png",
+						"images": {},
+						"data": [{"name": "AboutLastUpdatedText",
+								"type": "lastUpdated",
+								"format": "Last Updated: {:%x %X}",
+								"font": "sans-serif",
+								"fontsize": "30",
+								"fontattr": "",
+								"color": "#1ECB7C",
+								"alignment": 4,
+								"effects": [
+								
+								],
+								"location": [250, 500, 800, 90]}],
+						"location": [0, 500, 1050, 90]}
+		self.weathers.append(WeatherDisplay(self.aboutPage, lastUpdated, self.weather))
+							
+		
+	def showAboutPage(self):
+		if self.currentPage != 99: # Already on About Page
+			self.pages[self.currentPage].setVisible(False)
+			self.aboutPage.setVisible(True)
+		
+			self.currentPage = 99 # Makes nextPage 0
 		
 
 def startWindow(config):
