@@ -255,6 +255,7 @@ class Window(QtGui.QWidget):
 							
 		
 	def showAboutPage(self):
+		# TODO Cycle pages???
 		if self.currentPage != 99: # Already on About Page
 			self.pages[self.currentPage].setVisible(False)
 			self.aboutPage.setVisible(True)

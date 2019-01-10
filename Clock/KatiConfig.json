@@ -119,7 +119,7 @@
 							"type": "temperature",
 							"format": "{:.0f}\u00b0F",
 							"font": "Caladea",
-							"fontsize": "40",
+							"fontsize": "60",
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 5,

@@ -311,6 +311,10 @@ class CalendarDisplay():
 			pass
 			# TODO
 			
+		elif self.type == "14day":
+			pass
+			# TODO
+			
 		elif self.type == "28day":
 			for y in range(0,4):
 				for x in range (0,7):
