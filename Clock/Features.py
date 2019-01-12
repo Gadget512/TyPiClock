@@ -460,7 +460,10 @@ class Weather():
 			#self.weatherHeader = json.loads(self.weatherReply[0])
 			self.lastUpdated = datetime.datetime.now()
 		except:
-			print "Error requesting weather update!"
+			ts = "{:%x %X}".format(datetime.datetime.now())
+			print (ts + " Error requesting weather update!")
+		finally:
+			pass
 		
 		# TODO not needed?
 		"""
@@ -486,7 +489,10 @@ class Weather():
 			#self.weatherHeader = json.loads(self.weatherReply[0])
 			self.lastUpdated = datetime.datetime.now()
 		except:
-			print "Error requesting initial weather!"
+			ts = "{:%x %X}".format(datetime.datetime.now())
+			print (ts + " Error requesting initial weather!")
+		finally:
+			pass
 		
 		# Write weather to file
 		"""
