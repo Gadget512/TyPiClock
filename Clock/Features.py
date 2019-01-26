@@ -1,6 +1,8 @@
 import datetime, httplib2, json, random, os, operator
 from textwrap import fill
 
+from Utilities import Log
+
 from PyQt4 import QtGui, QtCore
 from PyQt4.QtCore import Qt
 from PyQt4.QtGui import QColor, QFrame, QLabel, QMatrix, QPixmap
@@ -452,25 +454,31 @@ class CalendarDisplay():
 class Weather():
 	
 	def update(self):
+		self.dlog.debug("_Weather.update()")
 		
 		# Request Weather
 		try:
+			self.dlog.info("Requesting weather...")
 			self.weatherReply = self.http.request(self.weatherURI)
 			
+			self.dlog.debug("Updating lastUpdated")
 			self.lastUpdated = datetime.datetime.now()
 		except:
-			print ("{:%x %X}".format(datetime.datetime.now()) + " Error requesting weather update!")
+			self.dlog.error("Error requesting weather update!")
 		finally:
 			pass
 			
 		# Get Weather Data
 		try:
-			if self.weatherReply[0]['status'] == '200':
+			self.dlog.debug("Parsing weather")
+			self.weatherHeader = self.weatherReply[0]
+			if self.weatherHeader['status'] == '200':
+				self.dlog.info("Weather Response Code: " + self.weatherHeader['status'])
 				self.weatherData = json.loads(self.weatherReply[1])
 			else:
-				print ("{:%x %X}".format(datetime.datetime.now()) + " Weather Response Code: " + self.weatherHeader['status'])
+				self.dlog.warning("Weather Response Code: " + self.weatherHeader['status'])
 		except:
-			print ("{:%x %X}".format(datetime.datetime.now()) + " Error requesting weather update!")
+			self.dlog.error("Error getting weather data!")
 		
 		# TODO not needed?
 		"""
@@ -481,6 +489,7 @@ class Weather():
 	
 	def __init__(self, properties, latlng):
 		
+		self.dlog = Log(name = "Weather()", level="debug")
 		self.http = httplib2.Http()
 		self.weatherData = {}
 		self.weatherFile = "weatherData.json"
@@ -520,21 +529,27 @@ class Weather():
 		self.timer.start(properties['interval']*1000)
 		
 	def getCurrently(self):
+		self.dlog.debug("_Weather.getCurrently()")
 		return self.weatherData['currently']
 		
 	def getMinutely(self):
+		self.dlog.debug("_Weather.getMinutely()")
 		return self.weatherData['minutely']
 		
 	def getHourly(self):
+		self.dlog.debug("_Weather.getHourly()")
 		return self.weatherData['hourly']
 		
 	def getDaily(self):
+		self.dlog.debug("_Weather.getDaily()")
 		return self.weatherData['daily']
 		
 	def getLastUpdated(self):
+		self.dlog.debug("_Weather.getLastUpdated()")
 		return self.lastUpdated
 		
 	def getHeader(self):
+		self.dlog.debug("_Weather.getHeader()")
 		return self.weatherHeader
 		
 		
