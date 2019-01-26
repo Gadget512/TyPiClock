@@ -453,17 +453,24 @@ class Weather():
 	
 	def update(self):
 		
+		# Request Weather
 		try:
 			self.weatherReply = self.http.request(self.weatherURI)
 			
-			self.weatherData = json.loads(self.weatherReply[1])
-			#self.weatherHeader = json.loads(self.weatherReply[0])
 			self.lastUpdated = datetime.datetime.now()
 		except:
-			ts = "{:%x %X}".format(datetime.datetime.now())
-			print (ts + " Error requesting weather update!")
+			print ("{:%x %X}".format(datetime.datetime.now()) + " Error requesting weather update!")
 		finally:
 			pass
+			
+		# Get Weather Data
+		try:
+			if self.weatherReply[0]['status'] == '200':
+				self.weatherData = json.loads(self.weatherReply[1])
+			else:
+				print ("{:%x %X}".format(datetime.datetime.now()) + " Weather Response Code: " + self.weatherHeader['status'])
+		except:
+			print ("{:%x %X}".format(datetime.datetime.now()) + " Error requesting weather update!")
 		
 		# TODO not needed?
 		"""
@@ -482,6 +489,11 @@ class Weather():
 		
 		self.weatherURI = properties['uri'] + properties['api'] +"/" + latlng['lat'] + "," + latlng['lng']
 		
+		# TODO MUST SUCCEED
+		self.update()
+		
+		# TODO
+		"""
 		try:
 			self.weatherReply = self.http.request(self.weatherURI)
 			
@@ -493,6 +505,7 @@ class Weather():
 			print (ts + " Error requesting initial weather!")
 		finally:
 			pass
+		"""
 		
 		# Write weather to file
 		"""
