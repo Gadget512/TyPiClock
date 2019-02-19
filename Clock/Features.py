@@ -23,6 +23,7 @@ class AnalogClock():
 	"""
 	
 	def tick(self):
+		self.dlog.debug("_tick()")
 		now = datetime.datetime.now()
 		
 		secangle = now.second * 6 # seconds converted to angle (in degrees)
@@ -76,6 +77,7 @@ class AnalogClock():
 			hoursize.height()) # display the image
 	
 	def __init__(self, page, properties):
+		self.dlog = Log(name = "AnalogClock()", level="warning")
 		
 		self.clockface = properties['face']
 		self.hourhand = properties['hour']
@@ -83,6 +85,7 @@ class AnalogClock():
 		self.secondhand = properties['second'] # May be None (null)
 		
 		# Create new frame on page for clock
+		self.dlog.debug("Creating " + properties['name'])
 		self.clockFrame = QFrame(page)
 		self.clockFrame.setObjectName(properties['name'])
 		# specify (x, y, w, h) where x,y is the top-left corner, w is the width, h is the height
@@ -96,18 +99,21 @@ class AnalogClock():
 		self.second = None
 		self.secpixmap = None
 		if self.secondhand:
+			self.dlog.debug("Creating " + properties['name'] + " second")
 			self.second = QLabel(page) # create label on page
 			self.second.setObjectName(properties['name']+"second") # name label
 			self.second.setStyleSheet("#"+properties['name']+"second { background-color: transparent; }")
 			self.secpixmap = QPixmap(self.secondhand) # create pixmap with image
 			
 		# Set up minute hand
+		self.dlog.debug("Creating " + properties['name'] + " minute")
 		self.minute = QLabel(page) # create label on page
 		self.minute.setObjectName(properties['name']+"minute") # name label
 		self.minute.setStyleSheet("#"+properties['name']+"minute { background-color: transparent; }")
 		self.minpixmap = QPixmap(self.minutehand) # create pixmap with image
 		
 		# Set up hour hand
+		self.dlog.debug("Creating " + properties['name'] + " hour")
 		self.hour = QLabel(page) # create label on page
 		self.hour.setObjectName(properties['name']+"hour") # name label
 		self.hour.setStyleSheet("#"+properties['name']+"hour { background-color: transparent; }")
@@ -122,6 +128,7 @@ class AnalogClock():
 class DateTime():
 	
 	def tick(self):
+		self.dlog.debug("_tick()")
 		now = datetime.datetime.now()
 		text = self.textFormat.format(now)
 		self.textLabel.setText(text)
@@ -140,10 +147,12 @@ class DateTime():
 			effect - Qt object?
 			location - list of coordinates (x, y, w, h)
 		"""
+		self.dlog = Log(name = "DateTime()", level="warning")
 		
 		self.textFormat = properties['format']
 		
 		# Create text frame
+		self.dlog.debug("Creating frame " + properties['name'])
 		self.textFrame = QFrame(page)
 		self.textFrame.setObjectName(properties['name']+"frame")
 		self.textFrameRect = QtCore.QRect(properties['location'][0], properties['location'][1], properties['location'][2], properties['location'][3])
@@ -156,6 +165,7 @@ class DateTime():
 			self.textFrame.setStyleSheet("#"+properties['name']+"frame { background-color: transparent;}")
 		
 		# Create text stylesheet based on given properties
+		self.dlog.debug("Creating label " + properties['name'])
 		self.textLabel = QLabel(page)
 		self.textLabel.setObjectName(properties['name'])
 		self.textLabel.setStyleSheet("#"+properties['name']+"{ font-family:"+properties['font']+"; color: "+
@@ -556,7 +566,7 @@ class Weather():
 class WeatherDisplay():
 	
 	def update(self):
-		
+		self.dlog.debug("_WeatherDisplay.update(" + self.name + ")")
 		# Last Updated
 		if self.lastUpdated:
 			self.lastUpdated.setText(self.lastUpdatedFormat.format(self.wObj.getLastUpdated()))
@@ -606,12 +616,104 @@ class WeatherDisplay():
 		# HOURLY
 		elif self.type == "hourly":
 			self.weatherData = self.wObj.getHourly()
+			hoursData = self.weatherData['data']
+			hoursData.sort(key=operator.itemgetter('time'))
+			
+			if self.subtype == "hour0":
+				hourData = hoursData[0]
+			elif self.subtype == "hour1":
+				hourData = hoursData[1]
+			elif self.subtype == "hour2":
+				hourData = hoursData[2]
+			elif self.subtype == "hour3":
+				hourData = hoursData[3]
+			elif self.subtype == "hour4":
+				hourData = hoursData[4]
+			elif self.subtype == "hour5":
+				hourData = hoursData[5]
+			elif self.subtype == "hour6":
+				hourData = hoursData[6]
+			elif self.subtype == "hour7":
+				hourData = hoursData[7]
+			elif self.subtype == "hour8":
+				hourData = hoursData[8]
+			elif self.subtype == "hour9":
+				hourData = hoursData[9]
+			elif self.subtype == "hour10":
+				hourData = hoursData[10]
+			elif self.subtype == "hour11":
+				hourData = hoursData[11]
+			elif self.subtype == "hour12":
+				hourData = hoursData[12]
+			elif self.subtype == "hour13":
+				hourData = hoursData[13]
+			elif self.subtype == "hour14":
+				hourData = hoursData[14]
+			elif self.subtype == "hour15":
+				hourData = hoursData[15]
+			elif self.subtype == "hour16":
+				hourData = hoursData[16]
+			elif self.subtype == "hour17":
+				hourData = hoursData[17]
+			elif self.subtype == "hour18":
+				hourData = hoursData[18]
+			elif self.subtype == "hour19":
+				hourData = hoursData[19]
+			elif self.subtype == "hour20":
+				hourData = hoursData[20]
+			elif self.subtype == "hour21":
+				hourData = hoursData[21]
+			elif self.subtype == "hour22":
+				hourData = hoursData[22]
+			elif self.subtype == "hour23":
+				hourData = hoursData[23]
+			elif self.subtype == "hour24":
+				hourData = hoursData[24]
 			
 			# Top Summary
 			if self.topSummary:
 				self.topSummary.setText(fill(self.topSummaryFormat.format(self.weatherData['summary']), width=self.topSummaryWidth))
 				
-			# TODO
+			# Top Icon
+			if self.topIcon:
+				if self.weatherData['icon'] in self.supportedIcons:
+					self.topIcon.setPixmap(QPixmap(self.images[self.weatherData['icon']]).scaled(self.topIcon.size().width(), self.topIcon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
+				else:
+					self.topIcon.setPixmap(QPixmap(self.images['default']).scaled(self.topIcon.size().width(), self.topIcon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
+				
+			# Time
+			if self.timeData:
+				hourTime = datetime.datetime.fromtimestamp(hourData['time'])
+				self.timeData.setText(self.timeFormat.format(hourTime))
+				
+			# Summary
+			if self.summary:
+				self.summary.setText(fill(self.summaryFormat.format(hourData['summary']), width=self.summaryWidth))
+			
+			# Icon
+			if self.icon:
+				if hourData['icon'] in self.supportedIcons:
+					self.icon.setPixmap(QPixmap(self.images[hourData['icon']]).scaled(self.icon.size().width(), self.icon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
+				else:
+					self.icon.setPixmap(QPixmap(self.images['default']).scaled(self.icon.size().width(), self.icon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
+			
+			# Temperature
+			if self.temperature:
+				self.temperature.setText(self.temperatureFormat.format(hourData['temperature']))
+				
+			# Humidity
+			if self.humidity:
+				self.humidity.setText(self.humidityFormat.format(hourData['humidity']))
+				
+			# Pressure
+			if self.pressure:
+				self.pressure.setText(self.pressureFormat.format(hourData['pressure']))
+				
+			# Wind Speed
+				# TODO
+				
+			# Wind Bearing
+				# TODO
 		
 		# DAILY
 		elif self.type == "daily":
@@ -688,6 +790,8 @@ class WeatherDisplay():
 		
 	def __init__(self, page, properties, wObj):
 		
+		self.dlog = Log(name = "WeatherDisplay()", level="debug")
+		
 		# Initialize member variables
 		self.wObj = wObj
 		self.name = properties['name']
@@ -740,6 +844,7 @@ class WeatherDisplay():
 		self.temperatureLowFormat = None
 		
 		# Create weather frame
+		self.dlog.debug("Creating weather frame " + self.name)
 		self.wFrame = QFrame(page)
 		self.wFrame.setObjectName(self.name+"frame")
 		self.wFrameRect = QtCore.QRect(properties['location'][0], properties['location'][1], properties['location'][2], properties['location'][3])
@@ -755,6 +860,7 @@ class WeatherDisplay():
 		# TODO effects
 		if self.type == "lastUpdated":
 			for d in self.dataToDisplay:
+				self.dlog.debug("Creating " + d['name'])
 				if d['type'] == "lastUpdated":
 					self.lastUpdatedFormat = d['format']
 					self.lastUpdated = QLabel(page)
@@ -770,6 +876,7 @@ class WeatherDisplay():
 		elif self.type == "currently":
 			self.weatherData = wObj.getCurrently()
 			for d in self.dataToDisplay:
+				self.dlog.debug("Creating " + d['name'])
 				if d['type'] == "summary":
 					self.summaryFormat = d['format']
 					self.summaryWidth = d['width']
@@ -855,7 +962,64 @@ class WeatherDisplay():
 			
 		elif self.type == "hourly":
 			self.weatherData = wObj.getHourly()
+			hoursData = self.weatherData['data']
+			hoursData.sort(key=operator.itemgetter('time'))
+			
+			if self.subtype == "hour0":
+				hourData = hoursData[0]
+			elif self.subtype == "hour1":
+				hourData = hoursData[1]
+			elif self.subtype == "hour2":
+				hourData = hoursData[2]
+			elif self.subtype == "hour3":
+				hourData = hoursData[3]
+			elif self.subtype == "hour4":
+				hourData = hoursData[4]
+			elif self.subtype == "hour5":
+				hourData = hoursData[5]
+			elif self.subtype == "hour6":
+				hourData = hoursData[6]
+			elif self.subtype == "hour7":
+				hourData = hoursData[7]
+			elif self.subtype == "hour8":
+				hourData = hoursData[8]
+			elif self.subtype == "hour9":
+				hourData = hoursData[9]
+			elif self.subtype == "hour10":
+				hourData = hoursData[10]
+			elif self.subtype == "hour11":
+				hourData = hoursData[11]
+			elif self.subtype == "hour12":
+				hourData = hoursData[12]
+			elif self.subtype == "hour13":
+				hourData = hoursData[13]
+			elif self.subtype == "hour14":
+				hourData = hoursData[14]
+			elif self.subtype == "hour15":
+				hourData = hoursData[15]
+			elif self.subtype == "hour16":
+				hourData = hoursData[16]
+			elif self.subtype == "hour17":
+				hourData = hoursData[17]
+			elif self.subtype == "hour18":
+				hourData = hoursData[18]
+			elif self.subtype == "hour19":
+				hourData = hoursData[19]
+			elif self.subtype == "hour20":
+				hourData = hoursData[20]
+			elif self.subtype == "hour21":
+				hourData = hoursData[21]
+			elif self.subtype == "hour22":
+				hourData = hoursData[22]
+			elif self.subtype == "hour23":
+				hourData = hoursData[23]
+			elif self.subtype == "hour24":
+				hourData = hoursData[24]
+			
 			for d in self.dataToDisplay:
+				self.dlog.debug("Creating " + d['name'])
+				
+				# TOP DATA
 				if d['type'] == "topSummary":
 					self.topSummaryFormat = d['format']
 					self.topSummaryWidth = d['width']
@@ -868,6 +1032,97 @@ class WeatherDisplay():
 					self.topSummary.setAlignment(self.align(d['alignment']))
 					self.topSummary.setText(fill(self.topSummaryFormat.format(self.weatherData['summary']), width=self.topSummaryWidth))
 					self.topSummary.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
+					
+				elif d['type'] == "topIcon":
+					self.topIcon = QLabel(page)
+					self.topIcon.setObjectName(self.name+d['name'])
+					self.topIcon.setStyleSheet("#"+self.name+d['name']+" { background-color: transparent; }")
+					self.topIcon.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
+					if self.weatherData['icon'] in self.supportedIcons:
+						self.topIcon.setPixmap(QPixmap(self.images[self.weatherData['icon']]).scaled(self.topIcon.size().width(), self.topIcon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
+					else:
+						self.topIcon.setPixmap(QPixmap(self.images['default']).scaled(self.topIcon.size().width(), self.topIcon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
+						
+				# DATA BLOCKS
+				elif d['type'] == "time":
+					self.timeFormat = d['format']
+					self.timeData = QLabel(page)
+					self.timeData.setObjectName(self.name+d['name'])
+					self.timeData.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
+					d['color'] + "; background-color: transparent; font-size: "+
+					d['fontsize']+"px; "+
+					d['fontattr']+"}")
+					self.timeData.setAlignment(self.align(d['alignment']))
+					hourTime = datetime.datetime.fromtimestamp(hourData['time'])
+					self.timeData.setText(self.timeFormat.format(hourTime))
+					self.timeData.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
+					
+				elif d['type'] == "summary":
+					self.summaryFormat = d['format']
+					self.summaryWidth = d['width']
+					self.summary = QLabel(page)
+					self.summary.setObjectName(self.name+d['name'])
+					self.summary.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
+					d['color'] + "; background-color: transparent; font-size: "+
+					d['fontsize']+"px; "+
+					d['fontattr']+"}")
+					self.summary.setAlignment(self.align(d['alignment']))
+					self.summary.setText(fill(self.summaryFormat.format(hourData['summary']), width=self.summaryWidth))
+					self.summary.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
+					
+				elif d['type'] == "icon":
+					self.icon = QLabel(page)
+					self.icon.setObjectName(self.name+d['name'])
+					self.icon.setStyleSheet("#"+self.name+d['name']+" { background-color: transparent; }")
+					self.icon.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
+					if hourData['icon'] in self.supportedIcons:
+						self.icon.setPixmap(QPixmap(self.images[hourData['icon']]).scaled(self.icon.size().width(), self.icon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
+					else:
+						self.icon.setPixmap(QPixmap(self.images['default']).scaled(self.icon.size().width(), self.icon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
+					
+				elif d['type'] == "temperature":
+					self.temperatureFormat = d['format']
+					self.temperature = QLabel(page)
+					self.temperature.setObjectName(self.name+d['name'])
+					self.temperature.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
+					d['color'] + "; background-color: transparent; font-size: "+
+					d['fontsize']+"px; "+
+					d['fontattr']+"}")
+					self.temperature.setAlignment(self.align(d['alignment']))
+					self.temperature.setText(self.temperatureFormat.format(hourData['temperature']))
+					self.temperature.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
+					
+				elif d['type'] == "humidity":
+					self.humidityFormat = d['format']
+					self.humidity = QLabel(page)
+					self.humidity.setObjectName(self.name+d['name'])
+					self.humidity.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
+					d['color'] + "; background-color: transparent; font-size: "+
+					d['fontsize']+"px; "+
+					d['fontattr']+"}")
+					self.humidity.setAlignment(self.align(d['alignment']))
+					self.humidity.setText(self.humidityFormat.format(hourData['humidity']))
+					self.humidity.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
+					
+				elif d['type'] == "pressure":
+					self.pressureFormat = d['format']
+					self.pressure = QLabel(page)
+					self.pressure.setObjectName(self.name+d['name'])
+					self.pressure.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
+					d['color'] + "; background-color: transparent; font-size: "+
+					d['fontsize']+"px; "+
+					d['fontattr']+"}")
+					self.pressure.setAlignment(self.align(d['alignment']))
+					self.pressure.setText(self.pressureFormat.format(hourData['pressure']))
+					self.pressure.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
+					
+				elif d['type'] == "windSpeed":
+					self.windSpeed = QLabel(page)
+					# TODO
+					
+				elif d['type'] == "windBearing":
+					self.windBearing = QLabel(page)
+					# TODO
 					
 		elif self.type == "daily":
 			self.weatherData = wObj.getDaily()
@@ -892,6 +1147,8 @@ class WeatherDisplay():
 				dayData = daysData[7]
 				
 			for d in self.dataToDisplay:
+				self.dlog.debug("Creating " + d['name'])
+				
 				# TOP DATA
 				if d['type'] == "topSummary":
 					self.topSummaryFormat = d['format']
@@ -930,7 +1187,7 @@ class WeatherDisplay():
 					self.timeData.setText(self.timeFormat.format(dayTime))
 					self.timeData.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
-				elif 	d['type'] == "summary":
+				elif d['type'] == "summary":
 					self.summaryFormat = d['format']
 					self.summaryWidth = d['width']
 					self.summary = QLabel(page)
@@ -948,7 +1205,7 @@ class WeatherDisplay():
 					self.icon.setObjectName(self.name+d['name'])
 					self.icon.setStyleSheet("#"+self.name+d['name']+" { background-color: transparent; }")
 					self.icon.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
-					if self.weatherData['icon'] in self.supportedIcons:
+					if dayData['icon'] in self.supportedIcons:
 						self.icon.setPixmap(QPixmap(self.images[dayData['icon']]).scaled(self.icon.size().width(), self.icon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
 					else:
 						self.icon.setPixmap(QPixmap(self.images['default']).scaled(self.icon.size().width(), self.icon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
