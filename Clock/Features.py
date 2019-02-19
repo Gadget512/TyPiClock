@@ -1,7 +1,7 @@
 import datetime, httplib2, json, random, os, operator
 from textwrap import fill
 
-from Utilities import Log
+from Utilities import Log, TyAlign
 
 from PyQt4 import QtGui, QtCore
 from PyQt4.QtCore import Qt
@@ -173,24 +173,7 @@ class DateTime():
 			properties['fontsize']+"px; "+
 			properties['fontattr']+"}")
 			
-		if properties['alignment'] == 1:
-			self.textLabel.setAlignment(Qt.AlignLeft | Qt.AlignTop)
-		elif properties['alignment'] == 2:
-			self.textLabel.setAlignment(Qt.AlignHCenter | Qt.AlignTop)
-		elif properties['alignment'] == 3:
-			self.textLabel.setAlignment(Qt.AlignRight | Qt.AlignTop)
-		elif properties['alignment'] == 4:
-			self.textLabel.setAlignment(Qt.AlignLeft | Qt.AlignVCenter)
-		elif properties['alignment'] == 5:
-			self.textLabel.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
-		elif properties['alignment'] == 6:
-			self.textLabel.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
-		elif properties['alignment'] == 7:
-			self.textLabel.setAlignment(Qt.AlignLeft | Qt.AlignBottom)
-		elif properties['alignment'] == 8:
-			self.textLabel.setAlignment(Qt.AlignHCenter | Qt.AlignBottom)
-		elif properties['alignment'] == 9:
-			self.textLabel.setAlignment(Qt.AlignRight | Qt.AlignBottom)
+		self.textLabel.setAlignment(TyAlign().align(properties['alignment']))
 		
 		self.textLabel.setGeometry(properties['location'][0], properties['location'][1], properties['location'][2], properties['location'][3])
 		
@@ -869,7 +852,7 @@ class WeatherDisplay():
 					d['color'] + "; background-color: transparent; font-size: "+
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
-					self.lastUpdated.setAlignment(self.align(d['alignment']))
+					self.lastUpdated.setAlignment(TyAlign().align(d['alignment']))
 					self.lastUpdated.setText(self.lastUpdatedFormat.format(self.wObj.getLastUpdated()))
 					self.lastUpdated.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 		
@@ -886,7 +869,7 @@ class WeatherDisplay():
 					d['color'] + "; background-color: transparent; font-size: "+
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
-					self.summary.setAlignment(self.align(d['alignment']))
+					self.summary.setAlignment(TyAlign().align(d['alignment']))
 					self.summary.setText(fill(self.summaryFormat.format(self.weatherData['summary']), width=self.summaryWidth))
 					self.summary.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 				
@@ -908,7 +891,7 @@ class WeatherDisplay():
 					d['color'] + "; background-color: transparent; font-size: "+
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
-					self.temperature.setAlignment(self.align(d['alignment']))
+					self.temperature.setAlignment(TyAlign().align(d['alignment']))
 					self.temperature.setText(self.temperatureFormat.format(self.weatherData['temperature']))
 					self.temperature.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
@@ -920,7 +903,7 @@ class WeatherDisplay():
 					d['color'] + "; background-color: transparent; font-size: "+
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
-					self.apparentTemperature.setAlignment(self.align(d['alignment']))
+					self.apparentTemperature.setAlignment(TyAlign().align(d['alignment']))
 					self.apparentTemperature.setText(self.apparentTemperatureFormat.format(self.weatherData['apparentTemperature']))
 					self.apparentTemperature.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
@@ -932,7 +915,7 @@ class WeatherDisplay():
 					d['color'] + "; background-color: transparent; font-size: "+
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
-					self.humidity.setAlignment(self.align(d['alignment']))
+					self.humidity.setAlignment(TyAlign().align(d['alignment']))
 					self.humidity.setText(self.humidityFormat.format(self.weatherData['humidity']))
 					self.humidity.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
@@ -944,7 +927,7 @@ class WeatherDisplay():
 					d['color'] + "; background-color: transparent; font-size: "+
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
-					self.pressure.setAlignment(self.align(d['alignment']))
+					self.pressure.setAlignment(TyAlign().align(d['alignment']))
 					self.pressure.setText(self.pressureFormat.format(self.weatherData['pressure']))
 					self.pressure.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
@@ -1029,7 +1012,7 @@ class WeatherDisplay():
 					d['color'] + "; background-color: transparent; font-size: "+
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
-					self.topSummary.setAlignment(self.align(d['alignment']))
+					self.topSummary.setAlignment(TyAlign().align(d['alignment']))
 					self.topSummary.setText(fill(self.topSummaryFormat.format(self.weatherData['summary']), width=self.topSummaryWidth))
 					self.topSummary.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
@@ -1052,7 +1035,7 @@ class WeatherDisplay():
 					d['color'] + "; background-color: transparent; font-size: "+
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
-					self.timeData.setAlignment(self.align(d['alignment']))
+					self.timeData.setAlignment(TyAlign().align(d['alignment']))
 					hourTime = datetime.datetime.fromtimestamp(hourData['time'])
 					self.timeData.setText(self.timeFormat.format(hourTime))
 					self.timeData.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
@@ -1066,7 +1049,7 @@ class WeatherDisplay():
 					d['color'] + "; background-color: transparent; font-size: "+
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
-					self.summary.setAlignment(self.align(d['alignment']))
+					self.summary.setAlignment(TyAlign().align(d['alignment']))
 					self.summary.setText(fill(self.summaryFormat.format(hourData['summary']), width=self.summaryWidth))
 					self.summary.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
@@ -1088,7 +1071,7 @@ class WeatherDisplay():
 					d['color'] + "; background-color: transparent; font-size: "+
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
-					self.temperature.setAlignment(self.align(d['alignment']))
+					self.temperature.setAlignment(TyAlign().align(d['alignment']))
 					self.temperature.setText(self.temperatureFormat.format(hourData['temperature']))
 					self.temperature.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
@@ -1100,7 +1083,7 @@ class WeatherDisplay():
 					d['color'] + "; background-color: transparent; font-size: "+
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
-					self.humidity.setAlignment(self.align(d['alignment']))
+					self.humidity.setAlignment(TyAlign().align(d['alignment']))
 					self.humidity.setText(self.humidityFormat.format(hourData['humidity']))
 					self.humidity.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
@@ -1112,7 +1095,7 @@ class WeatherDisplay():
 					d['color'] + "; background-color: transparent; font-size: "+
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
-					self.pressure.setAlignment(self.align(d['alignment']))
+					self.pressure.setAlignment(TyAlign().align(d['alignment']))
 					self.pressure.setText(self.pressureFormat.format(hourData['pressure']))
 					self.pressure.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
@@ -1159,7 +1142,7 @@ class WeatherDisplay():
 					d['color'] + "; background-color: transparent; font-size: "+
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
-					self.topSummary.setAlignment(self.align(d['alignment']))
+					self.topSummary.setAlignment(TyAlign().align(d['alignment']))
 					self.topSummary.setText(fill(self.weatherData['summary'], width=self.topSummaryWidth))
 					self.topSummary.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
@@ -1182,7 +1165,7 @@ class WeatherDisplay():
 					d['color'] + "; background-color: transparent; font-size: "+
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
-					self.timeData.setAlignment(self.align(d['alignment']))
+					self.timeData.setAlignment(TyAlign().align(d['alignment']))
 					dayTime = datetime.datetime.fromtimestamp(dayData['time'])
 					self.timeData.setText(self.timeFormat.format(dayTime))
 					self.timeData.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
@@ -1196,7 +1179,7 @@ class WeatherDisplay():
 					d['color'] + "; background-color: transparent; font-size: "+
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
-					self.summary.setAlignment(self.align(d['alignment']))
+					self.summary.setAlignment(TyAlign().align(d['alignment']))
 					self.summary.setText(fill(self.summaryFormat.format(dayData['summary']), width=self.summaryWidth))
 					self.summary.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
@@ -1218,7 +1201,7 @@ class WeatherDisplay():
 					d['color'] + "; background-color: transparent; font-size: "+
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
-					self.temperatureHigh.setAlignment(self.align(d['alignment']))
+					self.temperatureHigh.setAlignment(TyAlign().align(d['alignment']))
 					self.temperatureHigh.setText(self.temperatureHighFormat.format(dayData['temperatureHigh']))
 					self.temperatureHigh.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
@@ -1230,7 +1213,7 @@ class WeatherDisplay():
 					d['color'] + "; background-color: transparent; font-size: "+
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
-					self.temperatureLow.setAlignment(self.align(d['alignment']))
+					self.temperatureLow.setAlignment(TyAlign().align(d['alignment']))
 					self.temperatureLow.setText(self.temperatureLowFormat.format(dayData['temperatureLow']))
 					self.temperatureLow.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
@@ -1242,7 +1225,7 @@ class WeatherDisplay():
 					d['color'] + "; background-color: transparent; font-size: "+
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
-					self.humidity.setAlignment(self.align(d['alignment']))
+					self.humidity.setAlignment(TyAlign().align(d['alignment']))
 					self.humidity.setText(self.humidityFormat.format(dayData['humidity']))
 					self.humidity.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
@@ -1254,7 +1237,7 @@ class WeatherDisplay():
 					d['color'] + "; background-color: transparent; font-size: "+
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
-					self.pressure.setAlignment(self.align(d['alignment']))
+					self.pressure.setAlignment(TyAlign().align(d['alignment']))
 					self.pressure.setText(self.pressureFormat.format(dayData['pressure']))
 					self.pressure.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
@@ -1271,24 +1254,3 @@ class WeatherDisplay():
 		self.timer = QtCore.QTimer()
 		self.timer.timeout.connect(self.update)
 		self.timer.start(properties['interval']*1000)
-		
-	def align(self, a):
-		# TODO move to Utils?
-		if a == 1:
-			return (Qt.AlignLeft | Qt.AlignTop)
-		elif a == 2:
-			return (Qt.AlignHCenter | Qt.AlignTop)
-		elif a == 3:
-			return (Qt.AlignRight | Qt.AlignTop)
-		elif a == 4:
-			return (Qt.AlignLeft | Qt.AlignVCenter)
-		elif a == 5:
-			return (Qt.AlignHCenter | Qt.AlignVCenter)
-		elif a == 6:
-			return (Qt.AlignRight | Qt.AlignVCenter)
-		elif a == 7:
-			return (Qt.AlignLeft | Qt.AlignBottom)
-		elif a == 8:
-			return (Qt.AlignHCenter | Qt.AlignBottom)
-		elif a == 9:
-			return (Qt.AlignRight | Qt.AlignBottom)

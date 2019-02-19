@@ -1,4 +1,5 @@
 import datetime
+from PyQt4.QtCore import Qt
 
 class Log():
 	
@@ -46,6 +47,29 @@ class Log():
 	def error(self, message):
 		self.log(message, "error")
 		
-def tyAlign(gridnum):
-	if gridnum == 1:
+class TyAlign():
+	
+	def __init__(self):
 		pass
+	
+	def align(self, gridnum):
+		if gridnum == 1:
+			return (Qt.AlignLeft | Qt.AlignTop)
+		elif gridnum == 2:
+			return (Qt.AlignHCenter | Qt.AlignTop)
+		elif gridnum == 3:
+			return (Qt.AlignRight | Qt.AlignTop)
+		elif gridnum == 4:
+			return (Qt.AlignLeft | Qt.AlignVCenter)
+		elif gridnum == 5:
+			return (Qt.AlignHCenter | Qt.AlignVCenter)
+		elif gridnum == 6:
+			return (Qt.AlignRight | Qt.AlignVCenter)
+		elif gridnum == 7:
+			return (Qt.AlignLeft | Qt.AlignBottom)
+		elif gridnum == 8:
+			return (Qt.AlignHCenter | Qt.AlignBottom)
+		elif gridnum == 9:
+			return (Qt.AlignRight | Qt.AlignBottom)
+		else:
+			return (Qt.AlignHCenter | Qt.AlignVCenter)
