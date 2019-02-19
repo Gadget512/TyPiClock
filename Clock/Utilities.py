@@ -45,3 +45,7 @@ class Log():
 		
 	def error(self, message):
 		self.log(message, "error")
+		
+def tyAlign(gridnum):
+	if gridnum == 1:
+		pass
