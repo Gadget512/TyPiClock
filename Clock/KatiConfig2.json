@@ -590,7 +590,7 @@
 					"type": "hourly",
 					"subtype": "hour0",
 					"interval": 300,
-					"background": "images/kati_weather/weather_daily_bg2.png",
+					"background": "images/kati_weather/weather_daily_bg.png",
 					"images": {
 						"clear-day": "images/kati_weather/clear.png",
 						"clear-night": "images/kati_weather/clear-night.png",
@@ -661,7 +661,7 @@
 					"type": "hourly",
 					"subtype": "hour1",
 					"interval": 300,
-					"background": "images/kati_weather/weather_daily_bg2.png",
+					"background": "images/kati_weather/weather_daily_bg.png",
 					"images": {
 						"clear-day": "images/kati_weather/clear.png",
 						"clear-night": "images/kati_weather/clear-night.png",
@@ -732,7 +732,7 @@
 					"type": "hourly",
 					"subtype": "hour2",
 					"interval": 300,
-					"background": "images/kati_weather/weather_daily_bg2.png",
+					"background": "images/kati_weather/weather_daily_bg.png",
 					"images": {
 						"clear-day": "images/kati_weather/clear.png",
 						"clear-night": "images/kati_weather/clear-night.png",
@@ -803,7 +803,7 @@
 					"type": "hourly",
 					"subtype": "hour3",
 					"interval": 300,
-					"background": "images/kati_weather/weather_daily_bg2.png",
+					"background": "images/kati_weather/weather_daily_bg.png",
 					"images": {
 						"clear-day": "images/kati_weather/clear.png",
 						"clear-night": "images/kati_weather/clear-night.png",
@@ -874,7 +874,7 @@
 					"type": "hourly",
 					"subtype": "hour4",
 					"interval": 300,
-					"background": "images/kati_weather/weather_daily_bg2.png",
+					"background": "images/kati_weather/weather_daily_bg.png",
 					"images": {
 						"clear-day": "images/kati_weather/clear.png",
 						"clear-night": "images/kati_weather/clear-night.png",
@@ -945,7 +945,7 @@
 					"type": "hourly",
 					"subtype": "hour5",
 					"interval": 300,
-					"background": "images/kati_weather/weather_daily_bg2.png",
+					"background": "images/kati_weather/weather_daily_bg.png",
 					"images": {
 						"clear-day": "images/kati_weather/clear.png",
 						"clear-night": "images/kati_weather/clear-night.png",
@@ -1016,7 +1016,7 @@
 					"type": "hourly",
 					"subtype": "hour6",
 					"interval": 300,
-					"background": "images/kati_weather/weather_daily_bg2.png",
+					"background": "images/kati_weather/weather_daily_bg.png",
 					"images": {
 						"clear-day": "images/kati_weather/clear.png",
 						"clear-night": "images/kati_weather/clear-night.png",
@@ -1087,7 +1087,7 @@
 					"type": "hourly",
 					"subtype": "hour7",
 					"interval": 300,
-					"background": "images/kati_weather/weather_daily_bg2.png",
+					"background": "images/kati_weather/weather_daily_bg.png",
 					"images": {
 						"clear-day": "images/kati_weather/clear.png",
 						"clear-night": "images/kati_weather/clear-night.png",
@@ -1158,7 +1158,7 @@
 					"type": "hourly",
 					"subtype": "hour8",
 					"interval": 300,
-					"background": "images/kati_weather/weather_daily_bg2.png",
+					"background": "images/kati_weather/weather_daily_bg.png",
 					"images": {
 						"clear-day": "images/kati_weather/clear.png",
 						"clear-night": "images/kati_weather/clear-night.png",
@@ -1229,7 +1229,7 @@
 					"type": "hourly",
 					"subtype": "hour9",
 					"interval": 300,
-					"background": "images/kati_weather/weather_daily_bg2.png",
+					"background": "images/kati_weather/weather_daily_bg.png",
 					"images": {
 						"clear-day": "images/kati_weather/clear.png",
 						"clear-night": "images/kati_weather/clear-night.png",
@@ -1300,7 +1300,7 @@
 					"type": "hourly",
 					"subtype": "hour10",
 					"interval": 300,
-					"background": "images/kati_weather/weather_daily_bg2.png",
+					"background": "images/kati_weather/weather_daily_bg.png",
 					"images": {
 						"clear-day": "images/kati_weather/clear.png",
 						"clear-night": "images/kati_weather/clear-night.png",
@@ -1371,7 +1371,7 @@
 					"type": "hourly",
 					"subtype": "hour11",
 					"interval": 300,
-					"background": "images/kati_weather/weather_daily_bg2.png",
+					"background": "images/kati_weather/weather_daily_bg.png",
 					"images": {
 						"clear-day": "images/kati_weather/clear.png",
 						"clear-night": "images/kati_weather/clear-night.png",
@@ -1442,7 +1442,7 @@
 					"type": "hourly",
 					"subtype": "hour12",
 					"interval": 300,
-					"background": "images/kati_weather/weather_daily_bg2.png",
+					"background": "images/kati_weather/weather_daily_bg.png",
 					"images": {
 						"clear-day": "images/kati_weather/clear.png",
 						"clear-night": "images/kati_weather/clear-night.png",
@@ -1513,7 +1513,7 @@
 					"type": "hourly",
 					"subtype": "hour13",
 					"interval": 300,
-					"background": "images/kati_weather/weather_daily_bg2.png",
+					"background": "images/kati_weather/weather_daily_bg.png",
 					"images": {
 						"clear-day": "images/kati_weather/clear.png",
 						"clear-night": "images/kati_weather/clear-night.png",
@@ -1584,7 +1584,7 @@
 					"type": "hourly",
 					"subtype": "hour14",
 					"interval": 300,
-					"background": "images/kati_weather/weather_daily_bg2.png",
+					"background": "images/kati_weather/weather_daily_bg.png",
 					"images": {
 						"clear-day": "images/kati_weather/clear.png",
 						"clear-night": "images/kati_weather/clear-night.png",
@@ -1655,7 +1655,7 @@
 					"type": "hourly",
 					"subtype": "hour15",
 					"interval": 300,
-					"background": "images/kati_weather/weather_daily_bg2.png",
+					"background": "images/kati_weather/weather_daily_bg.png",
 					"images": {
 						"clear-day": "images/kati_weather/clear.png",
 						"clear-night": "images/kati_weather/clear-night.png",
