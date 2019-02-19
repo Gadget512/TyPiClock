@@ -559,6 +559,1169 @@
 					"location": [0, 675, 1600, 225]
 				}
 			]
+		},
+		{
+			"num": 2,
+			"background": "images/default/DenverSkyline_1080",
+			
+			"clocks": [
+				
+			],
+			
+			"datetimes": [
+				
+			],
+			
+			"slideshows": [
+				
+			],
+			
+			"texts": [
+				
+			],
+			
+			"images": [
+				
+			],
+			
+			"weathers": [
+				{
+					"name": "Hour0",
+					"type": "hourly",
+					"subtype": "hour0",
+					"interval": 300,
+					"background": "images/kati_weather/weather_daily_bg2.png",
+					"images": {
+						"clear-day": "images/kati_weather/clear.png",
+						"clear-night": "images/kati_weather/clear-night.png",
+						"rain": "images/kati_weather/rain.png",
+						"snow": "images/kati_weather/snow.png",
+						"sleet": "images/kati_weather/sleet.png",
+						"wind": "images/kati_weather/wind.png",
+						"fog": "images/kati_weather/fog.png",
+						"cloudy": "images/kati_weather/cloudy.png",
+						"partly-cloudy-day": "images/kati_weather/partly-cloudy.png",
+						"partly-cloudy-night": "images/kati_weather/partly-cloudy-night.png",
+						"default": "images/kati_weather/default.png"
+					},
+					"data": [
+						{
+							"name": "Hour0txt",
+							"type": "time",
+							"format": "{0:%I:00 %p}",
+							"font": "sans-serif",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 2,
+							"effects": [
+							
+							],
+							"location": [0, 0, 200, 50]
+						},
+						{
+							"name": "Hour0Sum",
+							"type": "summary",
+							"format": "{}",
+							"width": 20,
+							"font": "sans-serif",
+							"fontsize": "20",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [0, 300, 200, 100]
+						},
+						{
+							"name": "Hour0Icon",
+							"type": "icon",
+							"location": [0, 50, 200, 200]
+						},
+						{
+							"name": "Hour0Temp",
+							"type": "temperature",
+							"format": "{:.0f}\u00b0F",
+							"font": "sans-serif",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [0, 250, 200, 50]
+						}
+					],
+					"location": [0, 0, 200, 450]
+				},
+				{
+					"name": "Hour1",
+					"type": "hourly",
+					"subtype": "hour1",
+					"interval": 300,
+					"background": "images/kati_weather/weather_daily_bg2.png",
+					"images": {
+						"clear-day": "images/kati_weather/clear.png",
+						"clear-night": "images/kati_weather/clear-night.png",
+						"rain": "images/kati_weather/rain.png",
+						"snow": "images/kati_weather/snow.png",
+						"sleet": "images/kati_weather/sleet.png",
+						"wind": "images/kati_weather/wind.png",
+						"fog": "images/kati_weather/fog.png",
+						"cloudy": "images/kati_weather/cloudy.png",
+						"partly-cloudy-day": "images/kati_weather/partly-cloudy.png",
+						"partly-cloudy-night": "images/kati_weather/partly-cloudy-night.png",
+						"default": "images/kati_weather/default.png"
+					},
+					"data": [
+						{
+							"name": "Hour1txt",
+							"type": "time",
+							"format": "{0:%I:00 %p}",
+							"font": "sans-serif",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 2,
+							"effects": [
+							
+							],
+							"location": [200, 0, 200, 50]
+						},
+						{
+							"name": "Hour1Sum",
+							"type": "summary",
+							"format": "{}",
+							"width": 20,
+							"font": "sans-serif",
+							"fontsize": "20",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [200, 300, 200, 100]
+						},
+						{
+							"name": "Hour1Icon",
+							"type": "icon",
+							"location": [200, 50, 200, 200]
+						},
+						{
+							"name": "Hour1Temp",
+							"type": "temperature",
+							"format": "{:.0f}\u00b0F",
+							"font": "sans-serif",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [200, 250, 200, 50]
+						}
+					],
+					"location": [200, 0, 200, 450]
+				},
+				{
+					"name": "Hour2",
+					"type": "hourly",
+					"subtype": "hour2",
+					"interval": 300,
+					"background": "images/kati_weather/weather_daily_bg2.png",
+					"images": {
+						"clear-day": "images/kati_weather/clear.png",
+						"clear-night": "images/kati_weather/clear-night.png",
+						"rain": "images/kati_weather/rain.png",
+						"snow": "images/kati_weather/snow.png",
+						"sleet": "images/kati_weather/sleet.png",
+						"wind": "images/kati_weather/wind.png",
+						"fog": "images/kati_weather/fog.png",
+						"cloudy": "images/kati_weather/cloudy.png",
+						"partly-cloudy-day": "images/kati_weather/partly-cloudy.png",
+						"partly-cloudy-night": "images/kati_weather/partly-cloudy-night.png",
+						"default": "images/kati_weather/default.png"
+					},
+					"data": [
+						{
+							"name": "Hour2txt",
+							"type": "time",
+							"format": "{0:%I:00 %p}",
+							"font": "sans-serif",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 2,
+							"effects": [
+							
+							],
+							"location": [400, 0, 200, 50]
+						},
+						{
+							"name": "Hour2Sum",
+							"type": "summary",
+							"format": "{}",
+							"width": 20,
+							"font": "sans-serif",
+							"fontsize": "20",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [400, 300, 200, 100]
+						},
+						{
+							"name": "Hour2Icon",
+							"type": "icon",
+							"location": [400, 50, 200, 200]
+						},
+						{
+							"name": "Hour2Temp",
+							"type": "temperature",
+							"format": "{:.0f}\u00b0F",
+							"font": "sans-serif",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [400, 250, 200, 50]
+						}
+					],
+					"location": [400, 0, 200, 450]
+				},
+				{
+					"name": "Hour3",
+					"type": "hourly",
+					"subtype": "hour3",
+					"interval": 300,
+					"background": "images/kati_weather/weather_daily_bg2.png",
+					"images": {
+						"clear-day": "images/kati_weather/clear.png",
+						"clear-night": "images/kati_weather/clear-night.png",
+						"rain": "images/kati_weather/rain.png",
+						"snow": "images/kati_weather/snow.png",
+						"sleet": "images/kati_weather/sleet.png",
+						"wind": "images/kati_weather/wind.png",
+						"fog": "images/kati_weather/fog.png",
+						"cloudy": "images/kati_weather/cloudy.png",
+						"partly-cloudy-day": "images/kati_weather/partly-cloudy.png",
+						"partly-cloudy-night": "images/kati_weather/partly-cloudy-night.png",
+						"default": "images/kati_weather/default.png"
+					},
+					"data": [
+						{
+							"name": "Hour3txt",
+							"type": "time",
+							"format": "{0:%I:00 %p}",
+							"font": "sans-serif",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 2,
+							"effects": [
+							
+							],
+							"location": [600, 0, 200, 50]
+						},
+						{
+							"name": "Hour3Sum",
+							"type": "summary",
+							"format": "{}",
+							"width": 20,
+							"font": "sans-serif",
+							"fontsize": "20",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [600, 300, 200, 100]
+						},
+						{
+							"name": "Hour3Icon",
+							"type": "icon",
+							"location": [600, 50, 200, 200]
+						},
+						{
+							"name": "Hour3Temp",
+							"type": "temperature",
+							"format": "{:.0f}\u00b0F",
+							"font": "sans-serif",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [600, 250, 200, 50]
+						}
+					],
+					"location": [600, 0, 200, 450]
+				},
+				{
+					"name": "Hour4",
+					"type": "hourly",
+					"subtype": "hour4",
+					"interval": 300,
+					"background": "images/kati_weather/weather_daily_bg2.png",
+					"images": {
+						"clear-day": "images/kati_weather/clear.png",
+						"clear-night": "images/kati_weather/clear-night.png",
+						"rain": "images/kati_weather/rain.png",
+						"snow": "images/kati_weather/snow.png",
+						"sleet": "images/kati_weather/sleet.png",
+						"wind": "images/kati_weather/wind.png",
+						"fog": "images/kati_weather/fog.png",
+						"cloudy": "images/kati_weather/cloudy.png",
+						"partly-cloudy-day": "images/kati_weather/partly-cloudy.png",
+						"partly-cloudy-night": "images/kati_weather/partly-cloudy-night.png",
+						"default": "images/kati_weather/default.png"
+					},
+					"data": [
+						{
+							"name": "Hour4txt",
+							"type": "time",
+							"format": "{0:%I:00 %p}",
+							"font": "sans-serif",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 2,
+							"effects": [
+							
+							],
+							"location": [800, 0, 200, 50]
+						},
+						{
+							"name": "Hour4Sum",
+							"type": "summary",
+							"format": "{}",
+							"width": 20,
+							"font": "sans-serif",
+							"fontsize": "20",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [800, 300, 200, 100]
+						},
+						{
+							"name": "Hour4Icon",
+							"type": "icon",
+							"location": [800, 50, 200, 200]
+						},
+						{
+							"name": "Hour4Temp",
+							"type": "temperature",
+							"format": "{:.0f}\u00b0F",
+							"font": "sans-serif",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [800, 250, 200, 50]
+						}
+					],
+					"location": [800, 0, 200, 450]
+				},
+				{
+					"name": "Hour5",
+					"type": "hourly",
+					"subtype": "hour5",
+					"interval": 300,
+					"background": "images/kati_weather/weather_daily_bg2.png",
+					"images": {
+						"clear-day": "images/kati_weather/clear.png",
+						"clear-night": "images/kati_weather/clear-night.png",
+						"rain": "images/kati_weather/rain.png",
+						"snow": "images/kati_weather/snow.png",
+						"sleet": "images/kati_weather/sleet.png",
+						"wind": "images/kati_weather/wind.png",
+						"fog": "images/kati_weather/fog.png",
+						"cloudy": "images/kati_weather/cloudy.png",
+						"partly-cloudy-day": "images/kati_weather/partly-cloudy.png",
+						"partly-cloudy-night": "images/kati_weather/partly-cloudy-night.png",
+						"default": "images/kati_weather/default.png"
+					},
+					"data": [
+						{
+							"name": "Hour5txt",
+							"type": "time",
+							"format": "{0:%I:00 %p}",
+							"font": "sans-serif",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 2,
+							"effects": [
+							
+							],
+							"location": [1000, 0, 200, 50]
+						},
+						{
+							"name": "Hour5Sum",
+							"type": "summary",
+							"format": "{}",
+							"width": 20,
+							"font": "sans-serif",
+							"fontsize": "20",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [1000, 300, 200, 100]
+						},
+						{
+							"name": "Hour5Icon",
+							"type": "icon",
+							"location": [1000, 50, 200, 200]
+						},
+						{
+							"name": "Hour5Temp",
+							"type": "temperature",
+							"format": "{:.0f}\u00b0F",
+							"font": "sans-serif",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [1000, 250, 200, 50]
+						}
+					],
+					"location": [1000, 0, 200, 450]
+				},
+				{
+					"name": "Hour6",
+					"type": "hourly",
+					"subtype": "hour6",
+					"interval": 300,
+					"background": "images/kati_weather/weather_daily_bg2.png",
+					"images": {
+						"clear-day": "images/kati_weather/clear.png",
+						"clear-night": "images/kati_weather/clear-night.png",
+						"rain": "images/kati_weather/rain.png",
+						"snow": "images/kati_weather/snow.png",
+						"sleet": "images/kati_weather/sleet.png",
+						"wind": "images/kati_weather/wind.png",
+						"fog": "images/kati_weather/fog.png",
+						"cloudy": "images/kati_weather/cloudy.png",
+						"partly-cloudy-day": "images/kati_weather/partly-cloudy.png",
+						"partly-cloudy-night": "images/kati_weather/partly-cloudy-night.png",
+						"default": "images/kati_weather/default.png"
+					},
+					"data": [
+						{
+							"name": "Hour6txt",
+							"type": "time",
+							"format": "{0:%I:00 %p}",
+							"font": "sans-serif",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 2,
+							"effects": [
+							
+							],
+							"location": [1200, 0, 200, 50]
+						},
+						{
+							"name": "Hour6Sum",
+							"type": "summary",
+							"format": "{}",
+							"width": 20,
+							"font": "sans-serif",
+							"fontsize": "20",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [1200, 300, 200, 100]
+						},
+						{
+							"name": "Hour6Icon",
+							"type": "icon",
+							"location": [1200, 50, 200, 200]
+						},
+						{
+							"name": "Hour6Temp",
+							"type": "temperature",
+							"format": "{:.0f}\u00b0F",
+							"font": "sans-serif",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [1200, 250, 200, 50]
+						}
+					],
+					"location": [1200, 0, 200, 450]
+				},
+				{
+					"name": "Hour7",
+					"type": "hourly",
+					"subtype": "hour7",
+					"interval": 300,
+					"background": "images/kati_weather/weather_daily_bg2.png",
+					"images": {
+						"clear-day": "images/kati_weather/clear.png",
+						"clear-night": "images/kati_weather/clear-night.png",
+						"rain": "images/kati_weather/rain.png",
+						"snow": "images/kati_weather/snow.png",
+						"sleet": "images/kati_weather/sleet.png",
+						"wind": "images/kati_weather/wind.png",
+						"fog": "images/kati_weather/fog.png",
+						"cloudy": "images/kati_weather/cloudy.png",
+						"partly-cloudy-day": "images/kati_weather/partly-cloudy.png",
+						"partly-cloudy-night": "images/kati_weather/partly-cloudy-night.png",
+						"default": "images/kati_weather/default.png"
+					},
+					"data": [
+						{
+							"name": "Hour7txt",
+							"type": "time",
+							"format": "{0:%I:00 %p}",
+							"font": "sans-serif",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 2,
+							"effects": [
+							
+							],
+							"location": [1400, 0, 200, 50]
+						},
+						{
+							"name": "Hour7Sum",
+							"type": "summary",
+							"format": "{}",
+							"width": 20,
+							"font": "sans-serif",
+							"fontsize": "20",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [1400, 300, 200, 100]
+						},
+						{
+							"name": "Hour7Icon",
+							"type": "icon",
+							"location": [1400, 50, 200, 200]
+						},
+						{
+							"name": "Hour7Temp",
+							"type": "temperature",
+							"format": "{:.0f}\u00b0F",
+							"font": "sans-serif",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [1400, 250, 200, 50]
+						}
+					],
+					"location": [1400, 0, 200, 450]
+				},
+				{
+					"name": "Hour8",
+					"type": "hourly",
+					"subtype": "hour8",
+					"interval": 300,
+					"background": "images/kati_weather/weather_daily_bg2.png",
+					"images": {
+						"clear-day": "images/kati_weather/clear.png",
+						"clear-night": "images/kati_weather/clear-night.png",
+						"rain": "images/kati_weather/rain.png",
+						"snow": "images/kati_weather/snow.png",
+						"sleet": "images/kati_weather/sleet.png",
+						"wind": "images/kati_weather/wind.png",
+						"fog": "images/kati_weather/fog.png",
+						"cloudy": "images/kati_weather/cloudy.png",
+						"partly-cloudy-day": "images/kati_weather/partly-cloudy.png",
+						"partly-cloudy-night": "images/kati_weather/partly-cloudy-night.png",
+						"default": "images/kati_weather/default.png"
+					},
+					"data": [
+						{
+							"name": "Hour8txt",
+							"type": "time",
+							"format": "{0:%I:00 %p}",
+							"font": "sans-serif",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 2,
+							"effects": [
+							
+							],
+							"location": [0, 450, 200, 50]
+						},
+						{
+							"name": "Hour8Sum",
+							"type": "summary",
+							"format": "{}",
+							"width": 20,
+							"font": "sans-serif",
+							"fontsize": "20",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [0, 750, 200, 100]
+						},
+						{
+							"name": "Hour8Icon",
+							"type": "icon",
+							"location": [0, 500, 200, 200]
+						},
+						{
+							"name": "Hour8Temp",
+							"type": "temperature",
+							"format": "{:.0f}\u00b0F",
+							"font": "sans-serif",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [0, 700, 200, 50]
+						}
+					],
+					"location": [0, 450, 200, 450]
+				},
+				{
+					"name": "Hour9",
+					"type": "hourly",
+					"subtype": "hour9",
+					"interval": 300,
+					"background": "images/kati_weather/weather_daily_bg2.png",
+					"images": {
+						"clear-day": "images/kati_weather/clear.png",
+						"clear-night": "images/kati_weather/clear-night.png",
+						"rain": "images/kati_weather/rain.png",
+						"snow": "images/kati_weather/snow.png",
+						"sleet": "images/kati_weather/sleet.png",
+						"wind": "images/kati_weather/wind.png",
+						"fog": "images/kati_weather/fog.png",
+						"cloudy": "images/kati_weather/cloudy.png",
+						"partly-cloudy-day": "images/kati_weather/partly-cloudy.png",
+						"partly-cloudy-night": "images/kati_weather/partly-cloudy-night.png",
+						"default": "images/kati_weather/default.png"
+					},
+					"data": [
+						{
+							"name": "Hour9txt",
+							"type": "time",
+							"format": "{0:%I:00 %p}",
+							"font": "sans-serif",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 2,
+							"effects": [
+							
+							],
+							"location": [200, 450, 200, 50]
+						},
+						{
+							"name": "Hour9Sum",
+							"type": "summary",
+							"format": "{}",
+							"width": 20,
+							"font": "sans-serif",
+							"fontsize": "20",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [200, 750, 200, 100]
+						},
+						{
+							"name": "Hour9Icon",
+							"type": "icon",
+							"location": [200, 500, 200, 200]
+						},
+						{
+							"name": "Hour9Temp",
+							"type": "temperature",
+							"format": "{:.0f}\u00b0F",
+							"font": "sans-serif",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [200, 700, 200, 50]
+						}
+					],
+					"location": [200, 450, 200, 450]
+				},
+				{
+					"name": "Hour10",
+					"type": "hourly",
+					"subtype": "hour10",
+					"interval": 300,
+					"background": "images/kati_weather/weather_daily_bg2.png",
+					"images": {
+						"clear-day": "images/kati_weather/clear.png",
+						"clear-night": "images/kati_weather/clear-night.png",
+						"rain": "images/kati_weather/rain.png",
+						"snow": "images/kati_weather/snow.png",
+						"sleet": "images/kati_weather/sleet.png",
+						"wind": "images/kati_weather/wind.png",
+						"fog": "images/kati_weather/fog.png",
+						"cloudy": "images/kati_weather/cloudy.png",
+						"partly-cloudy-day": "images/kati_weather/partly-cloudy.png",
+						"partly-cloudy-night": "images/kati_weather/partly-cloudy-night.png",
+						"default": "images/kati_weather/default.png"
+					},
+					"data": [
+						{
+							"name": "Hour10txt",
+							"type": "time",
+							"format": "{0:%I:00 %p}",
+							"font": "sans-serif",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 2,
+							"effects": [
+							
+							],
+							"location": [400, 450, 200, 50]
+						},
+						{
+							"name": "Hour10Sum",
+							"type": "summary",
+							"format": "{}",
+							"width": 20,
+							"font": "sans-serif",
+							"fontsize": "20",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [400, 750, 200, 100]
+						},
+						{
+							"name": "Hour10Icon",
+							"type": "icon",
+							"location": [400, 500, 200, 200]
+						},
+						{
+							"name": "Hour10Temp",
+							"type": "temperature",
+							"format": "{:.0f}\u00b0F",
+							"font": "sans-serif",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [400, 700, 200, 50]
+						}
+					],
+					"location": [400, 450, 200, 450]
+				},
+				{
+					"name": "Hour11",
+					"type": "hourly",
+					"subtype": "hour11",
+					"interval": 300,
+					"background": "images/kati_weather/weather_daily_bg2.png",
+					"images": {
+						"clear-day": "images/kati_weather/clear.png",
+						"clear-night": "images/kati_weather/clear-night.png",
+						"rain": "images/kati_weather/rain.png",
+						"snow": "images/kati_weather/snow.png",
+						"sleet": "images/kati_weather/sleet.png",
+						"wind": "images/kati_weather/wind.png",
+						"fog": "images/kati_weather/fog.png",
+						"cloudy": "images/kati_weather/cloudy.png",
+						"partly-cloudy-day": "images/kati_weather/partly-cloudy.png",
+						"partly-cloudy-night": "images/kati_weather/partly-cloudy-night.png",
+						"default": "images/kati_weather/default.png"
+					},
+					"data": [
+						{
+							"name": "Hour11txt",
+							"type": "time",
+							"format": "{0:%I:00 %p}",
+							"font": "sans-serif",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 2,
+							"effects": [
+							
+							],
+							"location": [600, 450, 200, 50]
+						},
+						{
+							"name": "Hour11Sum",
+							"type": "summary",
+							"format": "{}",
+							"width": 20,
+							"font": "sans-serif",
+							"fontsize": "20",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [600, 750, 200, 100]
+						},
+						{
+							"name": "Hour11Icon",
+							"type": "icon",
+							"location": [600, 500, 200, 200]
+						},
+						{
+							"name": "Hour11Temp",
+							"type": "temperature",
+							"format": "{:.0f}\u00b0F",
+							"font": "sans-serif",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [600, 700, 200, 50]
+						}
+					],
+					"location": [600, 450, 200, 450]
+				},
+				{
+					"name": "Hour12",
+					"type": "hourly",
+					"subtype": "hour12",
+					"interval": 300,
+					"background": "images/kati_weather/weather_daily_bg2.png",
+					"images": {
+						"clear-day": "images/kati_weather/clear.png",
+						"clear-night": "images/kati_weather/clear-night.png",
+						"rain": "images/kati_weather/rain.png",
+						"snow": "images/kati_weather/snow.png",
+						"sleet": "images/kati_weather/sleet.png",
+						"wind": "images/kati_weather/wind.png",
+						"fog": "images/kati_weather/fog.png",
+						"cloudy": "images/kati_weather/cloudy.png",
+						"partly-cloudy-day": "images/kati_weather/partly-cloudy.png",
+						"partly-cloudy-night": "images/kati_weather/partly-cloudy-night.png",
+						"default": "images/kati_weather/default.png"
+					},
+					"data": [
+						{
+							"name": "Hour12txt",
+							"type": "time",
+							"format": "{0:%I:00 %p}",
+							"font": "sans-serif",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 2,
+							"effects": [
+							
+							],
+							"location": [800, 450, 200, 50]
+						},
+						{
+							"name": "Hour12Sum",
+							"type": "summary",
+							"format": "{}",
+							"width": 20,
+							"font": "sans-serif",
+							"fontsize": "20",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [800, 750, 200, 100]
+						},
+						{
+							"name": "Hour12Icon",
+							"type": "icon",
+							"location": [800, 500, 200, 200]
+						},
+						{
+							"name": "Hour12Temp",
+							"type": "temperature",
+							"format": "{:.0f}\u00b0F",
+							"font": "sans-serif",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [800, 700, 200, 50]
+						}
+					],
+					"location": [800, 450, 200, 450]
+				},
+				{
+					"name": "Hour13",
+					"type": "hourly",
+					"subtype": "hour13",
+					"interval": 300,
+					"background": "images/kati_weather/weather_daily_bg2.png",
+					"images": {
+						"clear-day": "images/kati_weather/clear.png",
+						"clear-night": "images/kati_weather/clear-night.png",
+						"rain": "images/kati_weather/rain.png",
+						"snow": "images/kati_weather/snow.png",
+						"sleet": "images/kati_weather/sleet.png",
+						"wind": "images/kati_weather/wind.png",
+						"fog": "images/kati_weather/fog.png",
+						"cloudy": "images/kati_weather/cloudy.png",
+						"partly-cloudy-day": "images/kati_weather/partly-cloudy.png",
+						"partly-cloudy-night": "images/kati_weather/partly-cloudy-night.png",
+						"default": "images/kati_weather/default.png"
+					},
+					"data": [
+						{
+							"name": "Hour13txt",
+							"type": "time",
+							"format": "{0:%I:00 %p}",
+							"font": "sans-serif",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 2,
+							"effects": [
+							
+							],
+							"location": [1000, 450, 200, 50]
+						},
+						{
+							"name": "Hour13Sum",
+							"type": "summary",
+							"format": "{}",
+							"width": 20,
+							"font": "sans-serif",
+							"fontsize": "20",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [1000, 750, 200, 100]
+						},
+						{
+							"name": "Hour13Icon",
+							"type": "icon",
+							"location": [1000, 500, 200, 200]
+						},
+						{
+							"name": "Hour13Temp",
+							"type": "temperature",
+							"format": "{:.0f}\u00b0F",
+							"font": "sans-serif",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [1000, 700, 200, 50]
+						}
+					],
+					"location": [1000, 450, 200, 450]
+				},
+				{
+					"name": "Hour14",
+					"type": "hourly",
+					"subtype": "hour14",
+					"interval": 300,
+					"background": "images/kati_weather/weather_daily_bg2.png",
+					"images": {
+						"clear-day": "images/kati_weather/clear.png",
+						"clear-night": "images/kati_weather/clear-night.png",
+						"rain": "images/kati_weather/rain.png",
+						"snow": "images/kati_weather/snow.png",
+						"sleet": "images/kati_weather/sleet.png",
+						"wind": "images/kati_weather/wind.png",
+						"fog": "images/kati_weather/fog.png",
+						"cloudy": "images/kati_weather/cloudy.png",
+						"partly-cloudy-day": "images/kati_weather/partly-cloudy.png",
+						"partly-cloudy-night": "images/kati_weather/partly-cloudy-night.png",
+						"default": "images/kati_weather/default.png"
+					},
+					"data": [
+						{
+							"name": "Hour14txt",
+							"type": "time",
+							"format": "{0:%I:00 %p}",
+							"font": "sans-serif",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 2,
+							"effects": [
+							
+							],
+							"location": [1200, 450, 200, 50]
+						},
+						{
+							"name": "Hour14Sum",
+							"type": "summary",
+							"format": "{}",
+							"width": 20,
+							"font": "sans-serif",
+							"fontsize": "20",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [1200, 750, 200, 100]
+						},
+						{
+							"name": "Hour14Icon",
+							"type": "icon",
+							"location": [1200, 500, 200, 200]
+						},
+						{
+							"name": "Hour14Temp",
+							"type": "temperature",
+							"format": "{:.0f}\u00b0F",
+							"font": "sans-serif",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [1200, 700, 200, 50]
+						}
+					],
+					"location": [1200, 450, 200, 450]
+				},
+				{
+					"name": "Hour15",
+					"type": "hourly",
+					"subtype": "hour15",
+					"interval": 300,
+					"background": "images/kati_weather/weather_daily_bg2.png",
+					"images": {
+						"clear-day": "images/kati_weather/clear.png",
+						"clear-night": "images/kati_weather/clear-night.png",
+						"rain": "images/kati_weather/rain.png",
+						"snow": "images/kati_weather/snow.png",
+						"sleet": "images/kati_weather/sleet.png",
+						"wind": "images/kati_weather/wind.png",
+						"fog": "images/kati_weather/fog.png",
+						"cloudy": "images/kati_weather/cloudy.png",
+						"partly-cloudy-day": "images/kati_weather/partly-cloudy.png",
+						"partly-cloudy-night": "images/kati_weather/partly-cloudy-night.png",
+						"default": "images/kati_weather/default.png"
+					},
+					"data": [
+						{
+							"name": "Hour15txt",
+							"type": "time",
+							"format": "{0:%I:00 %p}",
+							"font": "sans-serif",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 2,
+							"effects": [
+							
+							],
+							"location": [1400, 450, 200, 50]
+						},
+						{
+							"name": "Hour15Sum",
+							"type": "summary",
+							"format": "{}",
+							"width": 20,
+							"font": "sans-serif",
+							"fontsize": "20",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [1400, 750, 200, 100]
+						},
+						{
+							"name": "Hour15Icon",
+							"type": "icon",
+							"location": [1400, 500, 200, 200]
+						},
+						{
+							"name": "Hour15Temp",
+							"type": "temperature",
+							"format": "{:.0f}\u00b0F",
+							"font": "sans-serif",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#6EB9FF",
+							"alignment": 5,
+							"effects": [
+							
+							],
+							"location": [1400, 700, 200, 50]
+						}
+					],
+					"location": [1400, 450, 200, 450]
+				}
+			]
 		}
 	]
 }
