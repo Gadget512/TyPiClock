@@ -246,9 +246,7 @@ class Window(QtGui.QWidget):
 								"fontattr": "",
 								"color": "#1ECB7C",
 								"alignment": 4,
-								"effects": [
-								
-								],
+								"shadow": False,
 								"location": [250, 500, 800, 90]}],
 						"location": [0, 500, 1050, 90]}
 		self.weathers.append(WeatherDisplay(self.aboutPage, lastUpdated, self.weather))

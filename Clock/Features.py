@@ -177,21 +177,13 @@ class DateTime():
 		
 		self.textLabel.setGeometry(properties['location'][0], properties['location'][1], properties['location'][2], properties['location'][3])
 		
-		# Set the text effect, if specified
-		for effect in properties['effects']:
-			if effect['type'] == "glow":
-				textEffect = QtGui.QGraphicsDropShadowEffect()
-				textEffect.setOffset(0)
-				textEffect.setBlurRadius(effect['typeattr']['radius'])
-				textEffect.setColor(QColor(effect['typeattr']['color']))
-				self.textLabel.setGraphicsEffect(textEffect)
-				
-			elif effect['type'] == "shadow":
-				textEffect = QtGui.QGraphicsDropShadowEffect()
-				textEffect.setOffset(effect['typeattr']['offset'])
-				textEffect.setBlurRadius(effect['typeattr']['blur'])
-				textEffect.setColor(QColor(effect['typeattr']['color']))
-				self.textLabel.setGraphicsEffect(textEffect)
+		# Set the text shadow, if specified
+		if properties['shadow']:
+			textEffect = QtGui.QGraphicsDropShadowEffect()
+			textEffect.setOffset(properties['shadow']['offset'])
+			textEffect.setBlurRadius(properties['shadow']['blur'])
+			textEffect.setColor(QColor(properties['shadow']['color']))
+			self.textLabel.setGraphicsEffect(textEffect)
 		
 		# Display text
 		now = datetime.datetime.now()
@@ -853,6 +845,12 @@ class WeatherDisplay():
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
 					self.lastUpdated.setAlignment(TyAlign().align(d['alignment']))
+					if d['shadow']:
+						textEffect = QtGui.QGraphicsDropShadowEffect()
+						textEffect.setOffset(d['shadow']['offset'])
+						textEffect.setBlurRadius(d['shadow']['blur'])
+						textEffect.setColor(QColor(d['shadow']['color']))
+						self.lastUpdated.setGraphicsEffect(textEffect)
 					self.lastUpdated.setText(self.lastUpdatedFormat.format(self.wObj.getLastUpdated()))
 					self.lastUpdated.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 		
@@ -870,6 +868,12 @@ class WeatherDisplay():
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
 					self.summary.setAlignment(TyAlign().align(d['alignment']))
+					if d['shadow']:
+						textEffect = QtGui.QGraphicsDropShadowEffect()
+						textEffect.setOffset(d['shadow']['offset'])
+						textEffect.setBlurRadius(d['shadow']['blur'])
+						textEffect.setColor(QColor(d['shadow']['color']))
+						self.summary.setGraphicsEffect(textEffect)
 					self.summary.setText(fill(self.summaryFormat.format(self.weatherData['summary']), width=self.summaryWidth))
 					self.summary.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 				
@@ -892,6 +896,12 @@ class WeatherDisplay():
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
 					self.temperature.setAlignment(TyAlign().align(d['alignment']))
+					if d['shadow']:
+						textEffect = QtGui.QGraphicsDropShadowEffect()
+						textEffect.setOffset(d['shadow']['offset'])
+						textEffect.setBlurRadius(d['shadow']['blur'])
+						textEffect.setColor(QColor(d['shadow']['color']))
+						self.temperature.setGraphicsEffect(textEffect)
 					self.temperature.setText(self.temperatureFormat.format(self.weatherData['temperature']))
 					self.temperature.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
@@ -904,6 +914,12 @@ class WeatherDisplay():
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
 					self.apparentTemperature.setAlignment(TyAlign().align(d['alignment']))
+					if d['shadow']:
+						textEffect = QtGui.QGraphicsDropShadowEffect()
+						textEffect.setOffset(d['shadow']['offset'])
+						textEffect.setBlurRadius(d['shadow']['blur'])
+						textEffect.setColor(QColor(d['shadow']['color']))
+						self.apparentTemperature.setGraphicsEffect(textEffect)
 					self.apparentTemperature.setText(self.apparentTemperatureFormat.format(self.weatherData['apparentTemperature']))
 					self.apparentTemperature.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
@@ -916,6 +932,12 @@ class WeatherDisplay():
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
 					self.humidity.setAlignment(TyAlign().align(d['alignment']))
+					if d['shadow']:
+						textEffect = QtGui.QGraphicsDropShadowEffect()
+						textEffect.setOffset(d['shadow']['offset'])
+						textEffect.setBlurRadius(d['shadow']['blur'])
+						textEffect.setColor(QColor(d['shadow']['color']))
+						self.humidity.setGraphicsEffect(textEffect)
 					self.humidity.setText(self.humidityFormat.format(self.weatherData['humidity']))
 					self.humidity.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
@@ -928,6 +950,12 @@ class WeatherDisplay():
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
 					self.pressure.setAlignment(TyAlign().align(d['alignment']))
+					if d['shadow']:
+						textEffect = QtGui.QGraphicsDropShadowEffect()
+						textEffect.setOffset(d['shadow']['offset'])
+						textEffect.setBlurRadius(d['shadow']['blur'])
+						textEffect.setColor(QColor(d['shadow']['color']))
+						self.pressure.setGraphicsEffect(textEffect)
 					self.pressure.setText(self.pressureFormat.format(self.weatherData['pressure']))
 					self.pressure.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
@@ -1013,6 +1041,12 @@ class WeatherDisplay():
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
 					self.topSummary.setAlignment(TyAlign().align(d['alignment']))
+					if d['shadow']:
+						textEffect = QtGui.QGraphicsDropShadowEffect()
+						textEffect.setOffset(d['shadow']['offset'])
+						textEffect.setBlurRadius(d['shadow']['blur'])
+						textEffect.setColor(QColor(d['shadow']['color']))
+						self.topSummary.setGraphicsEffect(textEffect)
 					self.topSummary.setText(fill(self.topSummaryFormat.format(self.weatherData['summary']), width=self.topSummaryWidth))
 					self.topSummary.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
@@ -1037,6 +1071,12 @@ class WeatherDisplay():
 					d['fontattr']+"}")
 					self.timeData.setAlignment(TyAlign().align(d['alignment']))
 					hourTime = datetime.datetime.fromtimestamp(hourData['time'])
+					if d['shadow']:
+						textEffect = QtGui.QGraphicsDropShadowEffect()
+						textEffect.setOffset(d['shadow']['offset'])
+						textEffect.setBlurRadius(d['shadow']['blur'])
+						textEffect.setColor(QColor(d['shadow']['color']))
+						self.timeData.setGraphicsEffect(textEffect)
 					self.timeData.setText(self.timeFormat.format(hourTime))
 					self.timeData.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
@@ -1050,6 +1090,12 @@ class WeatherDisplay():
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
 					self.summary.setAlignment(TyAlign().align(d['alignment']))
+					if d['shadow']:
+						textEffect = QtGui.QGraphicsDropShadowEffect()
+						textEffect.setOffset(d['shadow']['offset'])
+						textEffect.setBlurRadius(d['shadow']['blur'])
+						textEffect.setColor(QColor(d['shadow']['color']))
+						self.summary.setGraphicsEffect(textEffect)
 					self.summary.setText(fill(self.summaryFormat.format(hourData['summary']), width=self.summaryWidth))
 					self.summary.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
@@ -1072,6 +1118,12 @@ class WeatherDisplay():
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
 					self.temperature.setAlignment(TyAlign().align(d['alignment']))
+					if d['shadow']:
+						textEffect = QtGui.QGraphicsDropShadowEffect()
+						textEffect.setOffset(d['shadow']['offset'])
+						textEffect.setBlurRadius(d['shadow']['blur'])
+						textEffect.setColor(QColor(d['shadow']['color']))
+						self.temperature.setGraphicsEffect(textEffect)
 					self.temperature.setText(self.temperatureFormat.format(hourData['temperature']))
 					self.temperature.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
@@ -1084,6 +1136,12 @@ class WeatherDisplay():
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
 					self.humidity.setAlignment(TyAlign().align(d['alignment']))
+					if d['shadow']:
+						textEffect = QtGui.QGraphicsDropShadowEffect()
+						textEffect.setOffset(d['shadow']['offset'])
+						textEffect.setBlurRadius(d['shadow']['blur'])
+						textEffect.setColor(QColor(d['shadow']['color']))
+						self.humidity.setGraphicsEffect(textEffect)
 					self.humidity.setText(self.humidityFormat.format(hourData['humidity']))
 					self.humidity.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
@@ -1096,6 +1154,12 @@ class WeatherDisplay():
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
 					self.pressure.setAlignment(TyAlign().align(d['alignment']))
+					if d['shadow']:
+						textEffect = QtGui.QGraphicsDropShadowEffect()
+						textEffect.setOffset(d['shadow']['offset'])
+						textEffect.setBlurRadius(d['shadow']['blur'])
+						textEffect.setColor(QColor(d['shadow']['color']))
+						self.pressure.setGraphicsEffect(textEffect)
 					self.pressure.setText(self.pressureFormat.format(hourData['pressure']))
 					self.pressure.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
@@ -1143,6 +1207,12 @@ class WeatherDisplay():
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
 					self.topSummary.setAlignment(TyAlign().align(d['alignment']))
+					if d['shadow']:
+						textEffect = QtGui.QGraphicsDropShadowEffect()
+						textEffect.setOffset(d['shadow']['offset'])
+						textEffect.setBlurRadius(d['shadow']['blur'])
+						textEffect.setColor(QColor(d['shadow']['color']))
+						self.topSummary.setGraphicsEffect(textEffect)
 					self.topSummary.setText(fill(self.weatherData['summary'], width=self.topSummaryWidth))
 					self.topSummary.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
@@ -1167,6 +1237,12 @@ class WeatherDisplay():
 					d['fontattr']+"}")
 					self.timeData.setAlignment(TyAlign().align(d['alignment']))
 					dayTime = datetime.datetime.fromtimestamp(dayData['time'])
+					if d['shadow']:
+						textEffect = QtGui.QGraphicsDropShadowEffect()
+						textEffect.setOffset(d['shadow']['offset'])
+						textEffect.setBlurRadius(d['shadow']['blur'])
+						textEffect.setColor(QColor(d['shadow']['color']))
+						self.timeData.setGraphicsEffect(textEffect)
 					self.timeData.setText(self.timeFormat.format(dayTime))
 					self.timeData.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
@@ -1180,6 +1256,12 @@ class WeatherDisplay():
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
 					self.summary.setAlignment(TyAlign().align(d['alignment']))
+					if d['shadow']:
+						textEffect = QtGui.QGraphicsDropShadowEffect()
+						textEffect.setOffset(d['shadow']['offset'])
+						textEffect.setBlurRadius(d['shadow']['blur'])
+						textEffect.setColor(QColor(d['shadow']['color']))
+						self.summary.setGraphicsEffect(textEffect)
 					self.summary.setText(fill(self.summaryFormat.format(dayData['summary']), width=self.summaryWidth))
 					self.summary.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
@@ -1202,6 +1284,12 @@ class WeatherDisplay():
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
 					self.temperatureHigh.setAlignment(TyAlign().align(d['alignment']))
+					if d['shadow']:
+						textEffect = QtGui.QGraphicsDropShadowEffect()
+						textEffect.setOffset(d['shadow']['offset'])
+						textEffect.setBlurRadius(d['shadow']['blur'])
+						textEffect.setColor(QColor(d['shadow']['color']))
+						self.temperatureHigh.setGraphicsEffect(textEffect)
 					self.temperatureHigh.setText(self.temperatureHighFormat.format(dayData['temperatureHigh']))
 					self.temperatureHigh.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
@@ -1214,6 +1302,12 @@ class WeatherDisplay():
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
 					self.temperatureLow.setAlignment(TyAlign().align(d['alignment']))
+					if d['shadow']:
+						textEffect = QtGui.QGraphicsDropShadowEffect()
+						textEffect.setOffset(d['shadow']['offset'])
+						textEffect.setBlurRadius(d['shadow']['blur'])
+						textEffect.setColor(QColor(d['shadow']['color']))
+						self.temperatureLow.setGraphicsEffect(textEffect)
 					self.temperatureLow.setText(self.temperatureLowFormat.format(dayData['temperatureLow']))
 					self.temperatureLow.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
@@ -1226,6 +1320,12 @@ class WeatherDisplay():
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
 					self.humidity.setAlignment(TyAlign().align(d['alignment']))
+					if d['shadow']:
+						textEffect = QtGui.QGraphicsDropShadowEffect()
+						textEffect.setOffset(d['shadow']['offset'])
+						textEffect.setBlurRadius(d['shadow']['blur'])
+						textEffect.setColor(QColor(d['shadow']['color']))
+						self.humidity.setGraphicsEffect(textEffect)
 					self.humidity.setText(self.humidityFormat.format(dayData['humidity']))
 					self.humidity.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
@@ -1238,6 +1338,12 @@ class WeatherDisplay():
 					d['fontsize']+"px; "+
 					d['fontattr']+"}")
 					self.pressure.setAlignment(TyAlign().align(d['alignment']))
+					if d['shadow']:
+						textEffect = QtGui.QGraphicsDropShadowEffect()
+						textEffect.setOffset(d['shadow']['offset'])
+						textEffect.setBlurRadius(d['shadow']['blur'])
+						textEffect.setColor(QColor(d['shadow']['color']))
+						self.pressure.setGraphicsEffect(textEffect)
 					self.pressure.setText(self.pressureFormat.format(dayData['pressure']))
 					self.pressure.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
