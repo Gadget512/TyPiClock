@@ -40,15 +40,11 @@
 					"fontattr": "",
 					"color": "#6EB9FF",
 					"alignment": 5,
-					"effects": [
-						{
-							"type": "glow",
-							"typeattr": {
-								"radius": 8,
+					"shadow": {
+								"offset": 0,
+								"blur": 8,
 								"color": "#000000"
-							}
-						}
-					],
+							},
 					"location": [550, 850, 500, 50]
 				}
 			],
@@ -82,9 +78,7 @@
 					"fontattr": "font-weight: bold;",
 					"color": "#50CBEB",
 					"alignment": ["top", "center"],
-					"effects": [
-						
-					],
+					"shadow": null,
 					"location": [0, 0, 500, 300]
 				}
 			],
@@ -123,14 +117,21 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 5,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [50, 856, 200, 44]
 						},
 						{
 							"name": "currIcon",
 							"type": "icon",
+							"shadow": {
+								"offset": 0,
+								"blur": 2,
+								"color": "#000000"
+							},
 							"location": [22, 600, 256, 256]
 						}
 					],
@@ -165,9 +166,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 9,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [250, 856, 50, 44]
 						},
 						{
@@ -179,9 +182,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 7,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [0, 856, 50, 44]
 						}
 					],
@@ -247,9 +252,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 5,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [0, 0, 300, 225]
 						},
 						{
@@ -262,14 +269,21 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 4,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [850, 0, 750, 225]
 						},
 						{
 							"name": "TodayIcon",
 							"type": "icon",
+							"shadow": {
+								"offset": 0,
+								"blur": 2,
+								"color": "#000000"
+							},
 							"location": [300, 0, 225, 225]
 						},
 						{
@@ -281,9 +295,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 8,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [525, 0, 300, 113]
 						},
 						{
@@ -295,9 +311,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 2,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [525, 113, 300, 112]
 						}
 					],
@@ -332,9 +350,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 5,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [0, 225, 300, 225]
 						},
 						{
@@ -347,14 +367,21 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 4,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [850, 225, 750, 225]
 						},
 						{
 							"name": "TomIcon",
 							"type": "icon",
+							"shadow": {
+								"offset": 0,
+								"blur": 2,
+								"color": "#000000"
+							},
 							"location": [300, 225, 225, 225]
 						},
 						{
@@ -366,9 +393,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 8,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [525, 225, 300, 113]
 						},
 						{
@@ -380,9 +409,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 2,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [525, 338, 300, 112]
 						}
 					],
@@ -417,9 +448,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 5,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [0, 450, 300, 225]
 						},
 						{
@@ -432,14 +465,21 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 4,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [850, 450, 750, 225]
 						},
 						{
 							"name": "Day2Icon",
 							"type": "icon",
+							"shadow": {
+								"offset": 0,
+								"blur": 2,
+								"color": "#000000"
+							},
 							"location": [300, 450, 225, 225]
 						},
 						{
@@ -451,9 +491,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 8,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [525, 450, 300, 113]
 						},
 						{
@@ -465,9 +507,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 2,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [525, 563, 300, 112]
 						}
 					],
@@ -502,9 +546,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 5,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [0, 675, 300, 225]
 						},
 						{
@@ -517,14 +563,21 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 4,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [850, 675, 750, 225]
 						},
 						{
 							"name": "Day3Icon",
 							"type": "icon",
+							"shadow": {
+								"offset": 0,
+								"blur": 2,
+								"color": "#000000"
+							},
 							"location": [300, 675, 225, 225]
 						},
 						{
@@ -536,9 +589,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 8,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [525, 675, 300, 113]
 						},
 						{
@@ -550,9 +605,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 2,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [525, 788, 300, 112]
 						}
 					],
@@ -614,9 +671,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 2,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [0, 0, 200, 50]
 						},
 						{
@@ -629,14 +688,21 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 5,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [0, 300, 200, 100]
 						},
 						{
 							"name": "Hour0Icon",
 							"type": "icon",
+							"shadow": {
+								"offset": 0,
+								"blur": 2,
+								"color": "#000000"
+							},
 							"location": [0, 50, 200, 200]
 						},
 						{
@@ -648,9 +714,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 5,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [0, 250, 200, 50]
 						}
 					],
@@ -685,9 +753,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 2,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [200, 0, 200, 50]
 						},
 						{
@@ -700,14 +770,21 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 5,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [200, 300, 200, 100]
 						},
 						{
 							"name": "Hour1Icon",
 							"type": "icon",
+							"shadow": {
+								"offset": 0,
+								"blur": 2,
+								"color": "#000000"
+							},
 							"location": [200, 50, 200, 200]
 						},
 						{
@@ -719,9 +796,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 5,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [200, 250, 200, 50]
 						}
 					],
@@ -756,9 +835,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 2,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [400, 0, 200, 50]
 						},
 						{
@@ -771,14 +852,21 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 5,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [400, 300, 200, 100]
 						},
 						{
 							"name": "Hour2Icon",
 							"type": "icon",
+							"shadow": {
+								"offset": 0,
+								"blur": 2,
+								"color": "#000000"
+							},
 							"location": [400, 50, 200, 200]
 						},
 						{
@@ -790,9 +878,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 5,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [400, 250, 200, 50]
 						}
 					],
@@ -827,9 +917,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 2,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [600, 0, 200, 50]
 						},
 						{
@@ -842,14 +934,21 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 5,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [600, 300, 200, 100]
 						},
 						{
 							"name": "Hour3Icon",
 							"type": "icon",
+							"shadow": {
+								"offset": 0,
+								"blur": 2,
+								"color": "#000000"
+							},
 							"location": [600, 50, 200, 200]
 						},
 						{
@@ -861,9 +960,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 5,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [600, 250, 200, 50]
 						}
 					],
@@ -898,9 +999,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 2,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [800, 0, 200, 50]
 						},
 						{
@@ -913,14 +1016,21 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 5,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [800, 300, 200, 100]
 						},
 						{
 							"name": "Hour4Icon",
 							"type": "icon",
+							"shadow": {
+								"offset": 0,
+								"blur": 2,
+								"color": "#000000"
+							},
 							"location": [800, 50, 200, 200]
 						},
 						{
@@ -932,9 +1042,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 5,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [800, 250, 200, 50]
 						}
 					],
@@ -969,9 +1081,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 2,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [1000, 0, 200, 50]
 						},
 						{
@@ -984,14 +1098,21 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 5,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [1000, 300, 200, 100]
 						},
 						{
 							"name": "Hour5Icon",
 							"type": "icon",
+							"shadow": {
+								"offset": 0,
+								"blur": 2,
+								"color": "#000000"
+							},
 							"location": [1000, 50, 200, 200]
 						},
 						{
@@ -1003,9 +1124,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 5,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [1000, 250, 200, 50]
 						}
 					],
@@ -1040,9 +1163,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 2,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [1200, 0, 200, 50]
 						},
 						{
@@ -1055,14 +1180,21 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 5,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [1200, 300, 200, 100]
 						},
 						{
 							"name": "Hour6Icon",
 							"type": "icon",
+							"shadow": {
+								"offset": 0,
+								"blur": 2,
+								"color": "#000000"
+							},
 							"location": [1200, 50, 200, 200]
 						},
 						{
@@ -1074,9 +1206,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 5,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [1200, 250, 200, 50]
 						}
 					],
@@ -1111,9 +1245,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 2,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [1400, 0, 200, 50]
 						},
 						{
@@ -1126,14 +1262,21 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 5,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [1400, 300, 200, 100]
 						},
 						{
 							"name": "Hour7Icon",
 							"type": "icon",
+							"shadow": {
+								"offset": 0,
+								"blur": 2,
+								"color": "#000000"
+							},
 							"location": [1400, 50, 200, 200]
 						},
 						{
@@ -1145,9 +1288,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 5,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [1400, 250, 200, 50]
 						}
 					],
@@ -1182,9 +1327,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 2,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [0, 450, 200, 50]
 						},
 						{
@@ -1197,14 +1344,21 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 5,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [0, 750, 200, 100]
 						},
 						{
 							"name": "Hour8Icon",
 							"type": "icon",
+							"shadow": {
+								"offset": 0,
+								"blur": 2,
+								"color": "#000000"
+							},
 							"location": [0, 500, 200, 200]
 						},
 						{
@@ -1216,9 +1370,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 5,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [0, 700, 200, 50]
 						}
 					],
@@ -1253,9 +1409,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 2,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [200, 450, 200, 50]
 						},
 						{
@@ -1268,14 +1426,21 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 5,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [200, 750, 200, 100]
 						},
 						{
 							"name": "Hour9Icon",
 							"type": "icon",
+							"shadow": {
+								"offset": 0,
+								"blur": 2,
+								"color": "#000000"
+							},
 							"location": [200, 500, 200, 200]
 						},
 						{
@@ -1287,9 +1452,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 5,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [200, 700, 200, 50]
 						}
 					],
@@ -1324,9 +1491,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 2,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [400, 450, 200, 50]
 						},
 						{
@@ -1339,14 +1508,21 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 5,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [400, 750, 200, 100]
 						},
 						{
 							"name": "Hour10Icon",
 							"type": "icon",
+							"shadow": {
+								"offset": 0,
+								"blur": 2,
+								"color": "#000000"
+							},
 							"location": [400, 500, 200, 200]
 						},
 						{
@@ -1358,9 +1534,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 5,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [400, 700, 200, 50]
 						}
 					],
@@ -1395,9 +1573,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 2,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [600, 450, 200, 50]
 						},
 						{
@@ -1410,14 +1590,21 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 5,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [600, 750, 200, 100]
 						},
 						{
 							"name": "Hour11Icon",
 							"type": "icon",
+							"shadow": {
+								"offset": 0,
+								"blur": 2,
+								"color": "#000000"
+							},
 							"location": [600, 500, 200, 200]
 						},
 						{
@@ -1429,9 +1616,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 5,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [600, 700, 200, 50]
 						}
 					],
@@ -1466,9 +1655,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 2,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [800, 450, 200, 50]
 						},
 						{
@@ -1481,14 +1672,21 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 5,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [800, 750, 200, 100]
 						},
 						{
 							"name": "Hour12Icon",
 							"type": "icon",
+							"shadow": {
+								"offset": 0,
+								"blur": 2,
+								"color": "#000000"
+							},
 							"location": [800, 500, 200, 200]
 						},
 						{
@@ -1500,9 +1698,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 5,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [800, 700, 200, 50]
 						}
 					],
@@ -1537,9 +1737,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 2,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [1000, 450, 200, 50]
 						},
 						{
@@ -1552,14 +1754,21 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 5,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [1000, 750, 200, 100]
 						},
 						{
 							"name": "Hour13Icon",
 							"type": "icon",
+							"shadow": {
+								"offset": 0,
+								"blur": 2,
+								"color": "#000000"
+							},
 							"location": [1000, 500, 200, 200]
 						},
 						{
@@ -1571,9 +1780,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 5,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [1000, 700, 200, 50]
 						}
 					],
@@ -1608,9 +1819,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 2,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [1200, 450, 200, 50]
 						},
 						{
@@ -1623,14 +1836,21 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 5,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [1200, 750, 200, 100]
 						},
 						{
 							"name": "Hour14Icon",
 							"type": "icon",
+							"shadow": {
+								"offset": 0,
+								"blur": 2,
+								"color": "#000000"
+							},
 							"location": [1200, 500, 200, 200]
 						},
 						{
@@ -1642,9 +1862,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 5,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [1200, 700, 200, 50]
 						}
 					],
@@ -1679,9 +1901,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 2,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [1400, 450, 200, 50]
 						},
 						{
@@ -1694,14 +1918,21 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 5,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [1400, 750, 200, 100]
 						},
 						{
 							"name": "Hour15Icon",
 							"type": "icon",
+							"shadow": {
+								"offset": 0,
+								"blur": 2,
+								"color": "#000000"
+							},
 							"location": [1400, 500, 200, 200]
 						},
 						{
@@ -1713,9 +1944,11 @@
 							"fontattr": "",
 							"color": "#6EB9FF",
 							"alignment": 5,
-							"effects": [
-							
-							],
+							"shadow": {
+								"offset": 0,
+								"blur": 5,
+								"color": "#000000"
+							},
 							"location": [1400, 700, 200, 50]
 						}
 					],

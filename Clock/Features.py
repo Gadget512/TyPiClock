@@ -882,6 +882,12 @@ class WeatherDisplay():
 					self.icon.setObjectName(self.name+d['name'])
 					self.icon.setStyleSheet("#"+self.name+d['name']+" { background-color: transparent; }")
 					self.icon.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
+					if d['shadow']:
+						textEffect = QtGui.QGraphicsDropShadowEffect()
+						textEffect.setOffset(d['shadow']['offset'])
+						textEffect.setBlurRadius(d['shadow']['blur'])
+						textEffect.setColor(QColor(d['shadow']['color']))
+						self.icon.setGraphicsEffect(textEffect)
 					if self.weatherData['icon'] in self.supportedIcons:
 						self.icon.setPixmap(QPixmap(self.images[self.weatherData['icon']]).scaled(self.icon.size().width(), self.icon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
 					else:
@@ -1055,6 +1061,12 @@ class WeatherDisplay():
 					self.topIcon.setObjectName(self.name+d['name'])
 					self.topIcon.setStyleSheet("#"+self.name+d['name']+" { background-color: transparent; }")
 					self.topIcon.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
+					if d['shadow']:
+						textEffect = QtGui.QGraphicsDropShadowEffect()
+						textEffect.setOffset(d['shadow']['offset'])
+						textEffect.setBlurRadius(d['shadow']['blur'])
+						textEffect.setColor(QColor(d['shadow']['color']))
+						self.topIcon.setGraphicsEffect(textEffect)
 					if self.weatherData['icon'] in self.supportedIcons:
 						self.topIcon.setPixmap(QPixmap(self.images[self.weatherData['icon']]).scaled(self.topIcon.size().width(), self.topIcon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
 					else:
@@ -1104,6 +1116,12 @@ class WeatherDisplay():
 					self.icon.setObjectName(self.name+d['name'])
 					self.icon.setStyleSheet("#"+self.name+d['name']+" { background-color: transparent; }")
 					self.icon.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
+					if d['shadow']:
+						textEffect = QtGui.QGraphicsDropShadowEffect()
+						textEffect.setOffset(d['shadow']['offset'])
+						textEffect.setBlurRadius(d['shadow']['blur'])
+						textEffect.setColor(QColor(d['shadow']['color']))
+						self.icon.setGraphicsEffect(textEffect)
 					if hourData['icon'] in self.supportedIcons:
 						self.icon.setPixmap(QPixmap(self.images[hourData['icon']]).scaled(self.icon.size().width(), self.icon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
 					else:
@@ -1221,6 +1239,12 @@ class WeatherDisplay():
 					self.topIcon.setObjectName(self.name+d['name'])
 					self.topIcon.setStyleSheet("#"+self.name+d['name']+" { background-color: transparent; }")
 					self.topIcon.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
+					if d['shadow']:
+						textEffect = QtGui.QGraphicsDropShadowEffect()
+						textEffect.setOffset(d['shadow']['offset'])
+						textEffect.setBlurRadius(d['shadow']['blur'])
+						textEffect.setColor(QColor(d['shadow']['color']))
+						self.topIcon.setGraphicsEffect(textEffect)
 					if self.weatherData['icon'] in self.supportedIcons:
 						self.topIcon.setPixmap(QPixmap(self.images[self.weatherData['icon']]).scaled(self.topIcon.size().width(), self.topIcon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
 					else:
@@ -1270,6 +1294,12 @@ class WeatherDisplay():
 					self.icon.setObjectName(self.name+d['name'])
 					self.icon.setStyleSheet("#"+self.name+d['name']+" { background-color: transparent; }")
 					self.icon.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
+					if d['shadow']:
+						textEffect = QtGui.QGraphicsDropShadowEffect()
+						textEffect.setOffset(d['shadow']['offset'])
+						textEffect.setBlurRadius(d['shadow']['blur'])
+						textEffect.setColor(QColor(d['shadow']['color']))
+						self.icon.setGraphicsEffect(textEffect)
 					if dayData['icon'] in self.supportedIcons:
 						self.icon.setPixmap(QPixmap(self.images[dayData['icon']]).scaled(self.icon.size().width(), self.icon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
 					else:
