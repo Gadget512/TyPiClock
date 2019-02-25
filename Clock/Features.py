@@ -578,10 +578,12 @@ class WeatherDisplay():
 				self.pressure.setText(self.pressureFormat.format(self.weatherData['pressure']))
 			
 			# Wind Speed
-				# TODO
+			if self.windSpeed:
+				self.windSpeed.setText(self.windSpeedFormat.format(self.weatherData['windSpeed']))
 			
 			# Wind Bearing
-				# TODO
+			if self.windBearing:
+				self.windBearing.setText(self.windBearingFormat.format(self.weatherData['windBearing']))
 				
 		# MINUTELY
 		elif self.type == "minutely":
@@ -685,10 +687,12 @@ class WeatherDisplay():
 				self.pressure.setText(self.pressureFormat.format(hourData['pressure']))
 				
 			# Wind Speed
-				# TODO
-				
+			if self.windSpeed:
+				self.windSpeed.setText(self.windSpeedFormat.format(self.weatherData['windSpeed']))
+			
 			# Wind Bearing
-				# TODO
+			if self.windBearing:
+				self.windBearing.setText(self.windBearingFormat.format(self.weatherData['windBearing']))
 		
 		# DAILY
 		elif self.type == "daily":
@@ -757,10 +761,12 @@ class WeatherDisplay():
 				self.pressure.setText(self.pressureFormat.format(dayData['pressure']))
 				
 			# Wind Speed
-				# TODO
-				
+			if self.windSpeed:
+				self.windSpeed.setText(self.windSpeedFormat.format(self.weatherData['windSpeed']))
+			
 			# Wind Bearing
-				# TODO
+			if self.windBearing:
+				self.windBearing.setText(self.windBearingFormat.format(self.weatherData['windBearing']))
 				
 		
 	def __init__(self, page, properties, wObj):
@@ -832,27 +838,13 @@ class WeatherDisplay():
 			self.wFrame.setStyleSheet("#"+self.name+"frame { background-color: transparent;}")
 		
 		# Set up displays
-		# TODO effects
 		if self.type == "lastUpdated":
 			for d in self.dataToDisplay:
 				self.dlog.debug("Creating " + d['name'])
 				if d['type'] == "lastUpdated":
 					self.lastUpdatedFormat = d['format']
-					self.lastUpdated = QLabel(page)
-					self.lastUpdated.setObjectName(self.name+d['name'])
-					self.lastUpdated.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
-					d['color'] + "; background-color: transparent; font-size: "+
-					d['fontsize']+"px; "+
-					d['fontattr']+"}")
-					self.lastUpdated.setAlignment(Ut.align(d['alignment']))
-					if d['shadow']:
-						textEffect = QtGui.QGraphicsDropShadowEffect()
-						textEffect.setOffset(d['shadow']['offset'])
-						textEffect.setBlurRadius(d['shadow']['blur'])
-						textEffect.setColor(QColor(d['shadow']['color']))
-						self.lastUpdated.setGraphicsEffect(textEffect)
+					self.lastUpdated = Ut.createTextLabel(page, self.name, d)
 					self.lastUpdated.setText(self.lastUpdatedFormat.format(self.wObj.getLastUpdated()))
-					self.lastUpdated.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 		
 		elif self.type == "currently":
 			self.weatherData = wObj.getCurrently()
@@ -861,33 +853,11 @@ class WeatherDisplay():
 				if d['type'] == "summary":
 					self.summaryFormat = d['format']
 					self.summaryWidth = d['width']
-					self.summary = QLabel(page)
-					self.summary.setObjectName(self.name+d['name'])
-					self.summary.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
-					d['color'] + "; background-color: transparent; font-size: "+
-					d['fontsize']+"px; "+
-					d['fontattr']+"}")
-					self.summary.setAlignment(Ut.align(d['alignment']))
-					if d['shadow']:
-						textEffect = QtGui.QGraphicsDropShadowEffect()
-						textEffect.setOffset(d['shadow']['offset'])
-						textEffect.setBlurRadius(d['shadow']['blur'])
-						textEffect.setColor(QColor(d['shadow']['color']))
-						self.summary.setGraphicsEffect(textEffect)
+					self.summary = Ut.createTextLabel(page, self.name, d)
 					self.summary.setText(fill(self.summaryFormat.format(self.weatherData['summary']), width=self.summaryWidth))
-					self.summary.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 				
 				elif d['type'] == "icon":
-					self.icon = QLabel(page)
-					self.icon.setObjectName(self.name+d['name'])
-					self.icon.setStyleSheet("#"+self.name+d['name']+" { background-color: transparent; }")
-					self.icon.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
-					if d['shadow']:
-						textEffect = QtGui.QGraphicsDropShadowEffect()
-						textEffect.setOffset(d['shadow']['offset'])
-						textEffect.setBlurRadius(d['shadow']['blur'])
-						textEffect.setColor(QColor(d['shadow']['color']))
-						self.icon.setGraphicsEffect(textEffect)
+					self.icon = Ut.createImageLabel(page, self.name, d)
 					if self.weatherData['icon'] in self.supportedIcons:
 						self.icon.setPixmap(QPixmap(self.images[self.weatherData['icon']]).scaled(self.icon.size().width(), self.icon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
 					else:
@@ -895,83 +865,33 @@ class WeatherDisplay():
 					
 				elif d['type'] == "temperature":
 					self.temperatureFormat = d['format']
-					self.temperature = QLabel(page)
-					self.temperature.setObjectName(self.name+d['name'])
-					self.temperature.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
-					d['color'] + "; background-color: transparent; font-size: "+
-					d['fontsize']+"px; "+
-					d['fontattr']+"}")
-					self.temperature.setAlignment(Ut.align(d['alignment']))
-					if d['shadow']:
-						textEffect = QtGui.QGraphicsDropShadowEffect()
-						textEffect.setOffset(d['shadow']['offset'])
-						textEffect.setBlurRadius(d['shadow']['blur'])
-						textEffect.setColor(QColor(d['shadow']['color']))
-						self.temperature.setGraphicsEffect(textEffect)
+					self.temperature = Ut.createTextLabel(page, self.name, d)
 					self.temperature.setText(self.temperatureFormat.format(self.weatherData['temperature']))
-					self.temperature.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
 				elif d['type'] == "apparentTemperature":
 					self.apparentTemperatureFormat = d['format']
-					self.apparentTemperature = QLabel(page)
-					self.apparentTemperature.setObjectName(self.name+d['name'])
-					self.apparentTemperature.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
-					d['color'] + "; background-color: transparent; font-size: "+
-					d['fontsize']+"px; "+
-					d['fontattr']+"}")
-					self.apparentTemperature.setAlignment(Ut.align(d['alignment']))
-					if d['shadow']:
-						textEffect = QtGui.QGraphicsDropShadowEffect()
-						textEffect.setOffset(d['shadow']['offset'])
-						textEffect.setBlurRadius(d['shadow']['blur'])
-						textEffect.setColor(QColor(d['shadow']['color']))
-						self.apparentTemperature.setGraphicsEffect(textEffect)
+					self.apparentTemperature = Ut.createTextLabel(page, self.name, d)
 					self.apparentTemperature.setText(self.apparentTemperatureFormat.format(self.weatherData['apparentTemperature']))
-					self.apparentTemperature.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
 				elif d['type'] == "humidity":
 					self.humidityFormat = d['format']
-					self.humidity = QLabel(page)
-					self.humidity.setObjectName(self.name+d['name'])
-					self.humidity.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
-					d['color'] + "; background-color: transparent; font-size: "+
-					d['fontsize']+"px; "+
-					d['fontattr']+"}")
-					self.humidity.setAlignment(Ut.align(d['alignment']))
-					if d['shadow']:
-						textEffect = QtGui.QGraphicsDropShadowEffect()
-						textEffect.setOffset(d['shadow']['offset'])
-						textEffect.setBlurRadius(d['shadow']['blur'])
-						textEffect.setColor(QColor(d['shadow']['color']))
-						self.humidity.setGraphicsEffect(textEffect)
+					self.humidity = Ut.createTextLabel(page, self.name, d)
 					self.humidity.setText(self.humidityFormat.format(self.weatherData['humidity']))
-					self.humidity.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
 				elif d['type'] == "pressure":
 					self.pressureFormat = d['format']
-					self.pressure = QLabel(page)
-					self.pressure.setObjectName(self.name+d['name'])
-					self.pressure.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
-					d['color'] + "; background-color: transparent; font-size: "+
-					d['fontsize']+"px; "+
-					d['fontattr']+"}")
-					self.pressure.setAlignment(Ut.align(d['alignment']))
-					if d['shadow']:
-						textEffect = QtGui.QGraphicsDropShadowEffect()
-						textEffect.setOffset(d['shadow']['offset'])
-						textEffect.setBlurRadius(d['shadow']['blur'])
-						textEffect.setColor(QColor(d['shadow']['color']))
-						self.pressure.setGraphicsEffect(textEffect)
+					self.pressure = Ut.createTextLabel(page, self.name, d)
 					self.pressure.setText(self.pressureFormat.format(self.weatherData['pressure']))
-					self.pressure.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
 				elif d['type'] == "windSpeed":
-					self.windSpeed = QLabel(page)
-					# TODO
+					self.windSpeedFormat = d['format']
+					self.windSpeed = Ut.createTextLabel(page, self.name, d)
+					self.windSpeed.setText(self.windSpeedFormat.format(self.weatherData['windSpeed']))
 					
 				elif d['type'] == "windBearing":
-					self.windBearing = QLabel(page)
-					# TODO
+					self.windBearingFormat = d['format']
+					self.windBearing = Ut.createTextLabel(page, self.name, d)
+					self.windBearing.setText(self.windBearingFormat.format(self.weatherData['windBearing']))
 					
 		elif self.type == "minutely":
 			self.weatherData = wObj.getMinutely()
@@ -1040,33 +960,11 @@ class WeatherDisplay():
 				if d['type'] == "topSummary":
 					self.topSummaryFormat = d['format']
 					self.topSummaryWidth = d['width']
-					self.topSummary = QLabel(page)
-					self.topSummary.setObjectName(self.name+d['name'])
-					self.topSummary.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
-					d['color'] + "; background-color: transparent; font-size: "+
-					d['fontsize']+"px; "+
-					d['fontattr']+"}")
-					self.topSummary.setAlignment(Ut.align(d['alignment']))
-					if d['shadow']:
-						textEffect = QtGui.QGraphicsDropShadowEffect()
-						textEffect.setOffset(d['shadow']['offset'])
-						textEffect.setBlurRadius(d['shadow']['blur'])
-						textEffect.setColor(QColor(d['shadow']['color']))
-						self.topSummary.setGraphicsEffect(textEffect)
+					self.topSummary = Ut.createTextLabel(page, self.name, d)
 					self.topSummary.setText(fill(self.topSummaryFormat.format(self.weatherData['summary']), width=self.topSummaryWidth))
-					self.topSummary.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
 				elif d['type'] == "topIcon":
-					self.topIcon = QLabel(page)
-					self.topIcon.setObjectName(self.name+d['name'])
-					self.topIcon.setStyleSheet("#"+self.name+d['name']+" { background-color: transparent; }")
-					self.topIcon.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
-					if d['shadow']:
-						textEffect = QtGui.QGraphicsDropShadowEffect()
-						textEffect.setOffset(d['shadow']['offset'])
-						textEffect.setBlurRadius(d['shadow']['blur'])
-						textEffect.setColor(QColor(d['shadow']['color']))
-						self.topIcon.setGraphicsEffect(textEffect)
+					self.topIcon = Ut.createImageLabel(page, self.name, d)
 					if self.weatherData['icon'] in self.supportedIcons:
 						self.topIcon.setPixmap(QPixmap(self.images[self.weatherData['icon']]).scaled(self.topIcon.size().width(), self.topIcon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
 					else:
@@ -1075,53 +973,18 @@ class WeatherDisplay():
 				# DATA BLOCKS
 				elif d['type'] == "time":
 					self.timeFormat = d['format']
-					self.timeData = QLabel(page)
-					self.timeData.setObjectName(self.name+d['name'])
-					self.timeData.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
-					d['color'] + "; background-color: transparent; font-size: "+
-					d['fontsize']+"px; "+
-					d['fontattr']+"}")
-					self.timeData.setAlignment(Ut.align(d['alignment']))
+					self.timeData = Ut.createTextLabel(page, self.name, d)
 					hourTime = datetime.datetime.fromtimestamp(hourData['time'])
-					if d['shadow']:
-						textEffect = QtGui.QGraphicsDropShadowEffect()
-						textEffect.setOffset(d['shadow']['offset'])
-						textEffect.setBlurRadius(d['shadow']['blur'])
-						textEffect.setColor(QColor(d['shadow']['color']))
-						self.timeData.setGraphicsEffect(textEffect)
 					self.timeData.setText(self.timeFormat.format(hourTime))
-					self.timeData.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
 				elif d['type'] == "summary":
 					self.summaryFormat = d['format']
 					self.summaryWidth = d['width']
-					self.summary = QLabel(page)
-					self.summary.setObjectName(self.name+d['name'])
-					self.summary.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
-					d['color'] + "; background-color: transparent; font-size: "+
-					d['fontsize']+"px; "+
-					d['fontattr']+"}")
-					self.summary.setAlignment(Ut.align(d['alignment']))
-					if d['shadow']:
-						textEffect = QtGui.QGraphicsDropShadowEffect()
-						textEffect.setOffset(d['shadow']['offset'])
-						textEffect.setBlurRadius(d['shadow']['blur'])
-						textEffect.setColor(QColor(d['shadow']['color']))
-						self.summary.setGraphicsEffect(textEffect)
+					self.summary = Ut.createTextLabel(page, self.name, d)
 					self.summary.setText(fill(self.summaryFormat.format(hourData['summary']), width=self.summaryWidth))
-					self.summary.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
 				elif d['type'] == "icon":
-					self.icon = QLabel(page)
-					self.icon.setObjectName(self.name+d['name'])
-					self.icon.setStyleSheet("#"+self.name+d['name']+" { background-color: transparent; }")
-					self.icon.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
-					if d['shadow']:
-						textEffect = QtGui.QGraphicsDropShadowEffect()
-						textEffect.setOffset(d['shadow']['offset'])
-						textEffect.setBlurRadius(d['shadow']['blur'])
-						textEffect.setColor(QColor(d['shadow']['color']))
-						self.icon.setGraphicsEffect(textEffect)
+					self.icon = Ut.createImageLabel(page, self.name, d)
 					if hourData['icon'] in self.supportedIcons:
 						self.icon.setPixmap(QPixmap(self.images[hourData['icon']]).scaled(self.icon.size().width(), self.icon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
 					else:
@@ -1129,65 +992,28 @@ class WeatherDisplay():
 					
 				elif d['type'] == "temperature":
 					self.temperatureFormat = d['format']
-					self.temperature = QLabel(page)
-					self.temperature.setObjectName(self.name+d['name'])
-					self.temperature.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
-					d['color'] + "; background-color: transparent; font-size: "+
-					d['fontsize']+"px; "+
-					d['fontattr']+"}")
-					self.temperature.setAlignment(Ut.align(d['alignment']))
-					if d['shadow']:
-						textEffect = QtGui.QGraphicsDropShadowEffect()
-						textEffect.setOffset(d['shadow']['offset'])
-						textEffect.setBlurRadius(d['shadow']['blur'])
-						textEffect.setColor(QColor(d['shadow']['color']))
-						self.temperature.setGraphicsEffect(textEffect)
+					self.temperature = Ut.createTextLabel(page, self.name, d)
 					self.temperature.setText(self.temperatureFormat.format(hourData['temperature']))
-					self.temperature.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
 				elif d['type'] == "humidity":
 					self.humidityFormat = d['format']
-					self.humidity = QLabel(page)
-					self.humidity.setObjectName(self.name+d['name'])
-					self.humidity.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
-					d['color'] + "; background-color: transparent; font-size: "+
-					d['fontsize']+"px; "+
-					d['fontattr']+"}")
-					self.humidity.setAlignment(Ut.align(d['alignment']))
-					if d['shadow']:
-						textEffect = QtGui.QGraphicsDropShadowEffect()
-						textEffect.setOffset(d['shadow']['offset'])
-						textEffect.setBlurRadius(d['shadow']['blur'])
-						textEffect.setColor(QColor(d['shadow']['color']))
-						self.humidity.setGraphicsEffect(textEffect)
+					self.humidity = Ut.createTextLabel(page, self.name, d)
 					self.humidity.setText(self.humidityFormat.format(hourData['humidity']))
-					self.humidity.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
 				elif d['type'] == "pressure":
 					self.pressureFormat = d['format']
-					self.pressure = QLabel(page)
-					self.pressure.setObjectName(self.name+d['name'])
-					self.pressure.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
-					d['color'] + "; background-color: transparent; font-size: "+
-					d['fontsize']+"px; "+
-					d['fontattr']+"}")
-					self.pressure.setAlignment(Ut.align(d['alignment']))
-					if d['shadow']:
-						textEffect = QtGui.QGraphicsDropShadowEffect()
-						textEffect.setOffset(d['shadow']['offset'])
-						textEffect.setBlurRadius(d['shadow']['blur'])
-						textEffect.setColor(QColor(d['shadow']['color']))
-						self.pressure.setGraphicsEffect(textEffect)
+					self.pressure = Ut.createTextLabel(page, self.name, d)
 					self.pressure.setText(self.pressureFormat.format(hourData['pressure']))
-					self.pressure.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
 				elif d['type'] == "windSpeed":
-					self.windSpeed = QLabel(page)
-					# TODO
+					self.windSpeedFormat = d['format']
+					self.windSpeed = Ut.createTextLabel(page, self.name, d)
+					self.windSpeed.setText(self.windSpeedFormat.format(self.weatherData['windSpeed']))
 					
 				elif d['type'] == "windBearing":
-					self.windBearing = QLabel(page)
-					# TODO
+					self.windBearingFormat = d['format']
+					self.windBearing = Ut.createTextLabel(page, self.name, d)
+					self.windBearing.setText(self.windBearingFormat.format(self.weatherData['windBearing']))
 					
 		elif self.type == "daily":
 			self.weatherData = wObj.getDaily()
@@ -1218,33 +1044,11 @@ class WeatherDisplay():
 				if d['type'] == "topSummary":
 					self.topSummaryFormat = d['format']
 					self.topSummaryWidth = d['width']
-					self.topSummary = QLabel(page)
-					self.topSummary.setObjectName(self.name+d['name'])
-					self.topSummary.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
-					d['color'] + "; background-color: transparent; font-size: "+
-					d['fontsize']+"px; "+
-					d['fontattr']+"}")
-					self.topSummary.setAlignment(Ut.align(d['alignment']))
-					if d['shadow']:
-						textEffect = QtGui.QGraphicsDropShadowEffect()
-						textEffect.setOffset(d['shadow']['offset'])
-						textEffect.setBlurRadius(d['shadow']['blur'])
-						textEffect.setColor(QColor(d['shadow']['color']))
-						self.topSummary.setGraphicsEffect(textEffect)
+					self.topSummary = Ut.createTextLabel(page, self.name, d)
 					self.topSummary.setText(fill(self.weatherData['summary'], width=self.topSummaryWidth))
-					self.topSummary.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
 				elif d['type'] == "topIcon":
-					self.topIcon = QLabel(page)
-					self.topIcon.setObjectName(self.name+d['name'])
-					self.topIcon.setStyleSheet("#"+self.name+d['name']+" { background-color: transparent; }")
-					self.topIcon.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
-					if d['shadow']:
-						textEffect = QtGui.QGraphicsDropShadowEffect()
-						textEffect.setOffset(d['shadow']['offset'])
-						textEffect.setBlurRadius(d['shadow']['blur'])
-						textEffect.setColor(QColor(d['shadow']['color']))
-						self.topIcon.setGraphicsEffect(textEffect)
+					self.topIcon = Ut.createImageLabel(page, self.name, d)
 					if self.weatherData['icon'] in self.supportedIcons:
 						self.topIcon.setPixmap(QPixmap(self.images[self.weatherData['icon']]).scaled(self.topIcon.size().width(), self.topIcon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
 					else:
@@ -1253,53 +1057,18 @@ class WeatherDisplay():
 				# DATA BLOCKS
 				elif d['type'] == "time":
 					self.timeFormat = d['format']
-					self.timeData = QLabel(page)
-					self.timeData.setObjectName(self.name+d['name'])
-					self.timeData.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
-					d['color'] + "; background-color: transparent; font-size: "+
-					d['fontsize']+"px; "+
-					d['fontattr']+"}")
-					self.timeData.setAlignment(Ut.align(d['alignment']))
+					self.timeData = Ut.createTextLabel(page, self.name, d)
 					dayTime = datetime.datetime.fromtimestamp(dayData['time'])
-					if d['shadow']:
-						textEffect = QtGui.QGraphicsDropShadowEffect()
-						textEffect.setOffset(d['shadow']['offset'])
-						textEffect.setBlurRadius(d['shadow']['blur'])
-						textEffect.setColor(QColor(d['shadow']['color']))
-						self.timeData.setGraphicsEffect(textEffect)
 					self.timeData.setText(self.timeFormat.format(dayTime))
-					self.timeData.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
 				elif d['type'] == "summary":
 					self.summaryFormat = d['format']
 					self.summaryWidth = d['width']
-					self.summary = QLabel(page)
-					self.summary.setObjectName(self.name+d['name'])
-					self.summary.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
-					d['color'] + "; background-color: transparent; font-size: "+
-					d['fontsize']+"px; "+
-					d['fontattr']+"}")
-					self.summary.setAlignment(Ut.align(d['alignment']))
-					if d['shadow']:
-						textEffect = QtGui.QGraphicsDropShadowEffect()
-						textEffect.setOffset(d['shadow']['offset'])
-						textEffect.setBlurRadius(d['shadow']['blur'])
-						textEffect.setColor(QColor(d['shadow']['color']))
-						self.summary.setGraphicsEffect(textEffect)
+					self.summary = Ut.createTextLabel(page, self.name, d)
 					self.summary.setText(fill(self.summaryFormat.format(dayData['summary']), width=self.summaryWidth))
-					self.summary.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
 				elif d['type'] == "icon":
-					self.icon = QLabel(page)
-					self.icon.setObjectName(self.name+d['name'])
-					self.icon.setStyleSheet("#"+self.name+d['name']+" { background-color: transparent; }")
-					self.icon.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
-					if d['shadow']:
-						textEffect = QtGui.QGraphicsDropShadowEffect()
-						textEffect.setOffset(d['shadow']['offset'])
-						textEffect.setBlurRadius(d['shadow']['blur'])
-						textEffect.setColor(QColor(d['shadow']['color']))
-						self.icon.setGraphicsEffect(textEffect)
+					self.icon = Ut.createImageLabel(page, self.name, d)
 					if dayData['icon'] in self.supportedIcons:
 						self.icon.setPixmap(QPixmap(self.images[dayData['icon']]).scaled(self.icon.size().width(), self.icon.size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
 					else:
@@ -1307,83 +1076,33 @@ class WeatherDisplay():
 					
 				elif d['type'] == "temperatureHigh":
 					self.temperatureHighFormat = d['format']
-					self.temperatureHigh = QLabel(page)
-					self.temperatureHigh.setObjectName(self.name+d['name'])
-					self.temperatureHigh.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
-					d['color'] + "; background-color: transparent; font-size: "+
-					d['fontsize']+"px; "+
-					d['fontattr']+"}")
-					self.temperatureHigh.setAlignment(Ut.align(d['alignment']))
-					if d['shadow']:
-						textEffect = QtGui.QGraphicsDropShadowEffect()
-						textEffect.setOffset(d['shadow']['offset'])
-						textEffect.setBlurRadius(d['shadow']['blur'])
-						textEffect.setColor(QColor(d['shadow']['color']))
-						self.temperatureHigh.setGraphicsEffect(textEffect)
+					self.temperatureHigh = Ut.createTextLabel(page, self.name, d)
 					self.temperatureHigh.setText(self.temperatureHighFormat.format(dayData['temperatureHigh']))
-					self.temperatureHigh.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
 				elif d['type'] == "temperatureLow":
 					self.temperatureLowFormat = d['format']
-					self.temperatureLow = QLabel(page)
-					self.temperatureLow.setObjectName(self.name+d['name'])
-					self.temperatureLow.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
-					d['color'] + "; background-color: transparent; font-size: "+
-					d['fontsize']+"px; "+
-					d['fontattr']+"}")
-					self.temperatureLow.setAlignment(Ut.align(d['alignment']))
-					if d['shadow']:
-						textEffect = QtGui.QGraphicsDropShadowEffect()
-						textEffect.setOffset(d['shadow']['offset'])
-						textEffect.setBlurRadius(d['shadow']['blur'])
-						textEffect.setColor(QColor(d['shadow']['color']))
-						self.temperatureLow.setGraphicsEffect(textEffect)
+					self.temperatureLow = Ut.createTextLabel(page, self.name, d)
 					self.temperatureLow.setText(self.temperatureLowFormat.format(dayData['temperatureLow']))
-					self.temperatureLow.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
 				elif d['type'] == "humidity":
 					self.humidityFormat = d['format']
-					self.humidity = QLabel(page)
-					self.humidity.setObjectName(self.name+d['name'])
-					self.humidity.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
-					d['color'] + "; background-color: transparent; font-size: "+
-					d['fontsize']+"px; "+
-					d['fontattr']+"}")
-					self.humidity.setAlignment(Ut.align(d['alignment']))
-					if d['shadow']:
-						textEffect = QtGui.QGraphicsDropShadowEffect()
-						textEffect.setOffset(d['shadow']['offset'])
-						textEffect.setBlurRadius(d['shadow']['blur'])
-						textEffect.setColor(QColor(d['shadow']['color']))
-						self.humidity.setGraphicsEffect(textEffect)
+					self.humidity = Ut.createTextLabel(page, self.name, d)
 					self.humidity.setText(self.humidityFormat.format(dayData['humidity']))
-					self.humidity.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
 				elif d['type'] == "pressure":
 					self.pressureFormat = d['format']
-					self.pressure = QLabel(page)
-					self.pressure.setObjectName(self.name+d['name'])
-					self.pressure.setStyleSheet("#"+self.name+d['name']+"{ font-family:"+d['font']+"; color: "+
-					d['color'] + "; background-color: transparent; font-size: "+
-					d['fontsize']+"px; "+
-					d['fontattr']+"}")
-					self.pressure.setAlignment(Ut.align(d['alignment']))
-					if d['shadow']:
-						textEffect = QtGui.QGraphicsDropShadowEffect()
-						textEffect.setOffset(d['shadow']['offset'])
-						textEffect.setBlurRadius(d['shadow']['blur'])
-						textEffect.setColor(QColor(d['shadow']['color']))
-						self.pressure.setGraphicsEffect(textEffect)
+					self.pressure = Ut.createTextLabel(page, self.name, d)
 					self.pressure.setText(self.pressureFormat.format(dayData['pressure']))
-					self.pressure.setGeometry(d['location'][0], d['location'][1], d['location'][2], d['location'][3])
 					
 				elif d['type'] == "windSpeed":
-					self.windSpeed = QLabel(page)
-					# TODO
+					self.windSpeedFormat = d['format']
+					self.windSpeed = Ut.createTextLabel(page, self.name, d)
+					self.windSpeed.setText(self.windSpeedFormat.format(self.weatherData['windSpeed']))
 					
 				elif d['type'] == "windBearing":
-					self.windBearing = QLabel(page)
-					# TODO
+					self.windBearingFormat = d['format']
+					self.windBearing = Ut.createTextLabel(page, self.name, d)
+					self.windBearing.setText(self.windBearingFormat.format(self.weatherData['windBearing']))
 				
 		
 		# Start timer

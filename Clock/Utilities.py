@@ -1,5 +1,6 @@
 import datetime
 from PyQt4.QtCore import Qt
+from PyQt4.QtGui import QColor, QGraphicsDropShadowEffect, QLabel
 
 class Log():
 	
@@ -69,3 +70,35 @@ def align(gridnum):
 		return (Qt.AlignRight | Qt.AlignBottom)
 	else:
 		return (Qt.AlignHCenter | Qt.AlignVCenter)
+		
+def createTextLabel(page, frameName, properties):
+	textLabel = QLabel(page)
+	textLabel.setObjectName(frameName+properties['name'])
+	textLabel.setStyleSheet("#"+frameName+properties['name']+"{ font-family:"+properties['font']+"; color: "+
+		properties['color'] + "; background-color: transparent; font-size: "+
+		properties['fontsize']+"px; "+
+		properties['fontattr']+"}")
+	textLabel.setAlignment(align(properties['alignment']))
+	if properties['shadow']:
+		textEffect = QGraphicsDropShadowEffect()
+		textEffect.setOffset(properties['shadow']['offset'])
+		textEffect.setBlurRadius(properties['shadow']['blur'])
+		textEffect.setColor(QColor(properties['shadow']['color']))
+		textLabel.setGraphicsEffect(textEffect)
+	textLabel.setGeometry(properties['location'][0], properties['location'][1], properties['location'][2], properties['location'][3])
+	
+	return textLabel
+	
+def createImageLabel(page, frameName, properties):
+	imageLabel = QLabel(page)
+	imageLabel.setObjectName(frameName+properties['name'])
+	imageLabel.setStyleSheet("#"+frameName+properties['name']+" { background-color: transparent; }")
+	if properties['shadow']:
+		textEffect = QGraphicsDropShadowEffect()
+		textEffect.setOffset(properties['shadow']['offset'])
+		textEffect.setBlurRadius(properties['shadow']['blur'])
+		textEffect.setColor(QColor(properties['shadow']['color']))
+		imageLabel.setGraphicsEffect(textEffect)
+	imageLabel.setGeometry(properties['location'][0], properties['location'][1], properties['location'][2], properties['location'][3])
+		
+	return imageLabel
