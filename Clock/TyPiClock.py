@@ -9,7 +9,7 @@ import argparse, datetime, json, os, sys
 from PyQt4 import QtGui, QtCore
 from PyQt4.QtCore import Qt
 
-from Features import AnalogClock, CalendarDisplay, DateTime, Image, Slideshow, Weather, WeatherDisplay
+from Features import AnalogClock, CalendarDisplay, DateTime, Image, Slideshow, Timer, Weather, WeatherDisplay
 
 # TODO what is needed here:?
 import platform
@@ -75,6 +75,7 @@ class Window(QtGui.QWidget):
 		self.images = []
 		self.clocks = []
 		self.datetimes = []
+		self.timers = []
 		self.weathers = []
 		
 		# Weather data (independent of pages, feature objects pull data as needed)
@@ -114,6 +115,10 @@ class Window(QtGui.QWidget):
 			# DateTimes
 			for dt in page['datetimes']:
 				self.datetimes.append(DateTime(self.pages[page['num']], dt))
+				
+			# Timers
+			for timer in page['timers']:
+				self.timers.append(Timer(self.pages[page['num']], timer))
 				
 			# Weathers
 			if self.config['config']['weather']['api']:
@@ -229,6 +234,7 @@ class Window(QtGui.QWidget):
 		self.images.append(Image(self.aboutPage, logo))
 		darksky = {"name": "WeatherAtt",
 					"image": "images/default/poweredby_small_green.png",
+					"shadow": False,
 					"location": [0, 500, 250, 90]}
 		self.images.append(Image(self.aboutPage, darksky))
 		

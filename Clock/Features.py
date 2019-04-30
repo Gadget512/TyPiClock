@@ -1,5 +1,6 @@
-import datetime, httplib2, json, random, os, operator
-from textwrap import fill
+import datetime, json, random, os, operator
+import requests
+from textwrap import fill # TODO put in Utilities
 
 import Utilities as Ut
 
@@ -166,24 +167,7 @@ class DateTime():
 		
 		# Create text stylesheet based on given properties
 		self.dlog.debug("Creating label " + properties['name'])
-		self.textLabel = QLabel(page)
-		self.textLabel.setObjectName(properties['name'])
-		self.textLabel.setStyleSheet("#"+properties['name']+"{ font-family:"+properties['font']+"; color: "+
-			properties['color'] + "; background-color: transparent; font-size: "+
-			properties['fontsize']+"px; "+
-			properties['fontattr']+"}")
-			
-		self.textLabel.setAlignment(Ut.align(properties['alignment']))
-		
-		self.textLabel.setGeometry(properties['location'][0], properties['location'][1], properties['location'][2], properties['location'][3])
-		
-		# Set the text shadow, if specified
-		if properties['shadow']:
-			textEffect = QtGui.QGraphicsDropShadowEffect()
-			textEffect.setOffset(properties['shadow']['offset'])
-			textEffect.setBlurRadius(properties['shadow']['blur'])
-			textEffect.setColor(QColor(properties['shadow']['color']))
-			self.textLabel.setGraphicsEffect(textEffect)
+		self.textLabel = Ut.createTextLabel(page, properties['name'], properties)
 		
 		# Display text
 		now = datetime.datetime.now()
@@ -191,22 +175,93 @@ class DateTime():
 		self.textLabel.setText(text)
 		
 		# Start timer
-		self.timer = QtCore.QTimer() # QTimer calls the specified function every specified number of milliseconds (parallel?)
+		self.timer = QtCore.QTimer() # QTimer calls the specified function every specified number of milliseconds
+		self.timer.timeout.connect(self.tick)
+		self.timer.start(properties['interval']*1000)
+
+
+class Timer(): # TODO
+	
+	def tick(self):
+		pass
+		
+	def __init__(self, page, properties):
+		self.dlog = Ut.Log(name = "Timer()", level="warning")
+		
+		self.textFormat = properties['format']
+		
+		# Create text frame
+		self.dlog.debug("Creating frame " + properties['name'])
+		self.textFrame = QFrame(page)
+		self.textFrame.setObjectName(properties['name']+"frame")
+		self.textFrameRect = QtCore.QRect(properties['location'][0], properties['location'][1], properties['location'][2], properties['location'][3])
+		
+		# Display text frame (with background if specified)
+		self.textFrame.setGeometry(self.textFrameRect)
+		if properties['background']:
+			self.textFrame.setStyleSheet("#"+properties['name']+"frame { background-color: transparent; border-image: url("+properties['background']+") 0 0 0 0 stretch stretch;}")
+		else:
+			self.textFrame.setStyleSheet("#"+properties['name']+"frame { background-color: transparent;}")
+		
+		# Create text stylesheet based on given properties
+		self.dlog.debug("Creating label " + properties['name'])
+		self.textLabel = Ut.createTextLabel(page, properties['name'], properties)
+		
+		# Display text
+		# TODO
+		if properties['timerStart'] > 0:
+			pass
+		"""
+		now = datetime.datetime.now()
+		text = self.textFormat.format(now)
+		self.textLabel.setText(text)
+		"""
+		
+		# Start timer
+		self.timer = QtCore.QTimer() # QTimer calls the specified function every specified number of milliseconds
 		self.timer.timeout.connect(self.tick)
 		self.timer.start(properties['interval']*1000)
 
 
 class Text(): # TODO
 	
+	def update(self):
+		pass
+	
 	def __init__(self, page, properties):
-		return 0
+		self.dlog = Ut.Log(name = "Text()", level="warning")
+		self.dlog.debug("Creating frame " + properties['name'])
 		
-	def setText():
+		# Create text frame
+		self.textFrame = QFrame(page)
+		self.textFrame.setObjectName(properties['name']+"frame")
+		self.textFrameRect = QtCore.QRect(properties['location'][0], properties['location'][1], properties['location'][2], properties['location'][3])
+		
+		# Display text frame (with background if specified)
+		self.textFrame.setGeometry(self.textFrameRect)
+		if properties['background']:
+			self.textFrame.setStyleSheet("#"+properties['name']+"frame { background-color: transparent; border-image: url("+properties['background']+") 0 0 0 0 stretch stretch;}")
+		else:
+			self.textFrame.setStyleSheet("#"+properties['name']+"frame { background-color: transparent;}")
+		
+		# Create text stylesheet based on given properties
+		self.dlog.debug("Creating label " + properties['name'])
+		self.textLabel = Ut.createTextLabel(page, properties['name'], properties)
+		
+		# Display text
+		# TODO
+		self.textLabel.setText(properties['text'])
+		
+	def setText(self, properties):
+		# TODO
 		return 0
 		
 class Image():
 	
 	def __init__(self, page, properties):
+		
+		self.dlog = Ut.Log(name = "Image()", level="warning")
+		self.dlog.debug("Creating frame " + properties['name'])
 		
 		# Create picture frame
 		self.picFrame = QFrame(page)
@@ -443,8 +498,8 @@ class Weather():
 		
 		# Request Weather
 		try:
-			self.dlog.info("Requesting weather...")
-			self.weatherReply = self.http.request(self.weatherURI)
+			self.dlog.info("Requesting weather: "+self.weatherURI)
+			self.weatherReply = requests.get(self.weatherURI)
 			
 			self.dlog.debug("Updating lastUpdated")
 			self.lastUpdated = datetime.datetime.now()
@@ -456,12 +511,11 @@ class Weather():
 		# Get Weather Data
 		try:
 			self.dlog.debug("Parsing weather")
-			self.weatherHeader = self.weatherReply[0]
-			if self.weatherHeader['status'] == '200':
-				self.dlog.info("Weather Response Code: " + self.weatherHeader['status'])
-				self.weatherData = json.loads(self.weatherReply[1])
+			if self.weatherReply.status_code == 200:
+				self.dlog.info("Weather Response Code: " + str(self.weatherReply.status_code))
+				self.weatherData = self.weatherReply.json()
 			else:
-				self.dlog.warning("Weather Response Code: " + self.weatherHeader['status'])
+				self.dlog.warning("Weather Response Code: " + str(self.weatherReply.status_code))
 		except:
 			self.dlog.error("Error getting weather data!")
 		
@@ -475,7 +529,6 @@ class Weather():
 	def __init__(self, properties, latlng):
 		
 		self.dlog = Ut.Log(name = "Weather()", level="debug")
-		self.http = httplib2.Http()
 		self.weatherData = {}
 		self.weatherFile = "weatherData.json"
 		self.lastUpdated = None
