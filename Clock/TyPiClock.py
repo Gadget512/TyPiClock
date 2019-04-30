@@ -94,36 +94,45 @@ class Window(QtGui.QWidget):
 			self.createPage(page['num'], page['background'])
 		
 			# Slideshows
-			for ss in page['slideshows']:
-				self.slideshows.append(Slideshow(self.pages[page['num']], ss))
+			if 'slideshows' in page.keys():
+				for ss in page['slideshows']:
+					self.slideshows.append(Slideshow(self.pages[page['num']], ss))
 				
 			# Images
-			for image in page['images']:
-				self.images.append(Image(self.pages[page['num']], image))
+			if 'images' in page.keys():
+				for image in page['images']:
+					self.images.append(Image(self.pages[page['num']], image))
 				
 			# Calendars TODO
-			#for cal in page['calendars']:
-				#self.calendars.append(CalendarDisplay(self.pages[page['num']], cal))
-				# for weather in cal['weathers']:
-					# self.weathers.append(self.weather.addWeather(weather)) # TODO need to keep a list here, or let Weather handle them? (below)
-					#self.weather.addWeather(weather)
+			"""
+			if 'calendars' in page.keys():
+				for cal in page['calendars']:
+					self.calendars.append(CalendarDisplay(self.pages[page['num']], cal))
+					for weather in cal['weathers']:
+						self.weathers.append(self.weather.addWeather(weather)) # TODO need to keep a list here, or let Weather handle them? (below)
+						self.weather.addWeather(weather)
+			"""
 			
 			# Analog Clocks
-			for clock in page['clocks']:
-				self.clocks.append(AnalogClock(self.pages[page['num']], clock))
+			if 'clocks' in page.keys():
+				for clock in page['clocks']:
+					self.clocks.append(AnalogClock(self.pages[page['num']], clock))
 				
 			# DateTimes
-			for dt in page['datetimes']:
-				self.datetimes.append(DateTime(self.pages[page['num']], dt))
+			if 'datetimes' in page.keys():
+				for dt in page['datetimes']:
+					self.datetimes.append(DateTime(self.pages[page['num']], dt))
 				
 			# Timers
-			for timer in page['timers']:
-				self.timers.append(Timer(self.pages[page['num']], timer))
+			if 'timers' in page.keys():
+				for timer in page['timers']:
+					self.timers.append(Timer(self.pages[page['num']], timer))
 				
 			# Weathers
-			if self.config['config']['weather']['api']:
-				for wtr in page['weathers']:
-					self.weathers.append(WeatherDisplay(self.pages[page['num']], wtr, self.weather))
+			if 'weathers' in page.keys():
+				if self.config['config']['weather']['api']:
+					for wtr in page['weathers']:
+						self.weathers.append(WeatherDisplay(self.pages[page['num']], wtr, self.weather))
 		
 		
 		# Display page0
