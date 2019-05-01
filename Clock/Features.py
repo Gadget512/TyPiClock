@@ -526,7 +526,7 @@ class Weather():
 		# Request Weather
 		try:
 			self.dlog.info("Requesting weather: "+self.weatherURI)
-			self.weatherReply = requests.get(self.weatherURI)
+			self.weatherReply = requests.get(self.weatherURI, timeout=10)
 			
 			self.dlog.debug("Updating lastUpdated")
 			self.lastUpdated = datetime.datetime.now()
