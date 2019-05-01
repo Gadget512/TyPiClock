@@ -183,12 +183,25 @@ class DateTime():
 class Timer(): # TODO
 	
 	def tick(self):
-		pass
+		self.dlog.debug("_tick()")
+		displayDate = None
+		
+		if self.startTime == 0:
+			now = datetime.datetime.now()
+			#displayDate = datetime.timedelta(seconds = self.stopTime - now)
+			displayDate = self.stopTime - now
+			
+		#TODO text = self.textFormat.format(datetime.datetime.fromtimestamp(displayDate.total_seconds()))
+		#text = "{:0d} days {:%H:%M:%S}".format(displayDate.days, datetime.time(displayDate.seconds/3600, (displayDate.seconds%3600)/60, (displayDate.seconds%3600)%60))
+		text = self.textFormat.format(displayDate.days, datetime.time(displayDate.seconds/3600, (displayDate.seconds%3600)/60, (displayDate.seconds%3600)%60))
+		self.textLabel.setText(text)
 		
 	def __init__(self, page, properties):
 		self.dlog = Ut.Log(name = "Timer()", level="warning")
 		
 		self.textFormat = properties['format']
+		self.startTime = None
+		self.stopTime = None
 		
 		# Create text frame
 		self.dlog.debug("Creating frame " + properties['name'])
@@ -207,9 +220,23 @@ class Timer(): # TODO
 		self.dlog.debug("Creating label " + properties['name'])
 		self.textLabel = Ut.createTextLabel(page, properties['name'], properties)
 		
+		if properties['startTime'] == 0:
+			self.startTime = 0
+		if properties['stopTime']:
+			self.stopTime = datetime.datetime.fromtimestamp(properties['stopTime'])
+			#self.stopTime = properties['stopTime']
+		""" TODO
+		if properties['type'] == "up":
+			pass
+		elif properties['type'] == "down":
+		"""
+			
+		
 		# Display text
 		# TODO
-		if properties['timerStart'] > 0:
+		if properties['timerStart'] == 0: # start the timer NOW
+			pass
+		elif properties['timerStart'] > 0: # start the timer at a later date
 			pass
 		"""
 		now = datetime.datetime.now()
