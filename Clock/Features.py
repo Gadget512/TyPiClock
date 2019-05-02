@@ -197,14 +197,14 @@ class Timer(): # TODO
 		self.textLabel.setText(text)
 		
 	def __init__(self, page, properties):
-		self.dlog = Ut.Log(name = "Timer()", level="warning")
+		self.dlog = Ut.Log(name = "Timer()", level="info")
 		
 		self.textFormat = properties['format']
 		self.startTime = None
 		self.stopTime = None
 		
 		# Create text frame
-		self.dlog.debug("Creating frame " + properties['name'])
+		self.dlog.info("Creating frame " + properties['name'])
 		self.textFrame = QFrame(page)
 		self.textFrame.setObjectName(properties['name']+"frame")
 		self.textFrameRect = QtCore.QRect(properties['location'][0], properties['location'][1], properties['location'][2], properties['location'][3])

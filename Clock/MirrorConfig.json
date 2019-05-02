@@ -1,0 +1,634 @@
+{
+	"config": {
+		"location": {
+			"lat": 39.661207,
+			"lng": -104.926503
+		},
+		"weather": {
+			"uri": "https://api.darksky.net/forecast/",
+			"api": "5dbbfda20bd2846c0eb832b28d6b2a2d",
+			"stream": "",
+			"interval": 600
+		}
+	},
+	
+	"pages": [
+		{
+			"num": 0,
+			"background": "images/mirror/background.jpg",
+			
+			"clocks": [
+				
+			],
+			
+			"datetimes": [
+			{
+					"name": "DigitalClock",
+					"interval": 10,
+					"background": null,
+					"format": "{0:%I:%M}",
+					"font": "digital-7",
+					"fontsize": "160",
+					"fontattr": "",
+					"color": "#208171",
+					"alignment": 9,
+					"shadow": {
+							"offset": 0,
+							"blur": 20,
+							"color": "#04c8f9"
+					},
+					"location": [966, 568, 400, 200]
+				},
+				{
+					"name": "Date",
+					"interval": 3600,
+					"background": null,
+					"format": "{0:%A, %B %d}",
+					"font": "Caladea",
+					"fontsize": "80",
+					"fontattr": "",
+					"color": "#208171",
+					"alignment": 5,
+					"shadow": {
+							"offset": 0,
+							"blur": 20,
+							"color": "#04c8f9"
+					},
+					"location": [183, 0, 1000, 100]
+				}
+			],
+			
+			"timers": [
+				{
+					"name": "WedTimer",
+					"type": "down",
+					"timerStart": 0,
+					"startTime": 0,
+					"stopTime": 1561827600,
+					"totalTime": null,
+					"repeat": false,
+					"interval": 1,
+					"background": null,
+					"format": "{:0d} days {:%H:%M:%S}",
+					"font": "digital-7",
+					"fontsize": "40",
+					"fontattr": "",
+					"color": "#208171",
+					"alignment": 5,
+					"shadow": {
+							"offset": 0,
+							"blur": 20,
+							"color": "#04c8f9"
+					},
+					"location": [383, 718, 600, 50]
+				}
+			],
+			
+			"slideshows": [
+				
+			],
+			
+			"images": [
+			
+			],
+			
+			"texts": [
+				
+			],
+			
+			"calendars": [
+			
+			],
+			
+			"weathers": [
+				{
+					"name": "CurrentWeather",
+					"type": "currently",
+					"subtype": null,
+					"interval": 60,
+					"background": null,
+					"images": {
+						"clear-day": "images/mirror/weather/clear.png",
+						"clear-night": "images/mirror/weather/clear-night.png",
+						"rain": "images/mirror/weather/rain.png",
+						"snow": "images/mirror/weather/snow.png",
+						"sleet": "images/mirror/weather/sleet.png",
+						"wind": "images/mirror/weather/wind.png",
+						"fog": "images/mirror/weather/fog.png",
+						"cloudy": "images/mirror/weather/cloudy.png",
+						"partly-cloudy-day": "images/mirror/weather/partly-cloudy.png",
+						"partly-cloudy-night": "images/mirror/weather/partly-cloudy-night.png",
+						"default": "images/mirror/weather/default.png"
+					},
+					"data": [
+						{
+							"name": "currTemp",
+							"type": "temperature",
+							"format": "{:.0f}\u00b0F",
+							"font": "Caladea",
+							"fontsize": "60",
+							"fontattr": "",
+							"color": "#208171",
+							"alignment": 5,
+							"shadow": {
+								"offset": 0,
+								"blur": 20,
+								"color": "#04c8f9"
+							},
+							"location": [50, 724, 200, 44]
+						},
+						{
+							"name": "currIcon",
+							"type": "icon",
+							"shadow": {
+								"offset": 0,
+								"blur": 20,
+								"color": "#04c8f9"
+							},
+							"location": [22, 468, 256, 256]
+						}
+					],
+					"location": [0, 468, 300, 300]
+				},
+				{
+					"name": "HiLoToday",
+					"type": "daily",
+					"subtype": "day0",
+					"interval": 60,
+					"background": null,
+					"images": {
+						"clear-day": "images/mirror/weather/clear.png",
+						"clear-night": "images/mirror/weather/clear-night.png",
+						"rain": "images/mirror/weather/rain.png",
+						"snow": "images/mirror/weather/snow.png",
+						"sleet": "images/mirror/weather/sleet.png",
+						"wind": "images/mirror/weather/wind.png",
+						"fog": "images/mirror/weather/fog.png",
+						"cloudy": "images/mirror/weather/cloudy.png",
+						"partly-cloudy-day": "images/mirror/weather/partly-cloudy.png",
+						"partly-cloudy-night": "images/mirror/weather/partly-cloudy-night.png",
+						"default": "images/mirror/weather/default.png"
+					},
+					"data": [
+						{
+							"name": "HiToday",
+							"type": "temperatureHigh",
+							"format": "{:.0f}",
+							"font": "Caladea",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#208171",
+							"alignment": 9,
+							"shadow": {
+								"offset": 0,
+								"blur": 20,
+								"color": "#04c8f9"
+							},
+							"location": [250, 724, 50, 44]
+						},
+						{
+							"name": "LoToday",
+							"type": "temperatureLow",
+							"format": "{:.0f}",
+							"font": "Caladea",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#208171",
+							"alignment": 7,
+							"shadow": {
+								"offset": 0,
+								"blur": 20,
+								"color": "#04c8f9"
+							},
+							"location": [0, 724, 50, 44]
+						}
+					],
+					"location": [0, 724, 300, 44]
+				}
+			]
+		},
+		{
+			"num": 1,
+			"background": "images/mirror/background.jpg",
+			
+			"clocks": [
+				
+			],
+			
+			"datetimes": [
+				
+			],
+			
+			"slideshows": [
+				
+			],
+			
+			"images": [
+			
+			],
+			
+			"texts": [
+				
+			],
+			
+			"calendars": [
+			
+			],
+			
+			"weathers": [
+				{
+					"name": "Forecast0",
+					"type": "daily",
+					"subtype": "day0",
+					"interval": 300,
+					"background": "images/kati_weather/weather_daily_bg2.png",
+					"images": {
+						"clear-day": "images/default/weather/clear.png",
+						"clear-night": "images/default/weather/clear.png",
+						"rain": "images/default/weather/rain.png",
+						"snow": "images/default/weather/snow.png",
+						"sleet": "images/default/weather/sleet.png",
+						"wind": "images/default/weather/clear.png",
+						"fog": "images/default/weather/mostlycloudy.png",
+						"cloudy": "images/default/weather/cloudy.png",
+						"partly-cloudy-day": "images/default/weather/mostlysunny.png",
+						"partly-cloudy-night": "images/default/weather/mostlysunny.png",
+						"default": "images/default/weather/tstorms.png"
+					},
+					"data": [
+						{
+							"name": "Todaytxt",
+							"type": "time",
+							"format": "Today\n{0:%B %d}",
+							"font": "Caladea",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#208171",
+							"alignment": 5,
+							"shadow": {
+								"offset": 0,
+								"blur": 20,
+								"color": "#04c8f9"
+							},
+							"location": [0, 0, 300, 225]
+						},
+						{
+							"name": "TodaySum",
+							"type": "summary",
+							"format": "{}",
+							"width": 40,
+							"font": "Caladea",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#208171",
+							"alignment": 4,
+							"shadow": {
+								"offset": 0,
+								"blur": 20,
+								"color": "#04c8f9"
+							},
+							"location": [850, 0, 750, 225]
+						},
+						{
+							"name": "TodayIcon",
+							"type": "icon",
+							"shadow": {
+								"offset": 0,
+								"blur": 20,
+								"color": "#04c8f9"
+							},
+							"location": [300, 0, 225, 225]
+						},
+						{
+							"name": "TodayHighTemp",
+							"type": "temperatureHigh",
+							"format": "High: {:.0f}\u00b0F",
+							"font": "Caladea",
+							"fontsize": "60",
+							"fontattr": "",
+							"color": "#208171",
+							"alignment": 8,
+							"shadow": {
+								"offset": 0,
+								"blur": 20,
+								"color": "#04c8f9"
+							},
+							"location": [525, 0, 300, 113]
+						},
+						{
+							"name": "TodayLowTemp",
+							"type": "temperatureLow",
+							"format": "Low: {:.0f}\u00b0F",
+							"font": "Caladea",
+							"fontsize": "60",
+							"fontattr": "",
+							"color": "#208171",
+							"alignment": 2,
+							"shadow": {
+								"offset": 0,
+								"blur": 20,
+								"color": "#04c8f9"
+							},
+							"location": [525, 113, 300, 112]
+						}
+					],
+					"location": [0, 0, 1600, 225]
+				},
+				{
+					"name": "Forecast1",
+					"type": "daily",
+					"subtype": "day1",
+					"interval": 300,
+					"background": "images/kati_weather/weather_daily_bg2.png",
+					"images": {
+						"clear-day": "images/default/weather/clear.png",
+						"clear-night": "images/default/weather/clear.png",
+						"rain": "images/default/weather/rain.png",
+						"snow": "images/default/weather/snow.png",
+						"sleet": "images/default/weather/sleet.png",
+						"wind": "images/default/weather/clear.png",
+						"fog": "images/default/weather/mostlycloudy.png",
+						"cloudy": "images/default/weather/cloudy.png",
+						"partly-cloudy-day": "images/default/weather/mostlysunny.png",
+						"partly-cloudy-night": "images/default/weather/mostlysunny.png",
+						"default": "images/default/weather/tstorms.png"
+					},
+					"data": [
+						{
+							"name": "Tomtxt",
+							"type": "time",
+							"format": "{0:%A\n%B %d}",
+							"font": "Caladea",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#208171",
+							"alignment": 5,
+							"shadow": {
+								"offset": 0,
+								"blur": 20,
+								"color": "#04c8f9"
+							},
+							"location": [0, 225, 300, 225]
+						},
+						{
+							"name": "TomSum",
+							"type": "summary",
+							"format": "{}",
+							"width": 40,
+							"font": "Caladea",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#208171",
+							"alignment": 4,
+							"shadow": {
+								"offset": 0,
+								"blur": 20,
+								"color": "#04c8f9"
+							},
+							"location": [850, 225, 750, 225]
+						},
+						{
+							"name": "TomIcon",
+							"type": "icon",
+							"shadow": {
+								"offset": 0,
+								"blur": 20,
+								"color": "#04c8f9"
+							},
+							"location": [300, 225, 225, 225]
+						},
+						{
+							"name": "TomHighTemp",
+							"type": "temperatureHigh",
+							"format": "High: {:.0f}\u00b0F",
+							"font": "Caladea",
+							"fontsize": "60",
+							"fontattr": "",
+							"color": "#208171",
+							"alignment": 8,
+							"shadow": {
+								"offset": 0,
+								"blur": 20,
+								"color": "#04c8f9"
+							},
+							"location": [525, 225, 300, 113]
+						},
+						{
+							"name": "TomLowTemp",
+							"type": "temperatureLow",
+							"format": "Low: {:.0f}\u00b0F",
+							"font": "Caladea",
+							"fontsize": "60",
+							"fontattr": "",
+							"color": "#208171",
+							"alignment": 2,
+							"shadow": {
+								"offset": 0,
+								"blur": 20,
+								"color": "#04c8f9"
+							},
+							"location": [525, 338, 300, 112]
+						}
+					],
+					"location": [0, 225, 1600, 225]
+				},
+				{
+					"name": "Forecast2",
+					"type": "daily",
+					"subtype": "day2",
+					"interval": 300,
+					"background": "images/kati_weather/weather_daily_bg2.png",
+					"images": {
+						"clear-day": "images/default/weather/clear.png",
+						"clear-night": "images/default/weather/clear.png",
+						"rain": "images/default/weather/rain.png",
+						"snow": "images/default/weather/snow.png",
+						"sleet": "images/default/weather/sleet.png",
+						"wind": "images/default/weather/clear.png",
+						"fog": "images/default/weather/mostlycloudy.png",
+						"cloudy": "images/default/weather/cloudy.png",
+						"partly-cloudy-day": "images/default/weather/mostlysunny.png",
+						"partly-cloudy-night": "images/default/weather/mostlysunny.png",
+						"default": "images/default/weather/tstorms.png"
+					},
+					"data": [
+						{
+							"name": "Day2txt",
+							"type": "time",
+							"format": "{0:%A\n%B %d}",
+							"font": "Caladea",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#208171",
+							"alignment": 5,
+							"shadow": {
+								"offset": 0,
+								"blur": 20,
+								"color": "#04c8f9"
+							},
+							"location": [0, 450, 300, 225]
+						},
+						{
+							"name": "Day2Sum",
+							"type": "summary",
+							"format": "{}",
+							"width": 40,
+							"font": "Caladea",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#208171",
+							"alignment": 4,
+							"shadow": {
+								"offset": 0,
+								"blur": 20,
+								"color": "#04c8f9"
+							},
+							"location": [850, 450, 750, 225]
+						},
+						{
+							"name": "Day2Icon",
+							"type": "icon",
+							"shadow": {
+								"offset": 0,
+								"blur": 20,
+								"color": "#04c8f9"
+							},
+							"location": [300, 450, 225, 225]
+						},
+						{
+							"name": "Day2HighTemp",
+							"type": "temperatureHigh",
+							"format": "High: {:.0f}\u00b0F",
+							"font": "Caladea",
+							"fontsize": "60",
+							"fontattr": "",
+							"color": "#208171",
+							"alignment": 8,
+							"shadow": {
+								"offset": 0,
+								"blur": 20,
+								"color": "#04c8f9"
+							},
+							"location": [525, 450, 300, 113]
+						},
+						{
+							"name": "Day2LowTemp",
+							"type": "temperatureLow",
+							"format": "Low: {:.0f}\u00b0F",
+							"font": "Caladea",
+							"fontsize": "60",
+							"fontattr": "",
+							"color": "#208171",
+							"alignment": 2,
+							"shadow": {
+								"offset": 0,
+								"blur": 20,
+								"color": "#04c8f9"
+							},
+							"location": [525, 563, 300, 112]
+						}
+					],
+					"location": [0, 450, 1600, 225]
+				},
+				{
+					"name": "Forecast3",
+					"type": "daily",
+					"subtype": "day3",
+					"interval": 300,
+					"background": "images/kati_weather/weather_daily_bg2.png",
+					"images": {
+						"clear-day": "images/default/weather/clear.png",
+						"clear-night": "images/default/weather/clear.png",
+						"rain": "images/default/weather/rain.png",
+						"snow": "images/default/weather/snow.png",
+						"sleet": "images/default/weather/sleet.png",
+						"wind": "images/default/weather/clear.png",
+						"fog": "images/default/weather/mostlycloudy.png",
+						"cloudy": "images/default/weather/cloudy.png",
+						"partly-cloudy-day": "images/default/weather/mostlysunny.png",
+						"partly-cloudy-night": "images/default/weather/mostlysunny.png",
+						"default": "images/default/weather/tstorms.png"
+					},
+					"data": [
+						{
+							"name": "Day3txt",
+							"type": "time",
+							"format": "{0:%A\n%B %d}",
+							"font": "Caladea",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#208171",
+							"alignment": 5,
+							"shadow": {
+								"offset": 0,
+								"blur": 20,
+								"color": "#04c8f9"
+							},
+							"location": [0, 675, 300, 225]
+						},
+						{
+							"name": "Day3Sum",
+							"type": "summary",
+							"format": "{}",
+							"width": 40,
+							"font": "Caladea",
+							"fontsize": "40",
+							"fontattr": "",
+							"color": "#208171",
+							"alignment": 4,
+							"shadow": {
+								"offset": 0,
+								"blur": 20,
+								"color": "#04c8f9"
+							},
+							"location": [850, 675, 750, 225]
+						},
+						{
+							"name": "Day3Icon",
+							"type": "icon",
+							"shadow": {
+								"offset": 0,
+								"blur": 20,
+								"color": "#04c8f9"
+							},
+							"location": [300, 675, 225, 225]
+						},
+						{
+							"name": "Day3HighTemp",
+							"type": "temperatureHigh",
+							"format": "High: {:.0f}\u00b0F",
+							"font": "Caladea",
+							"fontsize": "60",
+							"fontattr": "",
+							"color": "#208171",
+							"alignment": 8,
+							"shadow": {
+								"offset": 0,
+								"blur": 20,
+								"color": "#04c8f9"
+							},
+							"location": [525, 675, 300, 113]
+						},
+						{
+							"name": "Day3LowTemp",
+							"type": "temperatureLow",
+							"format": "Low: {:.0f}\u00b0F",
+							"font": "Caladea",
+							"fontsize": "60",
+							"fontattr": "",
+							"color": "#208171",
+							"alignment": 2,
+							"shadow": {
+								"offset": 0,
+								"blur": 20,
+								"color": "#04c8f9"
+							},
+							"location": [525, 788, 300, 112]
+						}
+					],
+					"location": [0, 675, 1600, 225]
+				}
+			]
+		}
+	]
+}
