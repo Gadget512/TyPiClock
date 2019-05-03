@@ -270,7 +270,7 @@
 								"blur": 20,
 								"color": "#04c8f9"
 							},
-							"location": [0, 0, 300, 225]
+							"location": [0, 0, 300, 192]
 						},
 						{
 							"name": "TodaySum",
@@ -287,7 +287,7 @@
 								"blur": 20,
 								"color": "#04c8f9"
 							},
-							"location": [850, 0, 750, 225]
+							"location": [750, 0, 616, 192]
 						},
 						{
 							"name": "TodayIcon",
@@ -297,14 +297,14 @@
 								"blur": 20,
 								"color": "#04c8f9"
 							},
-							"location": [300, 0, 225, 225]
+							"location": [300, 0, 192, 192]
 						},
 						{
 							"name": "TodayHighTemp",
 							"type": "temperatureHigh",
 							"format": "High: {:.0f}\u00b0F",
 							"font": "Caladea",
-							"fontsize": "60",
+							"fontsize": "40",
 							"fontattr": "",
 							"color": "#208171",
 							"alignment": 8,
@@ -313,14 +313,14 @@
 								"blur": 20,
 								"color": "#04c8f9"
 							},
-							"location": [525, 0, 300, 113]
+							"location": [500, 0, 250, 96]
 						},
 						{
 							"name": "TodayLowTemp",
 							"type": "temperatureLow",
 							"format": "Low: {:.0f}\u00b0F",
 							"font": "Caladea",
-							"fontsize": "60",
+							"fontsize": "40",
 							"fontattr": "",
 							"color": "#208171",
 							"alignment": 2,
@@ -329,10 +329,10 @@
 								"blur": 20,
 								"color": "#04c8f9"
 							},
-							"location": [525, 113, 300, 112]
+							"location": [500, 96, 250, 96]
 						}
 					],
-					"location": [0, 0, 1600, 225]
+					"location": [0, 0, 1366, 192]
 				},
 				{
 					"name": "Forecast1",
@@ -368,7 +368,7 @@
 								"blur": 20,
 								"color": "#04c8f9"
 							},
-							"location": [0, 225, 300, 225]
+							"location": [0, 192, 300, 192]
 						},
 						{
 							"name": "TomSum",
@@ -385,7 +385,7 @@
 								"blur": 20,
 								"color": "#04c8f9"
 							},
-							"location": [850, 225, 750, 225]
+							"location": [750, 192, 616, 192]
 						},
 						{
 							"name": "TomIcon",
@@ -395,14 +395,14 @@
 								"blur": 20,
 								"color": "#04c8f9"
 							},
-							"location": [300, 225, 225, 225]
+							"location": [300, 192, 192, 192]
 						},
 						{
 							"name": "TomHighTemp",
 							"type": "temperatureHigh",
 							"format": "High: {:.0f}\u00b0F",
 							"font": "Caladea",
-							"fontsize": "60",
+							"fontsize": "40",
 							"fontattr": "",
 							"color": "#208171",
 							"alignment": 8,
@@ -411,14 +411,14 @@
 								"blur": 20,
 								"color": "#04c8f9"
 							},
-							"location": [525, 225, 300, 113]
+							"location": [500, 192, 250, 96]
 						},
 						{
 							"name": "TomLowTemp",
 							"type": "temperatureLow",
 							"format": "Low: {:.0f}\u00b0F",
 							"font": "Caladea",
-							"fontsize": "60",
+							"fontsize": "40",
 							"fontattr": "",
 							"color": "#208171",
 							"alignment": 2,
@@ -427,10 +427,10 @@
 								"blur": 20,
 								"color": "#04c8f9"
 							},
-							"location": [525, 338, 300, 112]
+							"location": [500, 288, 250, 96]
 						}
 					],
-					"location": [0, 225, 1600, 225]
+					"location": [0, 192, 1366, 192]
 				},
 				{
 					"name": "Forecast2",
@@ -466,7 +466,7 @@
 								"blur": 20,
 								"color": "#04c8f9"
 							},
-							"location": [0, 450, 300, 225]
+							"location": [0, 384, 300, 192]
 						},
 						{
 							"name": "Day2Sum",
@@ -483,7 +483,7 @@
 								"blur": 20,
 								"color": "#04c8f9"
 							},
-							"location": [850, 450, 750, 225]
+							"location": [750, 384, 616, 192]
 						},
 						{
 							"name": "Day2Icon",
@@ -493,14 +493,14 @@
 								"blur": 20,
 								"color": "#04c8f9"
 							},
-							"location": [300, 450, 225, 225]
+							"location": [300, 384, 192, 192]
 						},
 						{
 							"name": "Day2HighTemp",
 							"type": "temperatureHigh",
 							"format": "High: {:.0f}\u00b0F",
 							"font": "Caladea",
-							"fontsize": "60",
+							"fontsize": "40",
 							"fontattr": "",
 							"color": "#208171",
 							"alignment": 8,
@@ -509,14 +509,14 @@
 								"blur": 20,
 								"color": "#04c8f9"
 							},
-							"location": [525, 450, 300, 113]
+							"location": [500, 384, 250, 96]
 						},
 						{
 							"name": "Day2LowTemp",
 							"type": "temperatureLow",
 							"format": "Low: {:.0f}\u00b0F",
 							"font": "Caladea",
-							"fontsize": "60",
+							"fontsize": "40",
 							"fontattr": "",
 							"color": "#208171",
 							"alignment": 2,
@@ -525,10 +525,10 @@
 								"blur": 20,
 								"color": "#04c8f9"
 							},
-							"location": [525, 563, 300, 112]
+							"location": [500, 480, 250, 96]
 						}
 					],
-					"location": [0, 450, 1600, 225]
+					"location": [0, 384, 1366, 192]
 				},
 				{
 					"name": "Forecast3",
@@ -564,7 +564,7 @@
 								"blur": 20,
 								"color": "#04c8f9"
 							},
-							"location": [0, 675, 300, 225]
+							"location": [0, 576, 300, 192]
 						},
 						{
 							"name": "Day3Sum",
@@ -581,7 +581,7 @@
 								"blur": 20,
 								"color": "#04c8f9"
 							},
-							"location": [850, 675, 750, 225]
+							"location": [750, 576, 616, 192]
 						},
 						{
 							"name": "Day3Icon",
@@ -591,14 +591,14 @@
 								"blur": 20,
 								"color": "#04c8f9"
 							},
-							"location": [300, 675, 225, 225]
+							"location": [300, 576, 192, 192]
 						},
 						{
 							"name": "Day3HighTemp",
 							"type": "temperatureHigh",
 							"format": "High: {:.0f}\u00b0F",
 							"font": "Caladea",
-							"fontsize": "60",
+							"fontsize": "40",
 							"fontattr": "",
 							"color": "#208171",
 							"alignment": 8,
@@ -607,14 +607,14 @@
 								"blur": 20,
 								"color": "#04c8f9"
 							},
-							"location": [525, 675, 300, 113]
+							"location": [500, 576, 250, 96]
 						},
 						{
 							"name": "Day3LowTemp",
 							"type": "temperatureLow",
 							"format": "Low: {:.0f}\u00b0F",
 							"font": "Caladea",
-							"fontsize": "60",
+							"fontsize": "40",
 							"fontattr": "",
 							"color": "#208171",
 							"alignment": 2,
@@ -623,10 +623,10 @@
 								"blur": 20,
 								"color": "#04c8f9"
 							},
-							"location": [525, 788, 300, 112]
+							"location": [500, 672, 250, 96]
 						}
 					],
-					"location": [0, 675, 1600, 225]
+					"location": [0, 576, 1366, 192]
 				}
 			]
 		}
